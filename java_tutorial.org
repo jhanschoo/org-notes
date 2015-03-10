@@ -1,0 +1,480 @@
+* Getting Started
+  TODO
+* Learning the Java Language
+** Object-Oriented Programming Concepts
+** Language Basics
+** Classes and Objects
+** Annotations
+** Interfaces and Inheritance
+** Numbers and Strings
+** Generics
+*** Wny Use Generics
+*** Generic Types
+    - Type parameter naming conventions
+      - E: element
+      - K: key
+      - N: number
+      - T: type
+      - V: value
+      - S,U,V: 2nd, 3rd, 4th types
+    - Type parameter omittable in constructor (compiler can infer
+**** Raw Types
+     - When the diamond is omitted: don't do it
+*** Generic Methods
+    - definition
+      - public static <K, V> boolean compare(Pair<K, V> p1, Pair<K, V> p2) { ... }
+    - invocation
+      - Util.<Integer, String>compare(p1, p2);
+*** Bounded Type Parameters
+    - T extends SuperclassOrInterface
+    - T extends ParentClass & InterfaceOne & InterfaceTwo & InterfaceThree
+      - parent class must be specified first
+**** Generic methods and bounded type parameters
+*** Generics, inheritance, and subtypes
+    - Generics can inherit from other generics
+*** Type inference
+    - Compiler/runtime can automatically infer type
+*** Wildcards
+    - Used as type of parameter, field, or local variable, or return type
+    - Illegal in method invocation, instance creation, supertype specification
+**** Upper bounded wildcards
+     - When you want to use methods of a class
+     - public static void process(List<? extends Foo> list) { ... }
+**** Unbounded wildcards
+     - When you don't care what type a generic container is holding
+     - public static void printList(List<?> list)
+**** Lower bounded wildcards
+     - When you want to add a class to a generic container (that can accept
+       a class or its subclasses)
+     - public static void addNumbers(List<? super Integer> list)
+**** Wildcards and subtyping
+**** Wildcard capture and helper methods
+**** Guidelines for wildcard use
+*** Type erasure
+    - Java compiler replaces type parameters to actual classes (incl Object)
+**** Erasure of generic types
+**** Erasure of generic methods
+**** Effects of type erasure and bridge methods
+     - Compiler might create bridge methods
+**** Non-reifiable types
+     - reifiable: type whose type information is fully available at runtime
+     - TODO
+*** Restrictions on generics
+** Packages
+*** Creating and using packages
+**** Creating a package
+     - package statement must be first like
+**** Naming a package
+     - reversed internet domain name
+     - affix hyphed if clash with keyword: eg example.int -> int_.example
+**** Using package members
+     - qualified name
+       - graphics.Rectangle
+     - import package member
+       - import graphics.Rectangle
+       - Note: importing public nested classes of Rectangle:
+         - import graphics.Rectangle.*
+     - import entire package
+       - import graphics.*
+     - packages appear hierarchical but are not; just a naming convention
+     - name ambiguities
+       - TODO
+     - the static import statement
+       - import static java.lang.Math.PI
+**** Managing source and class files
+     - classname: graphics.Rectangle
+       - path to file: src/graphics/Rectangle.java
+       - output: dist/graphics/Rectangle.class
+     - CLASSPATH contains path to packages of classes (used by compiler and
+       JVM);
+**** Summary of creating and using packages
+* Essential Java Classes
+** Exceptions
+*** What is an exception?
+*** The catch or specify requirement
+    - The three kinds of exceptions
+      - checked exception
+        - subclasses Exception
+      - error
+        - subclasses Error
+      - runtime exception
+        - subclasses RuntimeException
+    - Bypassing catch or specify
+      - Use unchecked exceptions (subclassing RuntimeException)
+*** Catching and handling exceptions
+**** The try block
+**** The catch block
+     - catch (Exception e) { ... }
+     - catch (IOException|SQLException e ) { ... }
+**** The finally block
+**** The try-with-resources statement
+     - try (declaration statements...) { ... } catch (...) { ... }
+**** Putting it all together
+*** Specifying the exceptions thrown by a method
+    - throw new Exception()
+*** How to throw exceptions
+**** Chained exceptions
+     - try { ... } catch (Exception e) { throw new Exception("stuff: ", e); }
+     - Accessing stack trace information
+       - StackTraceElement elements[] = e.getStackTrace()
+     - Logging API
+       - Handler handler = new FileHandler("outfile.log");
+       - Logger.getLogger("").addHandler(handler);
+**** Creating exception classes
+     - Inherit from a superclass
+*** Unchecked exceptions -- the controbersy
+*** Advantages of exceptions
+*** Summary
+** Basic I/O
+** I/O streams
+*** Byte streams
+    - FileInputStream(String filename)
+    - FileOutputStream(String filename)
+*** Character streams
+    - FileReader(String filename)
+    - FileWriter(String filename)
+    - InputStreamReader(new InputStream(...)) // parent of FileReader
+    - OutputStreamWriter(new OutputStream(...)) // parent of FileWriter
+    - reader.read()
+    - writer.write(int c)
+    - reader.readLine()
+    - writer.println(l)
+*** Buffered streams
+    - BufferedReader(new FileReader(...))
+    - BufferedWriter(new FileWriter(...))
+    - BufferedInputStream(new ...)
+    - BufferedOutputStream(new ...)
+    - println and format flush buffers
+*** Scanning and formatting
+**** Scanning
+     - Scanner breaks down formatted input into tokens and translates these
+       tokens into data type
+     - new Scanner(new BufferedReader( ... ))
+     - s.useDelimiter(String regex) // default: whitespace
+     - s.hasNext()
+     - s.next()
+     - s.findInLine(String regex)
+     - MatchResult result = s.match()
+     - int result.groupCount()
+     - String result.group(i)
+**** Formatting
+     - print, println
+     - writer.format(String formatstring, parameters)
+     - %<argument index><flags><width>.<precision><conversion>
+       - argument index: TODO
+       - flags: + always signed; 0 pad with zero; - pad on right; , format with
+         thousands separator
+       - width: minimum width
+       - precision: precision of float; or max width
+*** I/O from the command line
+    - InputStream System.in
+    - PrintStream System.out, System.err // PrintStream emulates Writer features
+    - Console System.console()
+    - c.readLine(String prompt)
+    - char [] c.readPassword(String prompt)
+    - c.format(String formatStringForOutput, ...)
+*** Data streams
+    - new DataInputStream(new BufferedInputStream( ... ) )
+    - new DataOutputStream(new BufferedOutputStream( ... ) )
+    - i.readDouble(); i.readInt(); i.readUTF();
+    - o.writeDouble(d); o.writeInt(i); o.writeUTF(String); // write UTF-8
+*** Object streams
+    - I/O of Serializable objects
+    - ObjectInputStream(new BufferedInputStream( ... ))
+    - ObjectOutputStream(new BufferedOutputStream( ... ))
+    - o.writeObject()
+    - o.readObject()
+** File I/O (Featuring NIO.2)
+*** What is a path? (And other file system facts)
+*** The Path class
+    - Use Path instead of File
+*** Path operations
+    - Path p = Paths.get(path-like/string-like/char-like)
+    - Paths.get(pathfragment1, pathfragment2, ...)
+    - System.getProperty("user.home")
+    - path.toString()
+    - path.getFileName()
+    - path.getName(depthFromRoot) // e.g. /home has depth 0
+    - getNameCount()
+    - subPath(start,end) // returns relative
+    - getParent()
+    - getRoot() // returns root or null, if relative path
+    - path.normalize() // normalizes away . and ..
+    - path.toAbsolutePath() // prepend cwd
+    - path.toRealPath(true) // if true, resolve symbolic links; finally toAbsolutePath
+    - Paths.get(absolute).resolve(relative) // if absolute is passed to resolve, return the absolute path instead
+    - p1.relativize(p2) // relative path to p2 from p1; both must be relative or both must be absolute
+    - path.equals(path)
+    - path.startsWith(...) path.endsWith(...)
+*** File operations
+    - the Files class
+      - link-aware
+    - Closeable resource
+    - glob
+      - \*: any number of chars
+      - **: * but includes dir boundaries
+      - ?: one char
+      - {...}: collection of subpatterns
+      - [...]: set of chars
+*** Checking a file or directory
+    - Files.exists(path)
+    - Files.notExists(path) // we know that file does not exist
+    - !Files.exists(path) // file probably does not exist (we may not have perms)
+    - Files.isReadable(file)
+    - Files.isRegularFile(file)
+    - Files.isExecutable(file)
+    - Files.isSameFile(p1, p2) // cross symbolic links
+*** Deleting a file or directory
+    - Files.delete(path) // cannot delete non-empty directory
+    - Files.deleteIfExists(path)
+*** Copying a file or directory
+    - Files.copy(path, path, CopyOption...)
+      - REPLACE_EXISTING
+      - COPY_ATTRIBUTES
+      - NOFOLLOW_LINKS
+    - Files.copy(Path, OutputStream)
+*** Moving a file or directory
+    - Files.move(path, path, CopyOption...)
+      - REPLACE_EXISTING
+      - ATOMIC_MOVE
+*** Managing metadata
+    - Files.size(path)
+    - Files.isDirectory(Path, LinkOption)
+    - Files.isRegularFile(Path, LinkOption...)
+    - Files.isSymbolicLink(Path)
+    - Files.isHidden(Path)
+    - Files.getLastModifiedTime(Path, LinkOption...)
+    - Files.setLastModifiedTime(Path, FileTime)
+    - Files.getOwner(Path, LinkOption...)
+    - Files.setOwner(Path, UserPrincipal)
+    - Files.getPosixFilePermissions(Path, LinkOption...)
+    - setPosixFilePermissions(Path, Set<PosixFilePermission>)
+    - getAttribute(Path, String, LinkOption...)
+    - setAttribute(Path, String, Object, LinkOption...)
+    - Files.readAttributes(Path, String, LinkOption...)
+      - BasicFileAttributeView
+      - DosFileAttributeView
+      - PosixFileAttributeView
+      - FileOwnerAttributeView
+      - AclFileAttributeView
+      - UserDefinedFileAttributeView
+        - TODO
+*** Reading, writing and creating files
+    - File I/O methods in increasing complexity
+      - readAllBytes / readAllLines
+        - Files.readAllBytes(Path)
+        - Files.write(Path, byte[]), Files.write(Path, Iterable<CharSequence>)
+      - newBufferedReader, newBufferedWriter
+        - Files.newBufferedReader(Path, Charset)
+        - Files.newBufferedWriter(Path, Charset)
+        - Files.newInputStream(Path)
+        - Files.newOutputStream(Path)
+        - SeekableByteChannel Files.newByteChannel(Path)
+        - Files.createFile(Path, FileAttributes<?>)
+        - Files.createTempFile(...)
+      - newInputStream, newOutputStream
+      - newByteChannel
+      - FileChannel
+    - OpenOptions
+      - WRITE, APPEND, TRUNCATE_EXISTING, CREATE_NEW, CREATE, DELETE_ON_CLOSE,
+        SPARSE, SYNC, DSYNC
+*** Random access files
+    - SeekableByteChannel interface
+    - c.position
+    - c.position(long)
+    - c.read(ByteBuffer)
+    - c.write(ByteBuffer)
+    - c.truncate(long)
+*** Creating and reading directories
+    - Iterable<Path> dirs = FileSystems.getDefault().getRootDirectories()
+    - Files.createDirectory(Path, FileAttributes<?>)
+    - Files.createTempDirectory
+    - Files.newDirectoryStream(Path) // returns Iterable<Path>, Closeable
+    - Files.newDirectoryStream(Path, String glob)
+    - DirectoryStream.Filter<T> f.accept(Path)
+*** Links, symbolic or otherwise
+    - Files.createSymbolicLink(link, target, attrs)
+    - Files.createLink(link, target) // hard link
+    - Files.isSymbolicLink
+    - Files.readSymbolicLink(Path) // -> Path
+*** Walking the file tree
+    - implement a class that extends FileVisitor interface
+    - preVisitDirectory(Path, ...) // before visiting all of a directory's files
+    - postVisitDirectory(Path, ...) // after visiting all of a directory's files
+    - visitFile
+    - visitFileFailed
+    - or extend SimpleFileVisitor
+    - Files.walkFileTree(Path, FileVisitor) // exists another signature of walkFileTree with more options
+    - FileVisitResult
+      - CONTINUE
+      - TERMINATE
+      - SKIP_SUBTREE
+      - SKIP_SIBLINGS
+*** Finding files
+    - PathMatcher object
+    - PathMatcher matcher = FileSystems.getDefault().getPathMatcher(...)
+    - mathcner.matches(Path)
+*** Watching a directory for changes
+    - WatchService API
+    - WatchService watcher = FileSystems.getDefault().newWatchService();
+    - Path implements Watchable
+    - watchable.register(watcher, ...)
+    - key = watcher.take()
+    - for (WatchEvent<?> event : key.pollEvents()) {
+    - WatchEvent.Kind<?> kind = event.kind()
+    - ...
+    - }
+*** Other useful methods
+    - Determining MIME type
+    - Default file system
+    - Path string separator
+    - File system's file stores
+*** Legacy file I/O code
+*** Summary
+** Concurrency
+*** Processes and threads
+    - Processes
+      - Use ProcessBuilder object
+      - Communicate using pipes and sockets
+    - Threads
+*** Thread objects
+    - Thread class
+    - for direct control, instantiate Thread
+    - to abstract thread management, pass application's tasks to an executor
+      c.f. high-level concurrenct objects
+    - Communicate primarily by shared access to fields and object references
+**** Defining and starting a thread
+     - implement Runnable: exposes run() function
+       - allows you to subclass another class
+     - subclass Thread: override run()
+       - don't use this
+     - start a thread object with t.start()
+**** Pausing execution with sleep
+     - Thread.sleep(milliseconds)
+**** Interrupts
+     - catch (InterruptedException e)
+     - if in a method that does not throw InterruptedException,
+       we must check outselves and throw it: if(Thread.interrupted()) { throw ... }
+     - Thread.interrupt(); set interrupted flagl Thread.interrupted() clears the flag
+**** Joins
+     - t.join() // wait for t to complete
+**** The SimpleThreads example
+*** Synchronization
+**** Thread interference
+**** Memory consistency errors
+     - different thread have inconsistent views of what should be the same data
+     - create happens-before relationships
+       - c.f. java.util.concurrent
+**** Synchronized methods
+     - synchronized methods
+     - public synchronized void increment() { ... } // critical section across
+       all synchronized methods (constructors can't be synchronized)
+**** Intrinsic locks and synchronization
+     - synchronized statements
+       - synchronized(this) { ... } // lock access to this block in a shared
+         // object
+       - synchronized(lock1) { ... } // separate locks for separate critical sections
+     - A thread might re-acquire a lock it already owns
+**** Atomic access
+     - reference vars and primitives have atomic read/write
+     - volatile-declared variables have atomic read/write
+*** Liveness
+**** Deadlock
+**** Starvation and livelock
+*** Guarded blocks
+    - implement guards by polling a condition that must be true before
+      proceeding
+    - use wait(), catch InterruptedException while condition is false for
+      more efficient implementation
+    - use notifyAll() to notify that guard has been released
+*** Immutable objects
+**** A synchronized class example
+     - make all mutations synchronized with their getter methods
+**** A strategy for defining immutable objects
+     - don't provide setter methods
+     - make all fields final and private
+     - don't allow subclasses to override methods (use final/use Factory pattern with private constructor)
+     - if referencing mutable objects, don't allow these objects to be changed
+       - always create copies of mutable objects instead of sharing references
+*** High level concurrency objects
+**** Lock objects
+     - java.util.concurrent.locks
+     - Lock
+     - lock.tryLock()
+     - lock.lockInteruptibly()
+**** Executors
+     - Separating thread management/creation from rest of thread
+     - executor might want to wait for thread pools, etc.
+***** Executor interfaces
+      - java.util.concurrent.Executor // simple interface
+        - e.execute(runnable)
+      - ExecutorService // features to help manage lifecycle
+        - e.submit(runnable/callable) // return Future, future retrieves callable's return value
+      - ScheduledExecutorService // in addition, supports future/periodic execution of tasks
+        - e.schedule(delay)
+        - e.scheduleAtFixedRate(...)
+        - e.scheduleWithFixedDelay(...)
+***** Thread pools
+      - e.newFixedThreadPool()
+      - newFixedThreadPool
+      - newCachedThreadPool // executor with expandable thread pool
+      - newSingleThreadExecutor // create executor, executes single task at a time
+      - subclassing java.util.concurrent.ThreadPoolExecutor
+      - java.util.concurrent.ScheduledThreadPoolExecutor
+
+***** Fork/Join
+      - work-stealing algorithm; idle worker threads steal tasks
+      - ForkJoinPool class, extends AbstractExecutorService
+      - executes ForkJoinTask processes
+      - if work is small enough
+        - do work
+      - else split my work and invoke 2 pieces and wait for results
+      - TODO
+**** Concurrent collections
+     - BlockingQueue
+     - ConcurrentMap
+     - ConcurrentNavigableMap
+**** Atomic variables
+     - java.util.concuttent.atomic
+**** Concurrent random numbers
+     - ThreadLocalRandom class
+*** For further reading
+** The Platform Environment
+*** Configuration utilities
+**** Properties
+     - java.util.Properties // config of current working env; c.f. System properties
+     - TODO
+**** Command-line arguments
+**** Environment variables
+     - Map<String, String> = Syatem.getenv()
+     - ProcessBuilder.environment
+**** Other configuration utilities
+     - Preferences API
+     - JAR archive; manifest
+     - Java Web Start; JNLP
+     - Java Plug-in applet
+     - java.util.ServiceLoader
+       - service provider facility
+         - service provider: implementation of a service
+           - Installable as extensions
+           - service: well-known set of interfaces and (abstract) classes
+*** System utilities
+**** Command-line I/O objects
+**** System properties
+     - file.separator // separates components of a file path
+     - java.class.path
+     - java.home
+     - java.vendor
+     - java.vendoe.url
+     - java.version
+     - line.separator
+     - user.dir // cwd
+     - hser.home
+     - write system properties with System.setProperties
+**** The security manager
+     - SecurityManager appsm = System.getSecurityManager() // TODO
+**** Miscellaneous methods in System
+     - arrayCopy
+     - currentTimeMillis
+     - nanoType
+     - TODO

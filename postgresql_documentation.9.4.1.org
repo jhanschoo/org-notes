@@ -1,0 +1,241 @@
+* Preface
+* I Tutorial
+** 1. Getting started
+*** 1.1. Installation
+*** 1.2. Architecture fundamentals
+    client-server model; can communicate over TCP/IP; server forks for each
+    connection
+*** 1.3. Creating a database
+    - createdb <mydb>
+    - dropdb <mydb>
+*** 1.4. Accessing a database
+    - psql <mydb>
+    - SELECT version();
+    - SELECT current_date;
+    - \\h \\q \\?
+** 2. The SQL language
+*** 2.1. Introduction
+    - \\i <filename>
+*** 2.2. Concepts
+    - rows
+    - columns
+    - table
+    - databases
+    - cluster
+*** 2.3. Creating a new table
+    - int
+    - smallint
+    - real
+    - double precision
+    - char(N)
+    - varchar(N)
+    - date
+    - time
+    - timestamp
+    - interval
+    - CREATE TABLE <table> (<colspec>)
+*** 2.4. Populating a table with rows
+    - INSERT INTO <table> VALUES (<values>)
+    - INSERT INTO <table> (<columns>) VALUES (<values>)
+    - COPY <table> FROM <file_on_server>
+*** 2.5. Querying a table
+    - SELECT <column_expressions> FROM <table>
+    - SELECT <colexprs> FROM <table> WHERE <filters>
+    - SELECT <colexprs> FROM <table> ORDER BY <colexprs>
+    - SELECT DISTINCT <col> FROM <table> ORDER BY <col>
+*** 2.6. Joins between tables
+    - SELECT <cols> FROM <tables> WHERE <where>
+    - SELECT * FROM <table> INNER JOIN <table> ON <where>
+    - SELECT * FROM <table> LEFT OUTER JOIN <table> ON <where>
+    - RIGHT OUTER JOIN
+    - FULL OUTER JOIN
+    - self join
+*** 2.7. Aggregate functions
+    - max(<column>)
+    - SELECT <aggregate> FROM <table> GROUP BY <column>
+    - SELECT <aggregate> FROM <table> GROUP BY <column> HAVING <aggregate condition>
+    - SELECT <aggregate> FROM <table> WHERE <column> LIKE <pattern> GROUP BY <column> HAVING <aggregate condition>
+*** 2.8. Updates
+    - UPDATE <table> SET <assignments> WHERE <condition>
+*** 2.9. Deletions
+    - DELETE FROM <table> WHERE <condition>
+** 3. Advanced features
+*** 3.1. Introduction
+*** 3.2. Views
+    - CREATE VIEW <name> AS <select_query>
+*** 3.3. Foreign keys
+    - CREATE TABLE <name> ( <colname> <coltype> primary key, ...)
+    - CREATE TABLE <name> ( <colname> <coltype> references <table>(<pri_key_name>), ...)
+*** 3.4. Transactions
+    - BEGIN; <update/insert>; COMMIT;
+    - BEGIN; <u/i>; SAVEPOINT <label>; <u/i>; ROLLBACK TO <label>; <u/i>; COMMIT;
+*** 3.5. Window functions
+    - SELECT depname, empno, salary, avg(salary) OVER (PARTITION BY depname) FROM empsalary;
+      - avg(..) OVER is a window function
+      - rank() OVER (PARTITION BY depname ORDER BY salary DESC)
+        - rank employees within each department by their salary
+*** 3.6. Inheritance
+    - CREATE TABLE <name> (...) INHERITS (<table>);
+*** 3.7. Conclusion
+* II The SQL language
+** 4. SQL syntax
+*** 4.1 Lexical structure
+    - command :: <token>; # separated by whitespace
+    - token :: <keyword> | <identifier> | <quoted_identifier> | <literal> | <special_character>
+    - literal ::
+**** 4.1.1. Identifiers and key words
+    - keyword :: SQL keywords
+    - identifier :: user-defined ; table names, etc
+    - quoted_identifier :: user-defined, contains special chars, whitespace, in quotes
+**** 4.1.2. Constants
+***** 4.1.2.1. String constants
+      - Enclosed in single quotes
+***** 4.1.2.2. String constants with C-style escapes
+***** 4.1.2.3. String constants with unicode escapes
+***** 4.1.2.4. Dollar-quoted string constants
+***** 4.1.2.5. Bit-string constants
+      - B'<0|1>'
+      - X'<0-F>'
+***** 4.1.2.6. Numeric constants
+      - integer (no dots, fits in 32 bits)
+      - bigint (no dots, fits in 64 bits)
+      - numeric
+***** 4.1.2.7. Constants of other types
+      - <type> 'string' -- literal only
+      - 'string'::<type> -- runtime conversion possible
+      - CAST ('string' AS <type>) -- runtime conversion possible
+*****
+**** 4.1.3. Operators
+     - + - * / < > = ~ ! @ # % ^ & | `
+**** 4.1.4. Special characters
+     - ($) :: positional parameter in pody of function definition or prepared statement
+     - (()) :: grouping expressions
+     - ([]) :: select elements of array
+     - (,) :: list element separation
+     - (;) :: terminates SQL command
+     - (:) :: select slices
+     - (*) :: denote al fields of a table row
+     - (.) :: numeric constants, membership
+**** 4.1.5. Comments
+**** 4.1.6. Operator precedence
+*** 4.2. Value expressions
+    TODO
+**** 4.2.1. Column references
+     - correlation.columnname
+**** 4.2.2. Positional parameters
+     - $number
+**** 4.2.3. Subscripts
+     - expression[subscript]
+     - expression[lower_subscript:upper_subscript]
+**** 4.2.4. Field selection
+     - expression.fieldname
+**** 4.2.5. Operator invocations
+     - expression operator expression
+     - operator expression
+     - expression operator
+     - OPERATOR(schema.operatorname)
+**** 4.2.6. Function calls
+     - function_name([expression [, expression ... ]])
+**** 4.2.7. Aggregate expressions
+     - aggregate_name (expressions [ order_by_clause ] ) [ FILTER ( WHERE filter_clause ) ]
+     - aggregate_name (ALL expressions [order_by_clause ] ) [ FILTER ( WHERE filter_clause ) ]
+     - aggregate_name ( * ) [ FILTER ( WHERE filter_clause ) ]
+     - aggregate_name ( [ expressions ] ) WITHIN GROUP ( order_by_clause ) [ FILTER ( WHERE filter_clause ) ]
+**** 4.2.8. Window function calls
+**** 4.2.9. Type casts
+**** 4.2.10. Collation expressions
+**** 4.2.11. Scalar subqueries
+**** 4.2.12. Array constructors
+**** 4.2.13. Row constructors
+**** 4.2.14. Expression evaluation rules
+*** 4.3. Calling functions
+**** 4.3.1. Using positional notation
+**** 4.3.2. Using named notation
+**** 4.3.3. Using mixed notation
+** 5. Data definition
+*** 5.1. Table basics
+    - CREATE TABLE
+    - DROP TABLE
+*** 5.2. Default values
+    - ... DEFAULT <expression> -- expression is evaluated upon insert
+*** 5.3. Constraints
+**** 5.3.1. Check constraints
+     - ... CHECK <condition>
+     - CONSTRAINT <name> CHECK <condition> # named version
+     - ..., CHECK <expression_on_more_than_one_column>
+     - ..., CONSTRAINT <name> CHECK <expression>
+**** 5.3.2. Not-null constraints
+     - ... NOT NULL
+     - ... NULL
+**** 5.3.3. Unique constraints
+     - ... UNIQUE
+     - UNIQUE (<columns>)
+     - CONSTRAINT <name> UNIQUE
+**** 5.3.4. Primary keys
+**** 5.3.5. Foreign keys
+**** 5.3.6. Exclusion constraints
+*** 5.4. System columns
+*** 5.5. Modifying tables
+**** 5.5.1. Adding a column
+**** 5.5.2. Removing a column
+**** 5.5.3. Adding a constraint
+**** 5.5.4. Removing a constraint
+**** 5.5.5. Changing a column's default value
+**** 5.5.6. Changing a column's data type
+**** 5.5.7. Renaming a column
+**** 5.5.8. Renaming a table
+*** 5.6. Privileges
+*** 5.7. Schemas
+**** 5.7.1. Creating a schema
+**** 5.7.2. The public schema
+**** 5.7.3. The schema search path
+**** 5.7.4. Schemas and privileges
+**** 5.7.5. The system catalog schema
+**** 5.7.6. Usage patterns
+**** 5.7.7. Portability
+*** 5.8. Inheritance
+*** 5.9. Partitioning
+**** 5.9.1. Overview
+**** 5.9.2. Implementing partitioning
+**** 5.9.3. Managing partitions
+**** 5.9.4. Partitioning and constraint exclusion
+**** 5.9.5. Alternative partitioning methods
+**** 5.9.6. Caveats
+*** 5.10. Foreign data
+*** 5.11. Other database objects
+*** 5.12. Dependency tracking
+** 6. Data manipulation
+** 7. Queries
+** 8. Data types
+** 9. Functions and operators
+** 10. Type conversion
+** 11. Indexes
+** 12. Full text search
+** 13. Concurrency control
+** 14. Performance tips
+* III Server administration
+** 15. Installation from source code
+** 16. Installation from source code on Windows
+** 17. Server setup and operation
+** 18. Server configuration
+** 19. Client authentication
+** 20. Database roles
+** 21. Managing databases
+** 22. Localization
+** 23. Routine data
+** 24. Backup and restore
+** 25. High availability, load balancing, and replication
+** 26. Recovery configuration
+** 27. Monitoring database activity
+** 28. Monitoring disk usage
+** 29. Reliability and the write-ahead log
+** 30. Regression tests
+* IV Client interfaces
+** 31. libpg - C library
+** 32. Large objects
+** 33. ECPG - embedded SQL in C
+** 34. The information schema
+* V Server programming
+* VI Reference
+* VII Internals
+* VIII Appendixes

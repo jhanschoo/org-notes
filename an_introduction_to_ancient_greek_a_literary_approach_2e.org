@@ -1,0 +1,411 @@
+* TODO Introduction
+** TODO Alphabet and sounds of Greek
+*** TODO The alphabet
+*** TODO Punctuation
+*** TODO Attic Greek
+*** TODO Exercise A
+*** TODO Vowels, diphthongs, and iota-subscript
+**** TODO Vowels
+**** TODO Diphtongs (δίφθγγοι) and vowel combinations
+**** TODO Breatings
+**** TODO Classification of consonants
+     - Mutes
+       - Labials
+       - Palatals
+       - Dentals
+     - Continuants
+       - Nasals
+       - Liquids
+       - Spirant
+*** TODO Exercise B: Diphthongs, etc.
+*** TODO Accents (τόνοι)
+**** TODO Accent rules
+*** TODO Syllables
+*** TODO Exercise C: Accents
+    1. b
+    2. a
+    3. c
+    4. b
+    5. b
+    6. a
+    7. b
+    8. a
+    9. c
+    10. c
+    11. c
+    12. b
+    13. c
+    14. c
+    15. b
+*** TODO Vocabulary
+**** TODO Numbers
+     - εἶς, μἰα, ἕν
+     - δύο
+     - τρεῖς, τρία
+     - τέτταρες, τέτταρα
+     - πέντε
+     - ἕξ
+     - ἕπτα
+     - ὀκτώ
+     - ἐννέα
+     - δέκα
+     - ἕνδεκα
+     - δώδεκα
+     - εἴκοσι
+*** TODO Readings
+**** TODO The /alphabet song/ of Caillias
+**** TODO The Grammar of Dionysius Thrax
+** TODO Grammatical outline
+*** TODO English and Greek
+*** TODO The parts of speech (τὰ τοῦ λόγου μέρε)
+    - noun (ὄντομα)
+      - declension (πτῶσις)
+        - nominative (ὀρθή)
+        - genitive (γενική)
+        - dative (δοτική)
+        - accusative (αἰτιατική)
+        - vocative (κλητική)
+      - genders (γένη)
+        - masculine (αρσενικόν)
+        - feminine (θηλυκόν)
+        - neuter (οὐδέτερον)
+      - numbers (ἀριθομοί)
+        - singular (ἑνικός)
+        - dual (δυϊκός)
+        - plural (πλησυντίκος)
+    - pronoun (ἀντωνυμία)
+    - verb (ῥήμα)
+      - tense
+        - time
+          - past
+          - present
+          - future
+        - aspect
+          - durative
+          - momentary
+          - completed
+      - voice
+        - active voice
+        - passive voice
+        - middle voice
+      - moods (ἐγκλυσεις)
+        - indicative
+        - imperative
+        - subjunctive
+        - optative
+      - person
+      - number
+      - infinitive
+      - participle
+    - adverb (ἐπίρρημα)
+      - conjunction
+      - preposition (πρόθεσις)
+      - interjection (σύνδεσμος)
+    - article (ἄρθρον)
+    - participle (μετοχή)
+* TODO Lesson I
+** TODO Present indicative active and middle-passive of -ω verbs: the first principal part
+*** TODO Characteristics of verbs: definitions, forms
+    Two types of conjugations:
+    - thematic (-ω)
+      - characterized by the thematic vowel (ο/ε)
+    - athematic (-μι)
+
+**** TODO Uses of the voices: examples
+     - Active voice
+       - plain actor of the action
+     - Passive voice
+       - Sufferer of the action
+     - Middle voice
+       - Emphasis that purpose of action is for oneself
+**** TODO Tenses
+     - primary
+       - present
+       - future
+       - perfect
+       - future perfect
+     - secondary
+       - aorist
+       - imperfect
+       - pluperfect
+**** TODO Formation of present indicative and infinitive
+     |       | active   | middle-passive      |
+     | sg. 1 | -ω       | -ο -μαι             |
+     | sg. 2 | -εις     | -ει / -ῃ [< -ε-σαι] |
+     | sg. 3 | -ει      | -ε -ται             |
+     | pl. 1 | -ο -μεν  | -ο -μεθα            |
+     | pl. 2 | -ε -τε   | -ε -σθε             |
+     | pl. 3 | -ουσι(ν) | -ο -νται            |
+     | inf.  | -ειν     | -ε -σθαι            |
+
+     1. Thematic vowel is absorbed in the long endings
+
+     The accent of verbs goes ad far back as the length of the ultima permits.
+*** TODO Deponent verbs
+*** TODO Vocabulary
+**** TODO Verbs
+     - ἄγω
+     - ἄρχω ..., rule +gen (c.f. ἄρχων)
+     - βουλεύω consulo resolve to +inf (c.f. βουλή)
+     - βούλομαι volo +inf
+     - γίγνομαι ..., turn out to be +nom
+     - γράφω
+     - ἐθέλω wish, be willing +inf
+     - ἔρχομαι come, go (c.f. εἶμι, eo)
+     - ἔχω habeo, teneo
+     - κρίνω
+     - λέγω
+     - λείπω leave
+     - λύω mid. ransom
+     - μένω maneo
+     - νομίζω (c.f. νόμος mos)
+     - παιδεύω (c.f. παῖς)
+     - παύω ..., mid. cease
+     - πείθω
+     - πέμπω
+     - πιστεύω believe that +dat (c.f. πίστις)
+     - πράττω facio, exact for oneself (as a fee)
+     - φέρω
+**** TODO Conjunctions/Adverbs
+     - καί
+     - καί ... καί
+     - ἤ
+     - ἤ ... ἤ
+
+   Verbs ending in -ιζω and -ευω are denominatives; derived from nouns
+*** TODO Learning by rote
+*** TODO Exercise A
+    1.
+       1. ἄγομαι (mp 1st sg) I lead
+       2. ἄρχεσθαι (mp inf) to start
+       3. βουλεύεις (act 2nd sg) thou wishest
+       4. ἀγόμεθα (mp 1st pl) We are led
+       5. βούλεται (mp 3rd sg) He wishes
+       6. γίγνονται (mp 3rd pl) They become
+       7. γράφει (act 3rd sg) He writes
+       8. ἐθέλομεν (act 1st pl) We consent
+       9. ἔρχεσθαι (mp inf) to come/go
+       10. ἔχομεν (1st act) to have
+       11. κρίνετε (mp 2rd sg) thou art believed
+       12. λέγεται (mp 3rd sg) he is spoken
+       13. λείπουσι (act 3rd pl) they leave
+       14. λυόνται (mp 3rd pl) they are freed
+       15. μένειν (act inf) to remain
+       16. νομίζω ()
+       17. παιδεύειν
+       18. παύει
+       19. πείθεσθαι
+       20. πεμπόμεθα
+       21. πιστεύομεν
+    2.
+       1.
+          - ἄγω
+          - ἄγεις
+          - ἄγει
+          - ἄγομεν
+          - ἄγετε
+          - ἄγουστιν
+          - ἄγειν
+          - ἄγομαι
+          - ἄγῃ
+          - ἄγεται
+          - ἀγόμεθα
+          - ἄγεσθε
+          - ἄγονται
+          - ἄγεσθαι
+       2.
+          - βούλομαι
+          - βούλῃ
+          - βούλεται
+          - βουλόμεθα
+          - βούλεσθε
+          - βούλονται
+          - βούλεσθαι
+       3.
+          - γίγνομαι
+          - γίγνῃ
+          - γίγνεται
+          - γιγνόμεθα
+          - γίγνεσθε
+          - γίγνονται
+          - γίγνεσθαι
+       4.
+          - ἔρχομαι
+          - ἔρχῃ
+          - ἔρχεται
+          - ἐρχόμετα
+          - ἔρχεσθαι
+          - ἔρχονται
+          - ἔρχεσθαι
+       5.
+          - γράφω
+          - γράφεις
+          - γράφει
+          - γράφομεν
+          - γράφετε
+          - γράφουσιν
+          - γράφειν
+          - γράφομαι
+          - γράφῃ
+          - γράφεται
+          - γραφόμεθα
+          - γράφεσθε
+          - γράφονται
+          - γράφεσθαι
+       6.
+          - λείπω
+          - λείπεις
+          - λείπει
+          - λείπομεν
+          - λείπετε
+          - λείπουσιν
+          - λείπειν
+          - λείπομαι
+          - λείπῃ
+          - λείπεται
+          - λειπόμετα
+          - λείπεσθε
+          - λείπονται
+          - λείπεσθαι
+       7.
+          - ἔχω
+          - ἔχεις
+          - ἔχει
+          - ἔχομεν
+          - ἔχετε
+          - ἔχουσιν
+          - ἔχειν
+          - ἔχομαι
+          - ἔχῃ
+          - ἔχεται
+          - ἐχόμετα
+          - ἔχεσθε
+          - ἔχονται
+          - ἔχεσθαι
+       8.
+          - φέρω
+          - φέρεις
+          - φέρει
+          - φέρομεν
+          - φέρετε
+          - φέρουσιν
+          - φέρειν
+          - φέρομαι
+          - φέρῃ
+          - φέρεται
+          - φερόμεθα
+          - φέρεσθε
+          - φέρονται
+          - φέρεσθαι
+       9.
+          - παύω
+          - παύεις
+          - παύει
+          - παύομεν
+          - παύετε
+          - παύουσιν
+          - παύειν
+          - παύομαι
+          - παύῃ
+          - παύεται
+          - παυόμετα
+          - παύεσθε
+          - παύονται
+          - παύεσθαι
+       10.
+           - πέμπω
+           - πέμπεις
+           - πέμπει
+           - πέμπομεν
+           - πέμπετε
+           - πέμποσιν
+           - πέμπειν
+           - πέμπομαι
+           - πέμπῃ
+           - πέμπεται
+           - πεμπόμεθα
+           - πέμπεσθε
+           - πέμπονται
+           - πέμπεσθαι
+    3.
+       1. : pres. m.-p. inf. of
+       2. : pres. m.-p. ind., 1st pers. pl. of
+       3. : pres. act. ind., 3rd pers. sg. of
+       4. : pres. act. ind., 2nd pers. sg. of
+       5. : pres. act. ind., 1st pers. pl. of
+       6. : pres. act. ind., 1st pers. pl. of
+       7. : pres. act. ind., 2nd pers. pl. of
+       8. : pres. m.-p. ind., 2nd pers. pl. of
+       9. : pers. m.-p. inf. of
+       10. thou goest
+       11. they think
+       12. you were written
+       13. to loosen
+       14. to be said
+       15. thou trustest
+       16. we cease
+       17. he remains
+       18. he was left
+       19. to have
+       20. thou carriest and leadst
+       21. we deliberate and decide
+       22. what are you doing?
+       23. they plan to write
+       24. you free or you are freed
+       25. he wishes to come or ti remain
+       26. to write the things that are wished
+       27. who do you obey?
+       28. thou wishest to be freed
+       29. I wish to lead thou art willing to be led
+    4. TODO
+***
+** TODO Nouns of the first (-η) and second (-ο) declensions; article
+*** Characteristics of nouns
+**** Noun endings
+*** The definitive article
+**** Uses of the article
+**** Nouns declined with the article
+***** 1. Nouns of the first declension (-η type)
+***** 2. Nouns of the second declension (-ος and -ον types)
+*** Noun accents
+**** Some accent rules
+*** Vocabulary
+* TODO Lesson II
+** TODO Imperfect active and middle passive;
+** TODO Adjectives: -ος, -η, -ον and -ος, -ον types
+* TODO Lesson III
+** TODO Future active and middle: the second principal part
+** TODO First declension nouns
+* TODO Lesson IV
+** TODO Aorist active and middle: the third principal part
+** TODO Indirect statement
+* TODO Lesson V
+** TODO Third declension nouns
+* TODO Lesson VI
+** TODO Third declension adjectives
+** TODO Third/first declension adjectives
+** TODO Irregular adjectives
+** TODO Syntax
+* TODO Lesson VII
+** TODO Participles: present, future, aorist active and middle/middle-passive
+* TODO Lesson VIII
+** TODO Pronouns: interrogative, indefinite, relative indefinite, reciprocal
+** TODO Perfect active: the fourth principal part
+* TODO Lesson IX
+** TODO Pronouns: personal and reflexive; possessive adjectives
+** TODO Perfect middle-passive: the fifth principal part
+* TODO Lesson X
+** TODO Comparison of adjectives, adverbs
+** TODO Aorist and future passive: the sixth principal part
+* TODO Lesson XI
+** TODO Contract verbs
+* TODO Lesson XII
+** TODO -ΜΙ verbs
+* TODO Lesson XIII
+** TODO Subjunctive
+** TODO Optative
+** TODO Sequence of moods and dependent clauses
+* TODO Lesson XIV
+** TODO Imperative
+** TODO Vocative
+** TODO Verbals in -τέος and -τέον

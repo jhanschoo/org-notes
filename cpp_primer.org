@@ -1,0 +1,1028 @@
+* TODO Preface
+* TODO Chapter 1 Getting Started
+** TODO 1.1 Writing a Simple C++ Program
+*** TODO 1.1.1 Compiling and Executing Our Program
+** TODO 1.2 A First Look at Input/Output
+** TODO 1.3 A Word about Comments
+** TODO 1.4 Flow of Control
+*** TODO 1.4.1 The while Statement
+*** TODO 1.4.2 The for Statement
+*** TODO 1.4.3 Reading an Unknown Number of Inputs
+*** TODO 1.4.4 The if Statement
+** TODO 1.5 Introducing Classes
+** TODO 1.5.1 The Sales_item Class
+** TODO 1.5.2 A First Look at Member Functions
+** TODO 1.6 The Bookstore Program
+** TODO Chapter Summary
+* TODO Chapter 2 Variables and Basic Types
+** TODO 2.1 Primitive Built-in Types
+   void type
+*** TODO 2.1.1 Arithmetic Types
+    integral types:
+
+    bool, char, wchar_t (not preferred), char16_t, char32_t,
+    [unsigned] short, int, long, long long
+
+    floating-point types:
+    float, double, long double
+*** TODO 2.1.2 Types Conversions
+    arith -> bool
+    bool -> arith
+    float -> integral
+    integral -> float
+    signed -> unsigned
+*** TODO 2.1.3 Literals
+    (prefix)
+    char16_t ... u
+    char32_t ... U
+    wchar_t ... L
+    char ... u8 (otf-8 only)
+
+    (postfix)
+    unsigned ... u/U
+    long ... l/L
+    long long ... ll/LL
+    float ... f/F
+    long double ... l/L
+
+    char 'a'
+    "Hello World!"
+
+    nullptr
+** TODO 2.2 Variables
+*** TODO 2.2.1 Variable Definitions
+
+    <type specifier> <varname> [= ...][, [<type specifier>] <varname> [= ...]];
+
+    int units_sold = 0;
+    int units_sold = {0}; // list initialization
+    int units_sold{0}; // list initialization
+    int units_sold(0);
+
+    List initialization prevents implicit type conversion and is preferred.
+*** TODO 2.2.2 Variable Declarations and Definitions
+
+    extern int i; // declaration
+
+    int j; // declaration and definition
+
+    extern double pi = 3.131 // decl and def; don't do this.
+
+    You need to declara a variable to use it. But you can only define
+    a variable used in multiple files once.
+
+*** TODO 2.2.3 Identifiers
+*** TODO 2.2.4 Scope of a Name
+
+    global scope: accessible throughout
+    block scope: obeys dynamicscoping rules
+** TODO 2.3 Compound Types
+*** TODO 2.3.1 References
+    References define an alternative name to an object that is,
+    for the most part, transparent.
+*** TODO 2.3.2 Pointers
+    nullptr, NULL (from cstdlib), 0
+
+    Always initialize all pointers
+
+    You cannot dereference or perform arithmetic on a void * pointer.
+
+*** TODO 2.3.3 Understanding Compound Type Declarations
+** TODO 2.4 const Qualifier
+   const types may be initialized at runtime or compile time.
+
+   By default, const objects are local to a file
+
+   extern const int bufSize = fcn(); // bufSize is accessible elsewhere
+
+   extern const int bufSize; // another file including previously defined
+   bufSize.
+*** TODO 2.4.1 References to const
+    const int &r1 = c1;
+
+    reference to const must be const, but const reference need not refer
+    to a const object. When that happens, there is the possibility that a
+    property or value of the referenced object might change
+
+    const int &ri = 32; // this is legal
+*** TODO 2.4.2 Pointers and const
+
+    int *const curErr
+
+*** TODO 2.4.3 Top-Level const
+    This indicates that the variable itself is a const.
+*** TODO 2.4.4 constexpr and Constant Expressions
+    constexprs must be able to be evaluated /initialized at compile time.
+    Vars declared under constexpr are impilicitly const (i.e. const applies
+    to the top level (but constexpr is not a type modifier);
+    constexprs can only define literal types.
+** TODO 2.5 Dealing with Types
+*** TODO 2.5.1 Type Aliases
+    typedef double wages, base, *p; // wages, bases = double; *p = double*
+
+    using SI = Sales_item * const*;
+*** TODO 2.5.2 The auto Type Specifier
+    auto a = b + c;
+
+    auto ignores top-level consts. (you must explicitly specify it)
+*** TODO 2.5.3 The decltype Type Specifier
+
+    decltype(f()) a = b; // a has same type as return value of f
+    decltype(<var>) y = x; // y has same type as var
+    decltype(<rvalue>) p; // p is the type of the rvalue
+    decltype(<lvalue>) q; // q is a reference to the type of the lvalue
+
+    you can convert a <var> to an <lvalue> by enclosing it in parentheses.
+** TODO 2.6 Defining Our Own Data Structures
+*** TODO 2.6.1 Defining the Sales_data Type
+*** TODO 2.6.2 Using the Sales_data Class
+*** TODO 2.6.3 Writing Our Own Header Files
+    When we define a class outside of a function, there may only be one
+    definition of that class in any given source file; if we use a class
+    in several different files, the class' definition must be the same
+    in each file.
+
+    Classes are usually defined in header files.
+
+    Headers contain entities (class defs, consts, constexprs) that can be
+    defined only once in any given file.
+
+    #ifndef SALES_DATA_H
+    #define SALES_DATA_H
+    ...
+    #endif
+*** TODO Chapter Summary
+* TODO Chapter 3 Strings, Vectors, and Arrays
+** TODO 3.1 Namespace using Declarations
+   using namespace::name;
+
+   Headers should not include using declarations
+** TODO 3.2 Library string Type
+   #include <string>
+   using std::string;
+*** TODO 3.2.1 Defining and Initializing strings
+    string s1 // empty string
+    string s2(string)
+    string s2 = string
+    string s3("...")
+    string s3 = "..."
+    string s4(int reps, char repeatedChar)
+*** TODO 3.2.2 Operations on strings
+    os << s
+    is >> s // whitespace-delimited and stripped
+    getline(is, s) // \n is stripped
+    s.empty()
+    s.size()
+    s[n]
+    s1 + s2
+    s1 = s2
+    s1 == s2
+    s1 != s2
+    <, <=, >, >= // char ordering
+
+    Reading an unknown number of strings / lines
+
+    Use the idiom
+
+    while (cin >> s) { ... } / while (getline(...)) { ... }
+
+    Use auto to store s.size(), etc. to avoid needless coercion
+*** TODO 3.2.3 Dealing with the Characters in a string
+    Assumes ASCII
+
+    c.f. <cctype>
+
+    TODO
+
+    Idiom
+    for (auto c : str) { ... } // copy iterator
+    for (auto &c : str) { ... } // mutating iterator
+
+    for (decltype(s.size()) index = 0; f(s[index]); ++index)
+
+    str[n] = char
+** TODO 3.3 Library vector Type
+   #include <vector>
+   using std::vector;
+*** TODO 3.3.1 Defining and Initializing vectors
+    vector<T> v1
+    vector<T> v2(v1)
+    vector<T> v2 = v1
+    vector<T> v3(n, val) // n elements of val
+    vector<T> v4(n) // if builtin, init to 0; else init to () constructor
+    vector<T> v5{a, b, c ...} // initializers a, b, c... try to list-init,
+    but if unable, pass as 1-arg to constructor.
+    vector<T> v5 = {a, b, c ...}
+*** TODO 3.3.2 Adding Elements to a Vector
+
+    Idiom:
+    vector<T> v2;
+    for (int i = 0; ...; ++i) {
+      v2.push_back(...);
+    }
+*** TODO 3.3.3 Other vector Operations
+
+    v.empty()
+    v.size()
+    v.push_back(t)
+    v[n]
+    v1 = v2
+    v1 = {a, b, c ...}
+    v1 == v2
+    v1 != v2
+    <, <=, >, >=
+** TODO 3.4 Introducing Iterators
+*** TODO 3.4.1 Using Iterators
+    Idiom:
+    for (auto it = s.begin(); it != s.end(); ++it) { ... }
+
+    *iter
+    iter->member
+    ++iter
+    --iter
+    iter1 == iter2
+    iter1 != iter2
+
+    Idiom:
+    Use != instead of <, <=; use ++i instead of i++
+
+    Stuff like push_back invalidate iterators
+
+*** TODO 3.4.2 Iterator Arithmetic
+
+    Try to get n from size, etc. methods
+    iter + n
+    iter - n
+    iter += n
+    iter -= n
+    iter1 - iter2 // returns difference_type
+
+    >, >=, <, <=
+** TODO 3.5 Arrays
+*** TODO 3.5.1 Defining and Initializing Built-in Arrays
+    int arr[10];
+    int *parr[sz]; // sz must be a constexpr
+    int a[] = {0, 1, 2};
+    int a[sz] = {1}; // {1, 0, ...} sz times
+    char ca[] = "aew"
+
+    Array assignment is illegal
+
+    int *ptrs[10]; // arr of int *
+    int (*Parr)[10] // pointer to an arr of int
+    int (&arrRef)[10] // reference to an arr of int
+
+    Type modifiers bind to the token on their left
+*** TODO 3.5.2 Accessing the Elements of an Array
+    Idiom
+
+    for (auto e : arr)
+*** TODO 3.5.3 Pointers and Arrays
+    int ia[] = ...
+    auto ia2(ia) // ia2 is int*
+
+    for (auto it = arr, e = &arr[sz]; it != e; ++it)
+
+    for (auto it = begin(a); it != end(a); ++it)
+
+    constexpr size_t sz = 5;
+
+    ptrdiff_t is the return type of subtracting a pointer from another
+
+    c.f. size_t, both defined in <cstddef>
+
+    nullptr + 0 == nullptr
+    nullptr - nullptr = 0
+*** TODO 3.5.4 C-Style Character Strings
+
+    <cstring>
+
+    strlen(p)
+    strcmp(p1, p2); return p1 - p2
+    strcat(p1, p2); append p2 to p1
+    strcpy(p1, p2); copy p2 to p1
+*** TODO 3.5.5 Interfacing to Older Code
+    const char *str = s.c_str()
+
+    int int_arr[] = ...
+    vector<int> ivec(begin(int_arr), end(int_arr)) // vector copy of array
+
+    Use library types instead of arrays whereever possible
+** TODO 3.6 Multidimensional Arrays
+   You can nest list initializers.
+
+   Use nested
+   for (const auto &row : ia) // we use &, so we don't get arr-to-ptr conversion
+     for (auto col : row)
+
+   Note that
+   for (auto i : ia) // i is type int*
+
+   Idiom
+   int ia[3][4];
+   int (*p)[4] = ia;
+   p = &ia[2];
+
+   Use type aliases to simplify pointers to multidimensional arrays
+** TODO Chapter Summary
+* TODO Chapter 4 Expressions
+** TODO 4.1 Fundamentals
+*** TODO 4.1.1 Basic Concepts
+    lvalue expressions yield an object or function
+    rvalue expressions yield them as values
+*** TODO 4.1.2 Precedence and Associativity
+*** TODO 4.1.3 Order of Evaluation
+    Only &&, ||, ?:, , guarantee order of evaluation
+
+    Heuristic: Assignments and ternaries and unaries are right assoc,
+    rest are left assoc
+** TODO 4.2 Arithmetic Operators
+   + - (right assoc)
+   * / % + - (left assoc)
+** TODO 4.3 Logical and Relational Operators
+   ! (right assoc)
+   < <= > >= == != && || (left assoc)
+** TODO 4.4 Assignment Operators
+   = (right associative)
+
+   += -= *= /= %= <<= >>= &= ^= |= (right assoc)
+** TODO 4.5 Increment and Decrement Operators
+   ++ --
+
+   Idiom
+   *pi++
+** TODO 4.6 The Member Access operators
+   . ->
+** TODO 4.7 The Conditional Operator
+   ? : (right assoc)
+** TODO 4.8 The Bitwise Operator
+   ~ << >> & ^ |
+
+   left shift has undefined handling of the sign bit; do not use
+   binary operators with potentially negative signed types.
+** TODO 4.9 The sizeof Operator
+   sizeof(type)
+   sizeof expr
+
+   Idiom
+   constexpr size_t sz = sizeof(ia) / sizeof(*ia)
+** TODO 4.10 Comma Operator
+** TODO 4.11 Type Conversions
+*** TODO 4.11.1 The Arithmetic Conversions
+
+    Integral promotion
+    bool, char, signed char, unsigned char, short, unsigned short -> int
+    or -> unsigned int (if too large to fit signed int)
+
+    TODO
+*** TODO 4.11.2 Other Implicit Conversions
+
+    Array to pointer
+
+    TODO
+*** TODO 4.11.3 Explicit Conversions
+
+    Named Cases
+
+    static_cast<type>(expr)
+    dynamic_cast, const_cast, reinterpret_cast
+
+    static_cast changes the value where there is a well-defined type conversion
+
+    e.g. double -> int; void* -> int*
+
+    const_cast rids a non-top-level const of a var. Useful in overloading.
+
+    reinterpret_cast reinterprets low-level bit patterns.
+
+    Old-style casts (might behave like any one of static, const, reinterpret)
+
+** TODO 4.12 Operator Precedence Table
+** TODO Chapter Summary
+* TODO Chapter 5 Statements
+** TODO 5.1 Simple Statements
+   ; // null statement (null statements should be commented to evidence
+   // intentionality)
+
+   Compound Statements
+
+   { ... }
+** TODO 5.2 Statement Scope
+** TODO 5.3 Conditional Statements
+*** TODO 5.3.1 The if Statement
+*** TODO 5.3.2 The switch Statement
+    switch (...) { case val: statements; ; break; default: statements; break; }
+
+    always comment when there is no break.
+
+    Illegal to use a var defined in another case. Initialize variables
+    only in blocks
+** TODO 5.4 Iterative Statements
+*** TODO 5.4.1 The while Statement
+*** TODO 5.4.2 Traditional for Statement
+    the init-statement can only be a single declaration statement, hence
+    all vars init'd must be of the same base type
+*** TODO 5.4.3 Range for Statement
+    for (declaration : expression) { ... }
+    expression can be a sequence such as a list initializer
+*** TODO 5.4.4 The do while Statement
+    do { ... } while (condition);
+** TODO 5.5 Jump Statements
+*** TODO 5.5.1 The break Statement
+*** TODO 5.5.2 The continue Statement
+*** TODO 5.5.3 The goto Statement
+    goto label;
+    label: ... // labeled statement
+
+    Illegal to goto a point where an uninitialized var is used.
+** TODO 5.6 try blocks and Exception Handling
+*** TODO 5.6.1 A throw Expression
+    throw expr; // often followed by a semicolon, making it a statement
+*** TODO 5.6.2 The try Block
+    try { ... } catch (exception-decl) { ... } catch (...) { ... }
+*** TODO 5.6.3 Standard Exceptions
+    exception // general exception
+    runtime_error // exception that can only be detected at runtime
+    range_error // oob errors
+    overflow_error
+    underflow_error
+    logic_error // unexpected value, c.f. range_error
+    domain_error // argument for which no result exists
+    invalid_argument
+    length_error // attempt to create an object larget than max size
+    out_of_range
+
+    <new> defines bad_alloc
+    <type_info> defines bad_cast
+
+    exception, bad_alloc, bad_cast only accept ();
+    others only accept (string) initialization;
+
+    e.what() // returns C-style char string
+** TODO Chapter Summary
+* TODO Chapter 6 Functions
+** TODO 6.1 Function Basics
+   return type may not be an array type or a function type,
+   but can return pointers to arrays and pointers to functions
+*** TODO 6.1.1 Local Objects
+    local static objects are initialized before the first execution
+    and not destroyed when a function ends
+*** TODO 6.1.2 Function Declarations
+    Function declarations go in header files; they specify
+    all the information we need to call the function.
+
+    We declare functions in header files. We include the header
+    that declares a function in the source file that defines that
+    function, as well as in files that use the function.
+*** TODO 6.1.3 Separate Compilation
+    CC -c factMain.cc // includes chapter6.h, uses fact()
+    CC -c fact.cc // includes chapter6.h, defines fact()
+    CC factMain.o fact.o -o main
+** TODO 6.2 Argument Passing
+*** TODO 6.2.1 Passing Arguments by Value
+    C++ programmers often pass by reference where C programmers
+    would use pointers
+*** TODO 6.2.2 Passing Arguments by Reference
+    Use references to avoid copies (c.f. reference to const)
+    User references to return additional info
+*** TODO 6.2.3 const Parameters and Arguments
+    Use reference to const whereever possible
+*** TODO 6.2.4 Array Parameters
+    The following are equivalent:
+    f(int*)
+    f(int[])
+    f(int[10])
+
+    All define a function that accepts int*
+
+    Passing bounds information to a function:
+    One method is to use a special value a la '\0'
+
+    Another is to pass begin/end iterators
+    (const int *beg, const int *end)
+
+    Third is to pass a size_t parameter. // common C convention
+
+    f(int (&arr)[10]) // passing by reference to an array of size 10.
+
+    Multidimensional arrays:
+    f(int (*matrix)[10], int rowSize)
+*** TODO 6.2.5 main: Handling Command-Line Options
+    int main(int argc, char *argv[]) { ... }
+*** TODO 6.2.6 Functions with Varying Parameters
+    If all args have the same type, use initializer_list; else use
+    a variadic template.
+    ellipsis can be used, but use them only with code that interface with C.
+
+    initializer_list<T> lst;
+    initializer_list<T> lst{a, b, c...};
+    lst2(lst) // copy list; does not copy elements
+    lst2 = lst
+    lst.size()
+    lst.begin()
+    lst.end()
+
+    c.f. vector<T>
+
+    void f(initializer_list<string> il) { ... }
+    f({"str1", "str2"});
+
+    void foo(parm_list, ...);
+    c.f. varargs documentation
+** TODO 6.3 Return Types and the return Statement
+*** TODO 6.3.1 Functions with No Return Value
+*** TODO 6.3.2 Functions That Return a Value
+    Never return a reference or a pointer to a local object, since
+    they are freed.
+
+    Reference returns are lvalues
+
+    We can return a list initializer
+*** TODO 6.3.3 Returning a Pointer to an Array
+    We can simplify returning pointers to arrays by aliasing their types
+
+    Trailing return type
+
+    auto func(int i) -> int(*)[10] // returns a pointer to 10 ints
+
+    decltype(...) *f(int i)
+** TODO 6.4 Overloaded Functions
+   Good practice to only overload functions that have the same
+   semantic meaning/behavior, but unfortunately have different type
+
+   We can use const_cast to define a non-const version of a const function;
+   this allows us to define the non-const version by calling the const version.
+*** TODO 6.4.1 Overloading and Scope
+** TODO 6.5 Features for Specialized Uses
+*** TODO 6.5.1 Default Arguments
+    void f(int i = 0)
+
+    We can only omit trailing default arguments
+
+    Default arguments ought to be specified in the declaration in the header.
+
+    Default argument initializes can be any expression that does not use
+    local variables; names used as default arguments are resolved in the
+    scope of the function declaration; their value is evaluated at the
+    time of the call.
+*** TODO 6.5.2 Inline and constexpr Functions
+    prefix with inline to make a function call inline.
+
+    constexpr functions must return a literal type and contain only
+    one return statement.
+
+    A constexpr function may possibly return a value that is not a constant;
+    as long as it returns a constexpr when used in contexts that require a
+    constexpr
+
+    Put inline and constexpr functions in header files; these functions
+    may be defined multiple times in the program. Of course, all definitions
+    must match exactly.
+*** TODO 6.5.3 Aids for Debugging
+
+    assert(expr);
+
+    assert is a preprocessor macro. expr must evaluate to true.
+
+    assert does nothing if NDEBUG is defined. We can do this by
+
+    #define NDEBUG
+    or by passing -D NDEBUG as a flag
+
+    We can also write conditional debugging code using NDEBUG
+
+    __func__ holds the function's name
+    __FILE__ char* contains the name of the file
+    __LINE__ int contains the line number
+    __TIME__ char* contains the time of compilation
+    __DATE__ char* contains the date of compilation
+** TODO 6.6 Function Matching
+   There is an overall best match if there is only one function for which
+   for each argument, the match for that argument is no worse than the
+   match required by any other viable function, and there is at least one
+   argument for which the match is better than the match provided by any
+   other viable function.
+
+   Conversions are ranked:
+   1. exact match; optional array/function->pointer conversion; optional const
+   2. non-top-level const conversion
+   3. promotion
+   4. arithmetic/pointer conversion
+   5. class-type conversion
+*** TODO 6.6.1 Argument Type Conversions
+** TODO 6.7 Pointers to Functions
+   bool (*(*pf)(int)[10]) // a pointer to a function that returns a pointer
+   // to an array of 10 bools
+
+   We can write a parameter that looks like a function type, but it will
+   be treated as a pointer (don't do this, explicitly declare the pointer)
+
+   We can pass a function as an argument, but it will be converted to a pointer.
+
+   We can use type aliases and decltype to simplify function types
+
+   typedef decltype(f) *pf;
+   using pf = decltype((&f));
+   using pf = int(*)(int);
+
+   To specify returning pointers to function types,
+
+   decltype(g) *f(int) // note the * after decltype()
+** TODO Chapter Summary
+* TODO Chapter 7 Classes
+** TODO 7.1 Defining Abstract Data Types
+   Abstract data types are the interfaces.
+*** TODO 7.1.1 Designing the Sales_data Class
+*** TODO 7.1.2 Defining the Revised Sales_data Class
+
+    Const member functions cannot mutate data members.
+
+    std::string isbn const { return this->bookNo;} // const member definition
+
+    A class is itself a scope; special in that members can use the name
+    of data members defined after them.
+
+    We can define member functions outside the class
+
+    double Sales_data::avg_price() const {...}
+
+    Sales_data& Sales_data::combine(...) {
+      return *this;
+    }
+*** TODO 7.1.3 Defining Nonmember Class-Related Functions
+
+*** TODO 7.1.4 Constructors
+    Always define the default constructor if it makes sense.
+
+    Sales_data() = default;
+
+    Sales_data(const std::string &s, unsigned n): bookNo(s), units_sold(n) { }
+    // initialize bookNo to s and units_sold to n.
+
+
+    Sales_data::Sales_data(...) {...} // constructor definition outside class
+    // body; empty initializer list; members are initialized by the in-class
+    // initializer or are default initialized.
+*** TODO 7.1.5 Copy, Assignment, and Destruction
+    Objects are destroyed when they fall out of scope.
+
+    Default assignment will assign all the members of the class.
+** TODO 7.2 Access Control and Encapsulation
+   There are no restrictions on how often an access specifier may appear.
+   class is default private; struct is default public.
+   private: and public: specifiers lie on the same indentation as the class
+   keyword
+
+   We only use struct if we intend for all its members to be public.
+*** TODO 7.2.1 Friends
+    A class allows another class or function to access its nonpublic members
+    by including a declaration of that class or function preceded by friend.
+
+    We often write friend declarations before the public:/private: identifier
+    on the same indentation as class
+
+    We need to declare friends outside the class in the header in order
+    to expose them.
+** TODO 7.3 Additional Class Features
+*** TODO 7.3.1 Class Members Revisited
+    typedef and using type aliases are affected by private/public as well
+    type aliases must be defined before usage
+
+    Member functions defined inside the class are automatically inline;
+
+    Use the inline keyword (in declaration or definition) to make an
+    externally defined member function inline.
+
+    We ought to only specify inline on the definition of member functions.
+
+    mutable size_t access_ctr; // access_ctr is mutable even in a const object
+    // a const member function can change a mutable member
+
+    We can use an in-class list initializer to specify default values
+*** TODO 7.3.2 Functions That Return *this
+    We might want specify member functions that do not mutate *this, but
+    return a mutable *this for chaining.
+
+    To work around this, we ought to define a private const member function,
+    and expose publicly the chainable function.
+*** TODO 7.3.3 Class Types
+    Class declaration
+    class Screen;
+
+    A class can have members that are pointers / references to its own class.
+*** TODO 7.3.4 Friendship Revisited
+    friend class Window_mgr; // friendship declaration
+
+    friendship is not transitive
+
+    It is better practice to grant friendship only to a member function
+    rather than the entire class.
+** TODO 7.4 Class Scope
+   Note that the return type of externally defined member functions need
+   to be qualified by the class name if required.
+*** TODO 7.4.1 Name Lookup and Class Scope
+    First declarations are compiled. Next, function bodies are compiled
+    only after the entire class has been seen.
+
+    To reference a global var hidden by class scope, use ::, e.g. ::height
+** TODO 7.5 Constructors Revisited
+*** TODO 7.5.1 Constructor Initializer List
+    If a data member is not explicitly initialized, it is default initialized.
+    const and reference members MUST be initialized, before the constructor
+    body.
+
+    Members are initialized in the order they appear in the class definition.
+
+    Ought to write constructor initializers in the same order as they are
+    declared.
+
+    Constructor parameters can take default values.
+*** TODO 7.5.2 Delegating Constructors
+    Sales_data(): Sales_data("", 0, 0) {}
+*** TODO 7.5.3 The Role of the Default Constructor
+    Default initialization happens when
+    used in variables or arrays at block scope without initializers
+    it is a member of a class called by the synthesized default
+    constructor
+    not explicitly initialized in a constructor initializer list
+
+    Value initialization happens when
+    during array initialization, fewer initializers than size of array
+    defining local static object without initializer
+    explicitly calling T().
+
+    To declare a default-initialized object, use e.g.
+
+    Sales_data obj;
+*** TODO 7.5.4 Implicit Class-Type Conversions
+    Constructors that take 1 argument implicitly create converting constructors
+
+    We can suppress implicit conversion by declaring the constructor as explicit
+    in its declaration.
+
+    The explicit keyword should not appear in the definition.
+
+    Explicit constructors can only be used for direct initialization and not
+    for the copy form of initialization.
+
+    We can call the constructor or use static_cast to force a conversion.
+*** TODO 7.5.5 Aggregate Class
+    We can initialize an aggregate class with a list initializer.
+*** TODO 7.5.6 Literal Class
+    An aggregate class whose data members are all of literal type, or a
+    nonaggregate class with literal type data members and at least one
+    constexpr constructor TODO
+** TODO 7.6 static Class Members
+   static class members; static member functions may not be const member
+   functions
+
+   Account::rate()
+
+   static members defined externally do not repeat static in their definition.
+
+   static members may not be initialized in the class body, unless they have
+   const integral type or constexprs of literal type.
+
+   static constexpr int period = 30;
+
+   A static member can be an incomplete type. A static member can have
+   the same type as the class type. A static member can be used as a
+   default argument.
+** TODO Chapter Summary
+* TODO Chapter 8 The IO Library
+** TODO 8.1 The IO Classes
+   istream, ostream, iostream; ifstream, ofstream, fstream;
+   istringstram, ostringstream, stringstream
+*** TODO 8.1.1 No Copy or Assign for IO Objects
+*** TODO 8.1.2 Condition states
+
+    TODO
+    - strm::iostate
+    - strm::badbit // badbit bitmask
+    - strm::failbit // failbit bitmask
+    - strm::eofbit // eofbit bitmask
+    - strm::goodbit // goodbit bitmask
+    - s.eof() // is EOF?
+    - s.fail() // is fail or bad?
+    - s.bad() // is bad?
+    - s.good()
+    - s.clear()
+    - s.clear(flags)
+    - s.setstate(flags) // setter for flags state
+    - s.rdstate() // getter for flags state
+
+**** Ex 8.1
+
+**** Ex 8.2
+
+**** Ex 8.3
+*** TODO 8.1.3 Managing the output buffer
+    Output buffer is flushed when
+    - program terminates normally
+    - buffer is full
+    - flush / ends (insert null char) / endl (insert newline)
+    - unitbuf (flush after each operation) / nonunitbuf (disable unitbuf)
+    - buffer is read
+
+    Tying input and output streams
+    - cin.tie(&cout) // setter & getter of previous
+    - ostream \*old_tie = cin.tie() // getter
+** TODO 8.2 File Input and Output
+   - fstream fstrm
+   - fstream fstrm(s); // s is filename
+   - fstream fstrm(s, mode); // open s in mode
+   - fstrm.open(s)
+   - fstrm.open(s, mode)
+   - fstrm.close()
+   - fstrm.is_open()
+*** 8.2.1 Using file stream objects
+    close is automatically called when an fstream object is destroyed
+*** 8.2.2 File modes
+    - in
+    - out
+    - app
+    - ate
+    - trunc
+    - binary
+    Use \| to specify multiple flags
+** TODO 8.3 string Streams
+   - sstream strm;
+   - sstream strm(s)
+   - strm.str() // getter
+   - strm.str(s) // setter
+*** 8.3.1 Using an istringstream
+    when we have work to do on an entire line, and other work to do with
+    individual words within a line
+*** 8.3.2 Using ostringstreams
+    Use as intermediate output
+** TODO Chapter Summary
+* TODO Chapter 9 Sequential Containers
+** 9.1 Overview of the sequential containers
+   - vector
+   - deque
+   - list
+   - forward_list
+   - array
+   - string
+TODO
+** 9.2 Container library overview
+   - type aliases
+     - iterator
+     - const_iterator
+     - size_type
+     - difference_type
+     - value_type
+     - reference
+     - const_reference
+   - construction
+     - C c;
+     - C c1(c2)
+     - C c(b, e);
+     - C c{a,b,c...};
+   - assignment and swap
+     - c1 = c2;
+     - c1 = {a,b,c...}
+     - a.swap(b)
+     - swap(a, b)
+   - size
+     - c.size()
+     - c.max_size()
+     - c.empty()
+   - add/remove elements
+     - c.insert(args)
+     - c.emplace(inits)
+     - c.erase(args)
+     - c.clear()
+   - equality and relational operators
+     - ==, !=
+     - <, <=, >, >=
+   - obtain iterators
+     - c.begin(), c.end()
+     - c.cbegin() c.cend()
+   - additional members of reversible containers
+   - reverse_iterator
+   - const_reverse_iterator
+   - c.rbegin(), c.rend()
+   - c.crbegin(), c.crend()
+*** 9.2.1 Iterators
+*** 9.2.2 Container type members
+*** 9.2.3 begin and end members
+*** 9.2.4 Defining and initializing a container
+*** 9.2.5 Assignment and swap
+*** 9.2.6 Container size operations
+*** 9.2.7 Relational operators
+** 9.3 Sequential container operations
+*** 9.3.1 Adding elements to a sequential container
+*** 9.3.2 Accessing elements
+*** 9.3.3 Erasing elements
+*** 9.3.4 Specialized forward_list operations
+*** 9.3.5 Resizing a container
+*** 9.3.6 Container operations may invalidate iterators
+** 9.4 How a vector grows
+** 9.5 Additional string operations
+*** 9.5.1 Other ways to construct strings
+*** 9.5.2 Other ways to change a string
+*** 9.5.3 string search operations
+*** 9.5.4 The compare functions
+*** 9.5.5 Numeric conversions
+** 9.6 Container adaptors
+** Chapter summary
+* TODO Chapter 10 Generic Algorithms
+** 10.1 Overview
+** 10.2 A first look at the algorithms
+** 10.3 Customizing operations
+** 10.4 Revisiting iterators
+** 10.5 Structure of generic algorithms
+** 10.6 Container-specific algorithms
+** Chapter summary
+* TODO Chapter 11 Associative Containers
+* TODO Chapter 12 Dynamic Memory
+* TODO Chapter 13 Copy Control
+** 13.1 Copy, assign, and destroy
+*** 13.1.1 The copy constructor
+*** 13.1.2 The copy-assignment operator
+*** 13.1.3 The destructor
+*** 13.1.4 The rule of three/five
+*** 13.1.5 Using = default
+*** 13.1.6 Preventing copies
+** 13.2 Copy control and resource management
+*** 13.2.1 Classes that act like values
+*** 13.2.2 Defining classes that act like pointers
+** 13.3 Swap
+** 13.4 A copy-control example
+** 13.5 Classes that manage dynamic memory
+** 13.6 Moving objects
+*** 13.6.1 Rvalue references
+*** 13.6.2 Move constructor and move assignment
+*** 13.6.3 Rvalue references and member functions
+** Chapter summary
+* TODO Chapter 14 Overloaded Operations and Conversions
+** 14.1 Basic concepts
+** 14.2 input and output operators
+*** 14.2.1 Overloading the output operator <<
+*** 14.2.2 Overloading the input operator >>
+** 14.3 Arithmetic and relational operators
+*** 14.3.1 Equality operators
+*** 14.3.2 Relational operators
+** 14.4 Assignment operators
+** 14.5 Subscript operator
+** 14.6 Increment and decrement operators
+** 14.7 Member access operators
+** 14.8 Function-call operator
+*** 14.8.1 Lambdas are function objects
+*** 14.8.2 Library-defined function objects
+*** 14.8.3 Callable objects and function
+** 14.9 Overloading, conversions, and operators
+*** 14.9.1 Conversion operators
+*** 14.9.2 Avoiding ambiguous conversions
+*** 14.9.3 Function matching and overloaded operators
+** Chapter summary
+* TODO Chapter 15 Object-Oriented Programming
+** 15.1 OOP: an overview
+** 15.2 Defining base and derived classes
+*** 15.2.1 Defining a base class
+*** 15.2.2 Defining a derived class
+*** 15.2.3 Conversions and inheritance
+** 15.3 Virtual functions
+** 15.4 Abstract base classes
+** 15.5 Access control and inheritance
+** 15.6 Class scope under inheritance
+** 15.7 Constructors and copy control
+*** 15.7.1 Virtual destructors
+*** 15.7.2 Synthesized copy control and inheritance
+*** 15.7.3 Derived-class copy-control members
+*** 15.7.4 Inherited constructors
+** 15.8 Containers and inheritance
+*** 15.8.1 Writing a Basket class
+** 15.9 Text queries revisited
+*** 15.9.1 An object-oriented solution
+*** 15.9.2 The Query_base and Query classes
+*** 15.9.3 The derived classes
+*** 15.9.4 The eval functions
+** Chapter summary
+* TODO Chapter 16 Templates and Generic Programming
+** 16.1 Defining a template
+*** 16.1.1 Function templates
+*** 16.1.2 Class templates
+*** 16.1.3 Template parameters
+*** 16.1.4 Member templates
+*** 16.1.5 Controlling instantiations
+*** 16.1.6 Efficiency and flexibility
+** 16.2 Template argument deduction
+*** 16.2.1 Conversions and template type parameters
+*** 16.2.2 Function-template explicit arguments
+*** 16.2.3 Trailing return types and type transformation
+*** 16.2.4 Function pointers and argument deduction
+*** 16.2.5 Template argument deduction and references
+*** 16.2.6 Understanding std::move
+*** 16.2.7 Forwarding
+** 16.3 Overliading and templates
+** 16.4 Variadic templates
+*** 16.4.1 Writing a variadic function template
+*** 16.4.2 Pack expansion
+*** 16.4.3 Forwarding parameter packs
+** 16.5 Template specializations
+* TODO Chapter 17 Specialized Library Facilities
+* TODO Chapter 18 Tools for Large Programs
+* TODO Chapter 19 Specialized Tools and Techniques
+* TODO Appendix A The Library

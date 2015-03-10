@@ -1,0 +1,349 @@
+* 0 Mail Bags
+* 1 Preliminaries
+** Course Motivation
+** Course Introduction
+* 1 Knapsack
+** Greedy algorithms intuition
+   - Local maximization
+   - Take maximize value per item
+** Greedy algorithms
+   - Maximize items in knapsack by starting with smallest
+   - Maximize value per item by starting with most valuable
+   - Maximize density by starting with greatest value/weight
+   - Advantages:
+     - Quick to design and implement
+     - Can be very fast
+   - Problems:
+     - No quality guarantees
+   - Going beyond greedy
+     - Constraint programming
+     - Local search
+     - Mixed integer programming
+   - Goals:
+     - Reliably find feasible solutions
+     - Reliably build solutions robust to inputs
+     - Ideally proving solutions are optimal
+** Modeling
+   - (w_i, v_i) \in I, where w is the weight and v is the value
+   - capacity K for a knapsack
+   - find subset of items in I with maximum value that does not exceed capacity
+   - Modeling optimization problems
+     - choose decision variables
+     - express problem constraints in terms of these variables
+     - express objective function
+   - Modeling knapsack
+     - decision variables
+       - x_i = [item i is selected]
+     - problem constraint
+       - \Sum w_i x_i <= K
+     - objective function
+       - \Sum v_i x_i
+     - optimization
+       - max
+         - \Sum v_i x_i
+       - subject to
+         - \Sum w_i x_i <= K
+         - x_i \in {0, 1} for all i \in I
+     - 2^{|I|} states
+** Dynamic programming
+   - dynamic programming
+     - divide and conquer
+     - bottom up computation
+   - optimal substructure:
+     - O(k, j) = max(O(k, j-1), v_j + O(k-w_j, j-1)) if w_j <= k
+       else O(k, j) = O(k, j-1) for capacity k and the first j items.
+     - (maximum of the decision to select, or not to select)
+     - O(k,0) = 0
+   - O(K |I|) running time
+   - pseudopolynomial running time in terms of input size
+
+** Branch and bound
+   - branching
+     - split problem into subproblems
+   - bounding
+     - find optimistic estimate of the best solution to the subproblem
+     - lower bound
+     - upper bound
+   - relax constraints
+     - x_i \in {0, 1} becomes 0 <= x_i <= 1
+     - heuristic: pick greatest density
+   - branch while lower bound < upper bound: lower bound is value in
+     knapsack, upper bound is density-relaxed estimate
+** Search strategies
+   - depth-first
+     - prune when node estimation is worse than best found solution
+   - best-first
+     - generate nodes with greatest estimation (dijkstra)
+   - least-discrepancy
+     - trust a greedy heuristic
+     - assume heuristic makes few mistakes
+     - binary search tree
+     - branching left: follow heuristic
+     - branching right: heuristic was wrong
+     - explore from greatest heuristic trust to least
+   - relaxation and search
+** Exploring the material
+   - DP, CP, MIP cam give up to optimal solutions but don't scale
+     as well as local search
+   - Hybrids?
+   - CP:
+     - logic, discrete mathematics
+   - MIP
+     - lin alg, continuous mathematics
+   - LS
+     - intuition based, most significant coding
+     - writing efficient code crucial
+* 2 Constraint programming
+  - Paradigm:
+    - Use constraints to reduce domains; remove values that cannot appear
+    - Make choice when no more deduction possible
+  - Modeling methodology:
+    - Convey global structure as explicitly as possible
+    - Express substructures of problem
+    - Give solvers as much info
+  - 8-Queens problem
+    - TODO
+  - Coloring a map
+  - Branch and prune
+    - Pruning: use constraints to remove invalid values
+    - Branching: try all possible values of a variable until solution found
+  - Complete
+  - What does a constraint do?
+    - Feasibility checking: can the domains of its variables satisfy this
+      constraint? (is the cardinality of its variables' domains large enough
+      to satisfy the min cardinality required by the constraint?)
+    - If constraint is satisfiable, determines which values in domains cannot
+      be part of solution
+  - Constraint propagation
+    - search branches; tells constraint store;
+      - constraint store tells search if that search assignment satisfies
+        constraints
+    - constraint store:
+      - made up of constraints and domain store
+    - note that different kinds of constraints use different algorithms that
+      exploit the structure of that constraint
+  - propagate()
+    - repeat until no constraint removes values from the domain of its variables
+      - select constraint c
+        - if c infeasable return failure
+      - else
+        - apply pruning algorithm associated with c
+    - return success
+  - Consider linear constraints over integers
+    - \Sum a_i x_i >= \Sum b_i y_i
+    - where constants a, b are nonnegative (if negative, move to other side)
+    - let l = \Sum a max(D(x)), r = \Sum b min(D(y))
+    - feasibility:
+      - \Sum l >= r
+    - pruning:
+      - set x_i to a value such that
+        - x_i >= ce((r-(l-a_i max(D(x_i))))/a_i)
+        - y_j <= fl((l-(r-b_j min(D(y_j))))/b_j)
+      - c.f. linear programming
+  - magic series
+    - sequence S is magic if for all i, (\Sum_j [S_j = i]) = S_i
+  - reification: transforming a constraint into a 0/1 variable
+    - (relaxing the constraint, so that it can be true or false)
+    - solve for when the constraint is true
+  - booleq(b, x, v) iff (b=1 and x=v) or (b=0 and x!=v)
+  - stable marriage problem
+    - element constraint
+      - ability to index an array/matrix with a variable or expression containing
+        variables
+      - element constraint: x = c[y], for variables x, y
+    - logical combination of constraints
+  - global constraints
+    - captures combinatorial substructures in many applications
+    - makes modeling easier and more natural
+    - conveys problem structure so solver (searcher) does not have to rediscover
+      structure
+    - alldifferent(x_1, ..., x_n)
+      - feasibility testing
+        - is it possible to find values in variable domains such that constraint
+          holds?
+        - |Union D_i| >= n
+      - pruning
+        - exist solution for x_i = c?
+        - sometimes structure allows efficiency (or admits an efficient
+          heuristic)
+        - sometimes suboptimal solution, given constraints
+        - sometimes exponential
+    - Global constraints capture a structure between domains of individual
+      variables, as opposed to, e.g. pairwise constraints that don't talk to
+      each other
+  - Table constraint
+    - Enforce finite number of combinations
+  - Finding optimal solutions
+    - Use a cutoff: while we can find a solution given a cutoff, make
+      the cutoff more difficult (optimize it)
+  - Symmetry breaking
+    - don't explore symmetric dual within the structure of a problem
+    - variable symmetries
+    - value symmetries
+  - balanced imcomplete block designs
+    - input: (v,b,r,k,l)
+    - output: matrix, v by b, r ones per row, k ones per col, scalar product
+      of any 2 rows equal to l
+    - given a valid BIBD, swapping rows and columns generate valid BIBD
+      - we can impose a lexicographic ordering on columns
+  - scene allocation
+    - interchangable days
+    - reduce domain of first scene to day 1
+    - reduce domain of second scent to days 1 and 2
+  - redundant constraints
+    - semantically redundant
+    - but reduce search space
+    - express properties of the solution
+    - boost propagation
+    - provides a more global view that relates existing constraints
+    - improve communication
+  - magic series
+    - use decision variables
+    - sum(i..n) sequence[i] = n // n occurences: sequence[i] partitions
+                                // occurences
+    - sum(i..n) sequence[i] = sum(i..n) i * series[i]
+  - surrogate constraints
+    - e.g. express pairwise equality with linear combination
+    - combination of existing constraints (otherwise constraints only
+      communicate through domain
+  - car sequencing
+    - assembly like of robots for features; robots have diff capacity
+    - capacity constraint (in a window of 5 cars, at most 2 can have a moonroof)
+    - sequence cars with different features
+    - given a subsection of an assembly line time graph, we know how many
+      cars we need to produce withing that subsection to meet demand. (redundant
+      constraint)
+  - dual model
+    - if you have multiple models, just throw all of them in
+    - reduce search space
+  - how to implement knapsack, alldifferent?
+  - gold standard for constraint pruning
+    - after pruning, if value v is in the domain of x, exists a solution to
+      the constraint with value v assigned to x
+    - arc consistency, domain consistency
+    - optimal pruning: no more pruning possible if only considering variable
+      domains
+    - complexity: may/maynot not be polynomial
+  - binary knapsack (take 1 or 0 of each class of object)
+    - dynamic programming: pseudopolynomial
+    - consider 10 <= 2x_1 + 3x_2 + 4x_3 + 5x_4 <= 12
+    - use dynamic programming to generate solutions for all x in {0, 1} with
+      w <= 12 (feasibility)
+    - prune to to solutions where w >= 10
+    - observe that for each solution, x_4 = 1; hence we can restrict domain of
+      x_4 and prune it.
+  - alldifferent
+    - bipartitie graph of variables and values
+    - matching: set of edges in E such that no 2 edges in E share a vertex
+    - maximum matching: matching with largest number of edges
+    - feasibility: maximum matching has size equal to number of variables
+    - finding maximum matching
+      - start with matching
+      - improve matching
+        - consider free node x
+        - if exists edge (x,v) where v is not matched, insert (x,v)
+        - if notexists, exists y, (y,v). Remove (y,v), add (x,v),
+        - consider free node y
+      - alternating path P: for matching M: path from free node x in X
+        to free node v in V, such that edges in the path are alternately
+        M' and M.
+      - finding alternating paths
+        - create directed graph
+        - given matching, alternating path is path starting from free vertex x
+          and ending in another free vertex v; edges in matching from
+          bottom to top; edges not in matching from top to bottom
+        - find alternative path using depth-first or breadth first on
+          the edges of each node
+      - we improve a matching using alternating paths (of free variables)
+        in the directed graph; then reversing the orientation of edges
+        on that path
+      - pruning:
+        - remove v from the domain of x if v appears in no maximum matching
+        - an edge belongs to some but not all maximum matchings iff given
+          a max matching M, it belongs to either an even alternating path
+          starting at a free vertex, or an even alternating cycle.
+        - edges not in a matching M do not belong to all maximum matchings
+        - so we search for even alternating path starting from a free vertex;
+          remove that alternating path
+        - we search for all strongly connected components and collect all
+          remove the edges belonging to them
+        - remaining arrows pointing from values to variables are not in
+          the domain of these variables
+  - search in constraint programming:
+    - first-fail principle
+      - try first where you are most likely to fail: prune search
+        space as quickly as possible: do not waste time computing
+        constraints with many searched assignments
+    - 8-queens: placing a queen in a column with the smallest domain
+      (since it is harder to place a queen in a smaller domain)
+    - map-coloring: select the color of the country that borders
+      the most states
+    - euler knight: pick places which can visit/can be visited from
+      as few other squares as possible first: create small subgraphs
+      from corners of the chessboard
+    - when constraint fails, solver goes back to nondeterministic
+      instruction and tries another value (essentially adding a constraint)
+      - search ordering
+        - value/variable labeling
+          - choose variable to assign next
+          - choose value to assign
+          - choose variable with smallest domain
+          - choose variable with most constraints
+          - apply heuristic
+          - reconsider selection after each choice (choose dynamic ordering)
+        - variable/value labeling
+          - choose value that leaves as many options as possible to the other
+            variables
+        - strong focus on feasibility branching
+        - but we can search from most optimal
+  - ESDD problem
+    - mapping software to hardware to minimize network traffic
+    - generalized quadratic assignment problem
+      - objective function:
+        min_{x\in N^n} \sum_{a \in C} \sum_{b \in C} f_{a,b} * h_{x_{a},x_{b}}
+      - f: communication frequency matrix; between component a and component b
+      - h: distance matrix in hops between machine x_a and machine x_b
+      - C: sets of components
+      - Sep: separation constraints
+      - Col: colocation constraints
+    - select component i to assign that has the largest communication frequency
+    - try possible values starting first with those minimizing the number of
+      hops to j
+  - value/variable labeling
+    - choose value to assign next
+    - choose variable to assign to hte value
+    - useful when you know that a value must be assigned; often the case in
+      scheduling and resource allocation problems
+  - perfect square problem
+    - decision variables
+      - x,y coords of bottom-left corner of every square
+    - constraints
+      - squares fit in larger square
+      - squares do not overlap
+    - redundant constraints
+      - sum of sides of a square equal to size of big square
+    - given a bottom-left corner of a free space
+      - select square to place there
+  - magic square problem
+    - sum of rows, columns equal
+  - domain splitting
+    - when domain is large, split domains
+  - car sequencing
+    - search first on cars with difficult car option combinations, and decide
+      which slots take these cars.
+    - domain splitting
+      - for all options in the assembly line, split domain into whether or not
+        a slot requires that option
+  - symmetry-breaking during search
+    - ordering in constraints interferes with search heuristic (e.g. fail-first)
+    - instead, impose ordering in search heuristic
+  - randomization and restarts
+    - if no obvious search ordering, but some good ones, try random ordering
+    - apply heuristic but with randomization; limit time in search; if not found
+      restart search with another randomized ordering and greater time limit
+
+* 3 Local search
+* 4 Linear programming
+* 5 Mixed integer programming
+* 6 Advanced
+* 7 Assignments

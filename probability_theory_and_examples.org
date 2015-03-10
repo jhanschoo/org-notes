@@ -1,0 +1,47 @@
+* TODO [0/6] Measure Theory
+** TODO Probability Spaces
+
+   Let Omega be a set of "outcomes"
+   Let F be a set of "events" where F is a sigma-field / sigma-algebra of Omega
+   Let P: F -> [0,1] be a function that assigns probabilities to events.
+
+   A probability space is a triple (Omega, F, P)
+
+   A sigma-field is a nonempty collection of subsets of Omega that satisfy
+
+   - If A in F then A' in F (A' is the complement of A in Omega)
+   - If A[i] is a countable sequence of sets then Un[i] A[i] in F.
+   - Then we also have In[i] A[i] in F.
+
+   A measurable space is a tuple (Omega, F)
+
+   A measure is a function mu : F -> R with
+
+   - mu(A) >= mu(null) = 0 for all A in F
+   - For a disjoint countable sequence A[i] in F,
+     mu(Un[i] A[i]) = Sum[i] mu(A[i])
+
+   If mu(Omega) = 1, then it is also a probability measure.
+
+   Theorem 1.1.1
+
+   - monotonicity if A subst B then mu(A) <= mu(B)
+   - subadditivity if A subst Un[m=1..inf] A[m]
+     then mu(A) <= Sum[m=1..inf] mu(A[m])
+   - continuity from below if A[i] tends to A from below,
+     mu(A[i]) tends to mu(A) from below
+   - continuity from above if A[i] tends to A from above and mu(A[1]) < infty
+     then mu(A[i]) tends to mu(A) from above.
+
+   A[i] tends to A from below if (A[1] subst A[2] subst ... A[i] and
+   Un[i]A[i] = A)
+
+   A[i] tends to A from above if (A[i] supst A[2] supst ... A[i] and
+   In[i]A[i] = A)
+* TODO [/] Central Limit Theorems
+* TODO [/] Random Walks
+* TODO [/] Martingales
+* TODO [/] Markov Chains
+* TODO [/] Ergodic Theorems
+* TODO [/] Brownian Motion
+* TODO [/] Measure Theory Details

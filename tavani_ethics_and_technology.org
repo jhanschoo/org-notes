@@ -1,0 +1,573 @@
+* Chapter 1. introduction to cyberethics: concepts, perspectives, and methodological frameworks
+** 1.1 Defining key terms: cyberethics and cybertechnology
+*** 1.1.1 What is cybertechnology?
+*** 1.1.2 Why the term cyberethics?
+** 1.2 The cyberethics evolution: four developmental phases in cybertechnology
+** 1.3 Are cyberethics issues unique ethical issues?
+*** 1.3.1 Distinguishing between unique technological features and unique ethical issues
+*** 1.3.2 An alternative strategy for analyzing the debate about the uniqueness of cyberethics issues
+*** 1.3.3 A policy vacuum in duplicating computer software
+** 1.4 Cyberethics as a branch of applied ethics: three distinct perspectives
+*** 1.4.1 Perspective #1: cyberethics as a field of professional ethics
+*** 1.4.2 Perspective #2: cyberethics as a field of philsophical ethics
+*** 1.4.3 Perspective #3: cyberethics as a field of sociological/descriptive ethics
+** 1.5 A comprehensive cyberethics methodology
+*** A "disclosive" method for cyberethics
+*** An interdisciplinary and multilevel method for analyzing cyberethics issues
+** 1.6 A comprehensive strategy for approaching cyberethics issues
+** 1.7 Chapter summary
+* Chapter 2. Ethical concepts and ethical theories: establishing and justifying a moral system
+** 2.1 Ethics and morality
+   - ethics :: the study of morality
+
+   We are not concerned between choices one makes but the principles involved;
+   and if these principles are generalizable
+*** 2.1.1 What is morality?
+    - morality :: a system comprised of rules and principles (informal;
+                  no referees)
+      - is rational (Gert) :: based on principles understandable by common man
+        - moral agents: agents who abide by a system of morality
+      - is impartial (Gert) :: designed to apply equitably to all agents;
+           (Rawlsian) all agents willing to participate if they do not know
+           where their station in life is
+    - rules of conduct :: rules that may not have a wide range of application
+      - directives :: rules that guide individual actions
+      - social policies :: rules framed at the macrolevel
+    - policies :: rules of conduct that have a wide range of application
+    - principles of evaluation :: standards that rules of conduct are evaluated
+         against; e.g. social utility
+      - grounded in
+        - religion
+          - retribution in religious framework
+        - law
+          - retribution by incarceration, fines, etc.
+        - philosophical ethics
+          - retribution by social ostracism
+
+*** 2.1.2 Deriving and justifying the rules and principles of a moral system
+
+
+** 2.2 Discussion stoppers as roadblocks to moral discourse
+   Summary of discussion stoppers:
+
+   - People disagree on solutions to moral issues.
+     - Fails to regognize that experts in many areas disagree on key issues in their fields. (Ethos argument that conversation is necessary)
+     - Fails to recognize that there are many moral issues on which people agree.
+     - Fails to distinguish between disagreements about principles and disagreements about facts.
+   - Who am I to judge others?
+     - Fails to distinguish between the act of judging and being a judgmental person.
+     - Fails to distinguish between judging as condemning and judging as evaluating.
+     - Fails to recognize that sometimes we are required to make judgments.
+   - Ethics is simply a private matter.
+     - Fails to recognize that morality is essentially a public system.
+     - Fails to note that personally based morality can cause major harm to others.
+     - Confuses moral choices with individual or personal preferences.
+   - Morality is simply a matter for individual cultures to decide.
+     - Might be formed through observation that cultures have different moralities, failing to distinguish between descriptive and normative claims about morality. (Hence commiting a propter hoc ergo post hoc fallacy)
+     - Notion might have been formed assuming that people can never reach common agreement on some moral principles.
+     - Notion might have been formed assuming that a system is moral because a majority in a culture decides it is moral.
+*** 2.2.1 Discussion stopper #1: people disagree on solutions to moral issues
+    - disagreement on some issues does not preclude meaningful conversation on
+      agree-upon concepts
+    - we can also build structures (if A then B) regardless of the truth-value
+      of the premises
+    - we nevertheless agree on some moral issues
+    - we must distinguish between disagreements on principles and disagreements
+      about facts
+*** 2.2.2 Discussion stopper #2: who am I to judge others?
+    - It's alright to judge phaenomena
+    - judgment involving condemnations vs. judgments involving evaluations
+    - we make judgments about people all the time
+*** 2.2.3 Discussion stopper #3: morality is simply a private matter
+    - but moral choices affect more than just the individual
+*** 2.2.4 Discussion stopper #4: morality is simply a matter for individual cultures to decide
+    - cultural relativism necessitates the moral acceptance of cultures that can
+      destroy societies with a cultural relativist view
+** 2.3 Why do we need ethical theories?
+** 2.4 Consequence-based ethical theories
+   - c.f. Aristotle's final cause
+
+   Utilitarians think that
+   - Social utility is superior to alternative criteria for evaluating moral systems
+   - Social utility can be measured by the amount of happiness produced. (ethical hedonism)
+
+*** 2.4.1 Act utilitarianism
+    - An act, X, is morally permissible if the consequences produced by doing X
+      result in the greatest good for the greatest number of persons affected by
+      Act X.
+
+    Assumptions of utilitarianism:
+    - All people desire happiness
+    - Happiness is an intrinsic good that is desired for its own sake
+*** 2.4.2 Rule utilitarianism
+    - An act X is morally permissible if the consequences of following the
+      general rule, Y, of which act X is an instance, would bring about the
+      greatest good for the greatest number.
+    - criticism
+      - under utilitarianism, morality is basically tied to the production of
+        happiness or pleasure.
+      - Under utilitarianism, morality can ultimately be decided by consequences
+        (of either acts or policies). But morality cannot be grounded in either
+        happiness or consequences
+** 2.5 Duty-based ethical theories
+*** 2.5.1 Rule deontology
+    - categorical imperative :: act always on that maxim or principle that
+         ensures that all individuals will be treated as ends-in-themselves
+         and never merelt as a means to an end. act always on that maxim or
+         principle that can be universally binding, without exception, for all
+         human beings
+      - Principles must not use humans as a means to an end
+      - Principles must be able to be consistently applied in an objective, impartial, and universally binding way.
+        - objective: objects specified in the rule must be well-defined, and agreed upon by all stakeholders; c.f. subjective; exists disagreement as to nature of objects
+        - impartial: does not favor any one stakeholder
+        - universally binding: rule applies to all stakeholders
+    - criticism: but what about situations wherein we have conflicting duties
+*** 2.5.2 Act deontology
+    - Ross: exists prima-facie duties. Where duties conflict, we discover our
+      actual duty through "rational intuitionism"
+
+    - Reflect on the prima facie competing duties
+    - Weigh the evidence at hand to determine which course of action would be
+      required in a particulat circumstance.
+** 2.6 Contract-based ethical theories
+   Hobbesian. Willing to surrender some of our "absolute" freedoms to a
+   sovereign, and in turn receive many benefits.
+   Minimalist morality (doing no harm, v. doing good).
+*** 2.6.1 Some criticisms of contract-based theories
+    Does not obligate us to do the right thing given novel developments; only
+    from not breaking the contract
+*** 2.6.2 Rights-based contract theories
+    - positive rights :: one has the right to accomplish that endeavor
+    - negative rights :: one has the right to not be interfered with in an
+         endeavor, but not the accomplishment thereof
+** 2.7 Character-based ethical theories
+   - virtue ethics: what would Jesus do? Do it. If you are like Jesus, you
+     would not require deliberation. c.f. Confucianism
+*** 2.7.1 Being a moral person vs. following moral rules
+
+
+
+*** 2.7.2 Acquiring the "correct" habits
+
+    - Seems to be well-received; c.f. teaching good character by assuming
+      people are good, but teaching curiosity by emphasizing on effort
+
+** 2.8 Integrating aspects of classical ethical theories into a single comprehensive theory
+
+   - Utilitarianism
+     - Stresses promotion of happiness and utility
+     - Ignores concerns of justice for the minority population
+   - Deontological
+     - Stresses the role of duty and respect for persons
+     - Underestimates the importance of happiness and social utility
+   - Contract-based
+     - Provides a motivation for morality
+     - Offers only a minimal morality
+   - Character-based
+     - Stresses character development and moral education
+     - Depends on homogeneous community standards for morality
+*** 2.8.1 Moor's just-consequentialist theory and its application to cybertechnology
+    - deliberation stage
+    - selection stage
+
+      Rational discussion is important. Frequently much disagreement rests upon
+      facts rather than principles.
+*** 2.8.2 Key elements in Moor's just-consequentialist framework
+    - deliberate on policies from an impartial POV. Policy is ethical if
+      - does not cause unnecessary harm to individuals and groups
+      - supports individual rights, fulfilling of duties
+    - select best policy from just policies by ranking ethical policies in terms
+      of benefits and harms.
+      - Weigh carefully between good consequences and
+        bad consequences.
+      - Distinguish between disagreements about facts and
+        disagreements about principles and values.
+** 2.9 Chapter summary
+* Chapter 3. Critical reasoning skills for evaluating disputes in cyberethics
+** 3.1 Getting started
+** 3.2 Constructing an argument
+** 3.3 Valid arguments
+** 3.4 Sound arguments
+** 3.5 Invalid arguments
+** 3.6 Inductive arguments
+** 3.7 Fallacious arguments
+** 3.8 A seven-step strategy for evaluating arguments
+** 3.9 Identifying some common fallacies
+*** 3.9.1 Ad hominem argument
+*** 3.9.2 Slippery slope argument
+*** 3.9.3 Fallacy of appeal to authority
+*** 3.9.4 False cause fallacy
+*** 3.9.5 Begging the question
+*** 3.9.6 Fallacy of composition/fallacy of division
+*** 3.9.7 Fallacy of ambiguity/equivocation
+*** 3.9.8 Appeal to the people (argumentum ad populum)
+*** 3.9.3 The many/any fallacy
+*** 3.9.10 The virtuality fallacy
+** 3.10 Chapter summary
+* Chapter 4. Professional ethics, codes of conduct, and moral responsibility
+** 4.1 Professional ethics
+*** 4.1.1 What is a profession?
+    Professions have a code of ethics.
+    Many IT professionals are not self-employed, v. doctors and lawyers
+
+    IT professionals qualify as professionals as they have
+    - Expert knowledge
+    - Autonomy in how they go about delivering their deliverables
+      (independence in conducting one's professional practice)
+
+*** 4.1.2 Who is a professional?
+    - Traditional professional; actions that can have social effects: doctors
+      can prescribe restricted drugs, lawyers bound by client confidentiality
+*** Who is a computer/IT professional?
+    - broad definition: anyone employed in the computing and IT fields
+    - narrower terms: software engineers
+    - mildly wider defintion: anyone that works together with software engineers
+      to form a software engineering team
+    - This book considers the broad definition
+** 4.2 Do computer/IT professionals have any special moral responsibilities?
+
+*** 4.2.1 Safety-critical software
+   Software engineers responsible for developing safety-critical systems have
+   good autonomy to
+   - do good or cause harm
+   - enable others to do good or cause harm
+   - influence others to do good or cause harm
+
+   Safety-critical systems: systems that can directly harm lives.
+
+   Bowyer includes software involved in the production of systems that can
+   directly harm lives.
+
+** 4.3 Professional codes of ethics and codes of conduct
+
+*** 4.3.1 The purpose of professional codes
+    - Gotterbarn: ways to regulate members of a profession
+    - Bynum and Rogerson: 5 important functions
+      - inspiration: explicating common ideals and goals
+      - education: informing about profession's values and standards
+      - guidance: specifying standards of good practice
+      - accountability: explicating and expecting professionals follow standards
+      - enforcement: justify action taken to punish violations of the code
+
+   Conflict: engineering is often conducted in secrecy, whereas ethics of
+   engineering require openness about action taken
+
+*** 4.3.2 Some criticisms of professional codes
+    - no possibility of enforcement/legitimacy
+
+    - Davis: some stuff
+    - Fairweather: incomplete, due to focus on just 4 traditional concerns: privacy, accuracy, property and accessibility
+    - Ladd: ethics require open ended deliberation, argumentation, and evaluation, not fossilized prescriptions
+    - Introduce confusions between microethics and macroethics
+      - microethical issues: application of ordinary moral notions to the individual professional
+      - macroethical issues: social problems that confront members of a profession collectively; involve formation of professional policies
+*** 4.3.3 Defending professional codes
+    - Barger: identifying universally agreed-upon codes is dim, but not an exercise in futility
+    - Davis: central to guiding individual engineers as to behaving morally
+    - Gotterbarn: serving three distinct functions in different capacities
+      - Codes of ethics: aspirational; providing vision
+      - Codes of conduct: professional and their attitude and behavior
+      - Codes of practice: guidelines on operational activities within a profession
+
+   TODO table of strengths and weaknesses of professional codes
+*** 4.3.4 The IEEE-CS/ACM software engineering code of ethics and professional practice
+    TODO
+** 4.4 Conflicts of professional responsibility: employee loyalty and whistle-blowing
+*** 4.4.1 Do employees have an obligation of loyalty to employers
+    prima facie obligation to be loyal to employers. Historically, engineers
+    were military people.
+
+*** 4.4.2 Whistle-blowing issues
+
+    - whistle blowing: meant to call attention to practices that threaten
+      the public interest; nevertheless a form of dissent against authority
+
+    Existing professional codes do not specify with sufficient precision
+    when they should/can blow the whistle
+
+    - Moral permission v. moral obligation
+
+    - De George: moral permission predicated on the following three
+      - Product will do "serious and considerable harm" to the public
+      - The immediate supervisor has been consulted with
+      - The available internal procedures and possibilities have been exhausted
+        and the engineer has found no support.
+    - De George: moral obligation comes with the additional two
+      - engineer has accessible evidence that can convince a reasonable
+        impartial observer that engineer's view of the situation is correct
+      - engineer has good reason to believe that by going to the public the
+        necessary changes will be brought about
+      - caveat: engineers chance of being successful must be worth the
+        risk one takes and the dangers to which one is exposed
+*** 4.4.3 An alternative strategy for understanding professional responsibility
+    - McFarland: engineers must
+      - see their work in relation to society in order to acquire an adequate account of their responsibilities
+      - learn to act in collaboration with others in order to meet their responsibilities
+    - additional collective responsibility as a profession.
+    - assumes a prima facie obligation to help others in our capacities
+    - need to act collectively in order to effect aid
+
+** 4.5 Moral responsibility, legal liability, and accountability
+
+*** 4.5.1 Distinguishing responsibility from liability and accountability
+   - moral responsibility
+     - attributes blame/praise to individuals
+     - attributed to individuals rather than groups. Notions of guilt and shame;
+       no legal effect
+   - legal liability
+     - does not attribute blame/fault to liable parties
+     - Usually applies to corporations and property owners
+     - Compensation can be required even when responsibility is not admitted
+   - accountability
+     - does not confer moral blame/praise
+     - can apply to individuals or groups
+     - Some agent can be identified as answerable
+
+*** 4.5.2 Accountability and the problem of "many hands"
+
+    Many hands are involved in the production of a system
+    - preconceptions of accountability include:
+      - tendency to attribute moral responsibility for an accident to an
+        individual, but not to groups. How do we attribute blame?
+      - we often think that if A is responsible, B is not. Ladd: but
+        it is possible for both to be responsible.
+    - Nissenbaum: guidelines for safety and reliability in systems should include
+      - Formal analysis of system modules
+      - Meaningful QA and independent auditing
+      - Built-in redundancy
+
+*** 4.5.3 Legal liability and moral accountability
+
+    Nissenbaum: separation between moral responsibility and liability to
+    compensate. Latter addresses needs of victims, but party may not
+    have to be accountable for malfunctions.
+
+    Current practice is to demand max property protection but deny accountability
+
+    Nissenbaum: strict liability will shift accountability to producers of
+    defective software.
+
+
+** 4.6 Risk assessment in the software development process
+
+   Gotterbarn: entire software dev life cycle needs to be taken into account
+   (incl. maintenance) during risk assessment.
+
+   Schneir: risk assessment models can be used towards making decisions
+   about developing controls in order to limit risks to assets. However
+   he worries that little has been given to ethical considerations
+
+   Risk in terms of scheduling, budgeting, or specification requirements
+   as is often practiced can still fail to meet an acceptable standard of
+   risk assessment.
+
+** 4.7 Do some copmputer corporations have special moral obligations?
+*** 4.7.1 Special responsibilities for search engine companies
+    - Elgesem thinks that search engines should be more open in how they
+      rank their results than what the veil of corporate secrecy allows them to.
+*** 4.7.2 Special responsibilities for companies that develop autonomous systems
+    - Should companies that develop autonomous systems be held responsible
+      for the decisions they make? If these systems result in accidental
+      human deaths (accidents within the system, not caused by the system),
+      to whom then are these companies responsible? (c.f. MMORPGS)
+** 4.8 Chapter summary
+* Chapter 5. Privacy and cyberspace
+** 5.1 Are privacy concerns associated with cybertechnology unique or social?
+   Unique changes in landscape that cybertechnology brings to technology
+   - amount
+     - no longer limited to physical space
+   - speed
+     - easy duplication for third parties; quick wiring
+   - duration
+     - more amenable to being kept indefinitely
+   - kind
+     - ATM transactions, opens ability to keep stuff you didn't think was
+       before
+** 5.2 What is personal privacy?
+
+   - cultural conception of privacy :: diminishable / losable / intruded upon
+        invaded
+   - No explicit right to privacy
+
+*** 5.2.1 Accessibility privacy: freedom from unwarranted intrusion
+
+    - Warren, Brandeis: freedom from unwarranted intrusion esp. wrt. harm
+      from physical access to person or possessions
+    - legal scholars: right to privacy inferrable from Fourth Amendment;
+      protecting against unreasonable searches
+
+*** 5.2.2 Decisional privacy: freedom from interference in one's personal affairs
+
+    - freedom from external interference into one's personal affairs (affairs:
+      choices, plans, decisions)
+    - abortion, euthanaska
+
+*** 5.2.3 Informational privacy: control over the flow of personal information
+
+    - Personal information
+
+*** 5.2.4 A comprehensive account of privacy
+
+    - Moor: An individual has privacy in a situation wrt other iff in that
+      situation the individual is protected from intrusion, interference, and
+      information access by others.
+    - naturally private situations :: environmental protection from access
+         and interference (e.g. physical boundaries)
+    - normatively private situations :: protection due to conventional norms
+
+*** 5.2.5 Privacy as "contextual integrity"
+
+
+
+** 5.3 Why is privacy important?
+*** 5.3.1 Is privacy an intrinsic value?
+*** 5.3.2 Privacy as a social value
+** 5.4 Gathering personal data: monitoring, recording, and tracking techniques
+*** 5.4.1 "dataveillance" techniques
+*** 5.4.2 Internet cookies
+*** 5.4.3 RFID technology
+*** 5.4.4 Cybertechnology and government service
+** 5.5 Exchanging personal data: merging and matching electronic records
+*** 5.5.1 Merging computerized records
+*** 5.5.2 Matching computerized records
+** 5.6 Mining personal data
+*** 5.6.1 How does data mining threaten personal privacy?
+*** 5.6.2 Web mining
+** 5.7 Protecting personal privacy in public space
+*** 5.7.1 Search engines and the disclosure of personal information
+*** 5.7.2 accessing online public records
+** 5.8 Privacy-enhancing technologies
+*** 5.8.1 Educating users about PETs
+*** 5.8.2 PETs and the principle of informed consent
+** 5.9 Privacy legislation and industry self-regulation
+*** 5.9.1 Industry self-regulation initiatives regarding privacy
+*** 5.9.2 Provacy laws and data protection principles
+** 5.10 Chapter summary
+* Chapter 6. Security in cyberspace
+** 6.1 Security in the context of cybertechnology
+*** 6.1.1 Cybersecurity as related to cybercrime
+*** 6.1.2 Security and privacy: some similarities
+** 6.2 Three categories of cybersecurity
+*** 6.2.1 Data security: confidentiality, integrity, and availability of information
+*** 6.2.2 System security: viruses, worms, and malware
+*** 6.2.3 Network security: protecting our infrastructure
+** 6.3 "Cloud computing" and security
+*** 6.3.1 Deployment and service/delivery models for the cloud
+*** 6.3.2 Securing user data residing in the cloud
+** 6.4 Hacking and "the hacker ethic"
+*** 6.4.1 What is "the hacker ethic"
+*** 6.4.2 Are computer break-ins ever ethically justifiable?
+** 6.5 Cyberterrorism
+*** 6.5.1 Cyberterrorism vs. hacktivism
+*** 6.5.2 Cybertechnology and terrorist organizations
+** 6.6 Information warfare (IW)
+*** 6.6.1 Information warfare vs. conventional warfare
+*** 6.6.2 Potential consequences for nations that engage in IW
+** 6.7 Cybersecurity and risk analysis
+*** 6.7.1 The risk analysis methodology
+*** 6.7.2 The problem of "de-perimeterization of information security for analyzing risk
+** 6.8 Chapter summary
+* Chapter 7. Cybercrime and cyber-related crimes
+** 7.1 Cybercrimes and cybercriminals
+*** 7.1.1 Background events: a brief sketch
+*** 7.1.2 A typical cybercriminal
+** 7.2 Hacking, cracking, and counterhacking
+*** 7.2.1 Hacking vs. cracking
+*** 7.2.2 Active defense hacking: can acts of "hacking back" or counter hacking ever be morally justified?
+** 7.3 Defining cybercrime
+*** 7.3.1 Determining the criteria
+*** 7.3.2 A preliminary definition of cybercrime
+*** 7.3.3 Framing a coherent and comprehensive definition of cybercrime
+** 7.4 Three categories of cybercrime: priacy, trespass, and vandalism in cyberspace
+** 7.5 Cyber-related crimes
+*** 7.5.1 Some examples of cyber-exacerbated vs. cyber-assisted crimes
+*** 7.5.2 Identity theft
+** 7.6 Technologies and tools for combating cybercrime
+*** 7.6.1 Biometric technologies
+*** 7.6.2 Keystroke-monitoring software and packet-sniffing programs
+** 7.7 Programs and techniques designed to combat cybercrime in the United States
+*** 7.7.1 Entrapment and "sting" operations to catch internet pedophiles
+*** 7.7.2 Enhanced government surveillance
+** 7.8 National and international laws to combat cybercrime
+*** 7.8.1 The problem of jurisdiction in cyberspace
+*** 7.8.2 Some international laws and conventions affecting cybercrime
+** 7.9 Cybercrime and the free press: the WikiLeaks controversy
+*** 7.9.1 Are WikiLeaks' practices ethical
+*** 7.9.2 Are WikiLeaks' practices criminal
+*** 7.9.3 WikiLeaks and the free press
+** 7.10 Chapter summary
+* Chapter 8. Intellectual property disputes in cyberspace
+** 8.1 What is intellectual property?
+*** 8.1.1 Intellectual objects
+*** 8.1.2 Why protect intellectual objects?
+*** 8.1.3 Software as intellectual property
+*** 8.1.4 Evaluating an argument for why it is wrong to copy proprietary software
+** 8.2 Copyright law and digital media
+*** 8.2.1 The evolution of copyright law in the united states
+*** 8.2.2 The fair-use and first-sale provisions of copyrighe law
+*** 8.2.3 Software piracy as copyright infringement
+*** 8.2.4 Napster and the ongoing battles over sharing digital music
+** 8.3 Patents, trademarks, and trade secrets
+*** 8.3.1 Patent protections
+*** 8.3.2 Trademarks
+*** 8.3.3 Trade secrets
+** 8.4 Jurisdictional issues involving intellectual property laws
+** 8.5 Philosophical foundations for intellectual property rights
+*** 8.5.1 The labor theory of property
+*** 8.5.2 The utilitarian theory of property
+*** 8.5.3 The personality theory of property
+** 8.6 The free software and the open source movements
+*** 8.6.1 GNU and the free software foundation
+*** 8.6.2 The "open source software" movement: OSS vs. FSF
+** 8.7 The "common-good" approach: an alternative framework for analyzing the intellectual property debate
+*** 8.7.1 Information wants to be shared vs. information wants to be free
+*** 8.7.2 Preserving the information commons
+*** 8.7.3 The fate of the information commons: could the public domain of ideas eventually disappear?
+*** 8.7.4 The creative commons
+** 8.8 PIPA, SOPA, and RWA legislation: current battlegrounds in the intellectual property war
+*** 8.8.1 The PIPA and SOPA battles
+*** 8.8.2 RWA and public access to health-related information
+*** 8.8.3 Intellectual property battles in the near future
+** 8.9 Chapter summary
+* Chapter 9. Regulating commerce and speech in cyberspace
+** 9.1 Background issues and some preliminary distinctions
+*** 9.1.1 The ontology of cyberspace: is the Internet a medium or a place?
+*** 9.1.2 Two categories of cyberspace regulation
+** 9.2 Four modes of regulation: the Lessig model
+** 9.3 Digital rights management and the privatization of information policy
+*** 9.3.1 DRM technology: implications for public debate on copyright issues
+*** 9.3.2 Privatizing information policy: implications for the Internet
+** 9.4 The use and misuse of (HTML) metatags and web hyperlinks
+*** 9.4.1 Issues surrounding the use/abuse of HTML metatags
+*** 9.4.2 Hyperlinking and deep linking
+** 9.5 E-mail spam
+*** 9.5.1 Defining spam
+*** 9.5.2 Why is spam morally objectionable?
+** 9.6 Free speech vs. censorship and content control in cyberspace
+*** 9.6.1 Protecting free speech
+*** 9.6.2 Defining censorship
+** 9.7 Pronography in cyberspace
+*** 9.7.1 Interpreting "community standards" in cyberspace
+*** 9.7.2 Internet pornography laws and protecting children online
+*** 9.7.3 Virtual child pornography
+** 9.8 Hate speech and speech that can cause physical harm to others
+*** 9.8.1 Hate speech on the web
+*** 9.8.2 Online "speech" that can cause physical harm to others
+** 9.9 "Network neutrality" and the future of internet regulation
+*** 9.9.1 defining network neutrality
+*** 9.9.2 Some arguments advanced by net neutrality's proponents and opponents
+*** 9.9.3 Future implications for the net neutrality debate
+** 9.10 Chapter summary
+* Chapter 10. The digital divide, democracy, and work
+** 10.1 The digital divide
+*** 10.1.1 The global digital divide
+*** 10.1.2 The digital divide within nations
+*** 10.1.3 Is the digital divide an ethical issue?
+** 10.2 Cybertechnology and the disabled
+*** 10.2.1 Disabled persons and remote work
+*** 10.2.2 Arguments for continued WAI support
+** 10.3 Cybertechnology and race
+*** 10.3.1 Internet usage patterns
+*** 10.3.2 Racis
+* Chapter 11. Online communities, cyber identities, and social networks
+* Chapter 12. Ethical aspects of emerging and converging technologies

@@ -1,0 +1,389 @@
+* Preface
+* 1 The real and complex number systems
+** Introduction
+   - 1.1 Example (root of 2)
+   - 1.2 Remark
+   - 1.3 Definitions
+     - set
+     - member
+     - empty set
+     - subset
+     - proper subset
+   - 1.4 Definition
+     - rational numbers
+** Ordered Sets
+   - 1.5 Definition
+     - order on a set (total order)
+   - 1.6 Definition
+     - ordered set ((S, .))
+   - 1.7 Definition
+     - A set S that is bounded above (where S is a subset of an ordered
+       universe set)
+     - An upper bound of a bounded set
+   - 1.8 Definition
+     - least upper bound / supremum
+     - greatest lower bound / infimum
+   - 1.9 Examples
+   - 1.10 Definition
+     - least-upper-bound property: E is bounded above, then sup E exists.
+   - 1.11 Theorem
+     - least-upper-bound property equiv. greatest-lower-bound property
+** Fields
+   - 1.12 Definition
+     - field: (S, +, *)
+     - addition
+     - (A) axioms for addition
+       - (A1) closure under addition
+       - (A2) commutativity of addition
+       - (A3) associativity of addition
+       - (A4) existence of additive identities
+       - (A5) existence of additive inverses
+     - (M) axioms for multiplication
+       - (M1) closure
+       - (M2) commutativity
+       - (M3) associativity
+       - (M4) identities (distinct from additive identity)
+       - (M5) inverses (except for additive identity)
+     - (D) the distributive law
+       - distributivity of multiplication over addition
+   - 1.13 Remarks
+   - 1.14 Proposition
+     - Field additive properties
+     - (a) x + y = x + z implies y = z
+     - (b) x + y = x implies y = 0
+     - (c) x + y = 0 implies y = -x
+     - (d) -(-x) = x
+   - 1.15 Proposition
+     - Field multiplicative properties
+     - (a) nonzero x, xy = xz implies y = z
+     - (b) nonzero x, xy = x implies y = 1
+     - (c) nonzero x, xy = 1 implies y = 1/x
+     - (d) nonzero x, 1/(1/x) = x
+   - 1.16 Proposition
+     - Field properties
+     - (a) 0x = 0
+     - (b) nonzero x, y implies nonzero xy
+     - (c) (-x)y = -(xy) = x(-y)
+     - (d) (-x)(-y) = xy
+   - 1.17 Definition
+     - ordered field
+     - positive
+     - negative
+   - 1.18 Proposition
+     - Ordered field properties
+     - (a) positive x implies negative -x
+     - (b) x > 0 and y < z implies xy < xz
+     - (c) x < 0 and y < z implies xy > xz
+     - (d) nonzero x then x^2 > 0; 1 > 0
+     - (e) 0 < x < y then 0 < 1/y < 1/x
+** The real field
+   - 1.19 Theorem
+     - Exists ordered field R which has the least-upper-bound property
+     - R contains Q as a subfield
+   - 1.20 Theorem
+     - real x, y, x > 0 implies integer n, nx > y
+     - Q is dense in R
+   - 1.21 Theorem
+     - For every real x > 0 and every integer n > 0 exists unique real y
+       such that y^n = x
+   - Corollary
+     - For positive real a, b and positive integer n,
+       (ab)^{1/n} = a^{1/n}b^{1/n}
+   - 1.22 Decimals
+     - Decimal representation
+** The extended real number system
+   - 1.23 Definition
+     - extended real number system
+     - finite numbers
+** The complex field
+   - 1.24 Definiton
+     - complex number
+     - addition
+     - multiplication
+   - 1.25 Theorem
+     - (C, +, .) is a field
+   - 1.26 Theorem
+     - For real a, b, (a,0)+(b,0)=(a+b,0); (a,0)(b,0)=(ab,0)
+   - 1.27 Definition
+     - i = (0,1)
+   - 1.28 Theorem
+     - i^2 = -1
+   - 1.29 Theorem
+     - (a,b) = a+bi
+   - 1.30 Definition
+     - conjugate: (a, -b)
+     - real part
+     - imaginary part
+   - 1.31 Theorem
+     - (a) (z+w)' = z'+w'
+     - (b)(zw)' = z'w'
+     - (c) z+z' = 2 Re(z); z-z' = 2i Im(z)
+     - (d) nonzero z, zz' is real and positive
+   - 1.32 Definition
+     - absolute value |z| = (zz')^{1/2}
+   - 1.33 Theorem
+     - (a) nonzero z, |z| > 0; |0| = 0
+     - (b) |z'| = |z|
+     - (c) |zw| = |z||w|
+     - (d) |Re z| <= |z|
+     - (e) |z+w| <= |z| + |w|
+   - 1.34 Notation
+     - Sigma notation
+   - 1.35 Theorem
+     - Schwartz inequality
+** Euclidean spaces
+   - 1.36 Definitions
+     - k-tuples
+     - coordinates (elements of a k-tuple)
+     - points/vectors
+     - vector addition
+     - scalar multiplication
+     - vector space over the real field (V,F,+,\times)
+     - origin/null vector/zero vector
+     - inner product
+     - norm
+     - euclidean k-space (V,F,+,\times,.,||)
+   - 1.37 Theorem
+     - vector x,y,z, scalar \alpha
+     - (a) |x| >= 0
+     - (b) |x| = 0 iff x = 0
+     - (c) |\alpha x| = |\alpha||x|
+     - (d) |x . y| <= |x||y|
+     - (e) |x+y| <= |x| + |y|
+     - (f) |x-z| <= |x-y|+|y-z|
+   - 1.38 Remarks
+     - 1.37 (a), (b), (f) means R^k satisfies metric space properties
+     - R^1 satisfies real number axioms; R^2 satisfies complex number axioms
+** Appendix
+** Exercises
+* 2 Basic topology
+** Finite, countable, and uncountable sets
+   - 2.1 Definition
+     - mapping f : A -> B
+     - domain
+     - values (elements in the range)
+     - range
+   - 2.2 Definition
+     - mapping of subsets of A
+     - image of E under f (f(E))
+     - image of A is range
+     - onto (surjection)
+     - inverse image of E under f
+     - one-to-one (injection)
+   - 2.3 Definition
+     - 1-1 correspondence (bijection): exists bijective mapping of A to B
+     - in other words: A and B have same cardinal number; A and B are equivalent
+       - equivalence is reflexive, symmetric, transitive
+     - equivalence relation
+   - 2.4 Definiton
+     - J set of positive numbers; J_n positive numbers to 1 to n
+     - finite A ~ J_n
+     - infinite
+     - countable if A ~ J
+     - uncountable
+     - at most countable
+     - countable/enumerable/denumerable
+   - 2.5 Example
+     - Integers countable
+   - 2.6 Remark
+     - Finite sets cannot be equivalent to their proper subsets
+     - A is infinite if A is equivalent to one of its proper subsets
+   - 2.7 Definition
+     - sequence: f defined on J
+     - terms of sequence
+     - sequence in A/sequence of elements of A
+   - 2.8 Theorem
+     - Every infinite subset of a countable set is countable
+   - 2.9 Definition
+     - set of sets/collection of sets/family of sets
+     - union
+     - union of countable collection of sets
+     - intersection
+     - intersection of countable collection of sets
+     - intersecting sets
+     - disjoint sets
+   - 2.10 Examples
+   - 2.11 Remarks
+   - 2.12 Theorem
+     - union of a sequence of countable sets is countable (we can arrange
+       its elements in a sequence)
+   - Corollary
+     - Union of an at most countable sequence of at most countable sets is
+       at most countable.
+   - 2.13 Theorem
+     - The set of all n-tuples B_n of elements of a countable set A is
+       countable. Consider (b, a) where B, B countable. For a particular b,
+       set of (b, a) is equivalent to A. For countable B, (b, a) is
+       countable set of countable sets, hence countable. Induct n times.
+   - Corollary
+     - Q is countable.
+   - 2.14 Theorem
+     - Let A be the set of all sequences whose elements are the digits
+       0 and 1. This set A is uncountable.
+** Metric spaces
+   - 2.15 Definition
+     - metric space: (X, d, R)
+     - (a) d(p,q) > 0 if p != q; d(p,p) = 0
+     - (b) d(p,q) = d(q,p)
+     - (c) d(p,q) <= d(p,r) + d(r,q)
+     - distance function/metric
+   - 2.16 Examples
+     - d(x,y) = |x-y|
+     - Every subset of a metric space is a metric space
+   - 2.17 Definiton
+     - segment (a,b)
+     - interval [a,b]
+     - half-open intervals
+     - k-cell: given a_{0<i<=k}, b_{0<i<=k} set of all x in R^k where
+       a_i <= x_i <= b_i: 1-cell is interval, 2-cell is rectangle, 3-cell is
+       cube
+     - open ball with center x and radius r: |y-x| < r
+     - convex set E: \lambda x + (1-\lambda)y in E for x,y in E and \lambda in
+       (0,1)
+     - closed balls also satisfy convex
+   - 2.18 Definition
+     - Given elements of a metric space X
+     - (a) neighborhood of p: set N_r(p) = {q : d(p, q) < r}, for some r > 0; r
+       is radius
+     - (b) limit point p of E: every neighborhood of p contains q != p such that
+       q in E
+     - (c) isolated point of E: p in E but not a limit point of E
+     - (d) closed: every limit point of E is a point of E
+     - (e) interior point p of E: exists neighborhood N of p such that N in E
+     - (f) open: every point of E is an interior point
+     - (g) complement of E: X \ E
+     - (h) perfect set E: E closed and every element is a limit point
+     - (i) bounded: exists real M, q in X, such that d(p,q) < M for all p in E
+     - (j) dense in X: every point of X is a limit point of E or a point of E
+   - 2.19 Theorem
+     - Every neighborhood is an open set
+   - 2.20 Theorem
+     - If p is a limit point of a set E, then every neighborhood contains
+       infinitely many points of E.
+   - Corollary A finite point set has no limit points
+   - 2.21 Examples
+   - 2.22 Theorem
+     Complement of countable union of sets is intersection of complement of sets
+   - 2.23 Theorem
+     A set E is open iff its complement is closed
+   - 2.24 Theorem
+     - (a) Union of open sets is open
+     - (b) Union of closed sets is closed
+     - (c) intersection of finite collection of open sets is open
+     - (d) union of finite collection of closed sets is closed
+   - 2.25 Examples
+   - 2.26 Definition
+     - Closure E' of E subset of X is the union of E with all limit points of E.
+   - 2.27 Theorem
+     - (a) E' is closed
+     - (b) E = E' iff E is closed
+     - (c) E' subset of F for every closed set F subset of X such that E subset
+       of F
+   - 2.28 Theorem
+     If E is bounded above, y = sup E implies y in E'.
+   - 2.29 Remark
+     - E open relative to Y: E is open in metric space Y
+   - 2.30 Theorem
+     - E is open relative to Y iff E = Y intersect G for some open subset G of X
+** Compact sets
+   - 2.31 Definition
+     - open cover of a set E: collection G of open subsets of X such that
+       E subset G
+   - 2.32 Definition
+     - compact K of metric space X: every open cover of K contains a finite
+       subcover (i.e. a finite union of the sets that form the open cover is an
+       open cover of K)
+   - 2.33 Theorem
+     - K subst Y subst X: K is compact relative to X iff K is compact relative
+       to Y.
+   - 2.34 Theorem
+     - Compact subsets of metric spaces are closed.
+** Perfect sets
+** Connected sets
+** Exercises
+* 3 Numerical sequences and series
+** Convergent sequences
+** Subsequences
+** Cauchy sequences
+** Upper and lower limits
+** Some special sequences
+** Series
+** Series of nonnegative terms
+** The number e
+** The root and ratio tests
+** Power series
+** Summation by parts
+** Absolute convergence
+** Addition and multiplication of series
+** Rearrangements
+** Exercises
+* 4 Continuity
+** Limits of functions
+** Continuous functions
+** Continuity and compactness
+** Continuity and connetedness
+** Discontinuities
+** Monotonic functions
+** Infinite limits and limits at infinity
+** Exercises
+* 5 Differentiation
+** The derivative of a real function
+** Mean value theorems
+** The continuity of derivatives
+** L'Hospital's rule
+** Derivatives of higher order
+** Taylor's theorem
+** Differentiation of vector-valued functions
+** Exercises
+* 6 The Riemann-Stieltjes Integral
+** Definitions and existence of the integral
+** Properties of the integral
+** Integration and differentiation
+** Integration of vector-valued functions
+** Rectifiable curves
+* 7 Sequences and series of functions
+** Discussion of main problem
+** Uniform convergence
+** Uniform convergence and continuity
+** Uniform convergence and integration
+** Uniform convergence and differentiation
+** Equicontinuous familites of functions
+** The Stone-Weierstrass theorem
+* 8 Some special functions
+** Power series
+** The exponential and lograthmic functions
+** The trigonometric functions
+** The algebraic completeness of the complex field
+** Fourier series
+** The gamma function
+** Exercises
+* 9 Functions of several variables
+** Linear transformations
+** Differentiation
+** The contraction principle
+** The implicit function theorem
+** The rank theorem
+** Determinants
+** Derivatives of higher order
+** Differentiation of integrals
+** Exercises
+* 10 Integration of differential forms
+** Integration
+** Primitive mappings
+** Partitions of unity
+** Change of variables
+** Simplexes and chains
+** Stokes' Theorem
+** Closed forms and exact forms
+** Vector analysis
+** Exercises
+* 11 The Lebesgue theory
+** Set functions
+** Construction of the Lebesgue measure
+** Measure spaces
+** Measurable functions
+** Simple functions
+** Integration
+** Comparison with the Riemann integral
+** Functions of Class L^2
+** Exercises

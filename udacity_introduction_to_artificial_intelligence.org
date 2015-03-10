@@ -1,0 +1,370 @@
+* 1 Welcome to AI
+** 1.1 Intelligent agents
+** 1.2 Applications of AI
+** 1.3 Terminology
+** 1.4 AI and uncertainty
+** 1.5 Summary
+* 2 Problem Solving
+** 2.1 What is a problem
+   - state space
+   - initial state
+   - Actions(s)
+   - Results(s, a)
+   - GoalTest(s)
+   - StepCost(s, a)
+   - PathCost((s,a), (s1, a1), ...)
+** 2.2 Example route finding
+** 2.3 Tree search
+   - Class of search algorithms; may go backwards
+** 2.4 Graph search
+   - Avoiding repeated nodes; notion of explored nodes
+** 2.5 Breadth first search
+   - BFS
+** 2.6 Uniform cost search
+   - Dijkstra
+** 2.7 Search comparison
+   - DFS, BFS, UCS
+   - Optimal?
+   - Space needed?
+   - Complete?
+** 2.8 More on uniform cost
+   - Informal proof of uniform cost search's optimality
+** 2.9 A* search
+   - TODO
+** 2.10 Optimistic heuristic
+   - optimistic: estimated cost less than true cost
+** 2.11 State spaces
+   - vacuum world; state spaces; actions
+** 2.12 Sliding blocks puzzle
+   - generating a relaxed problem
+** 2.13 Problems with search
+   - workd only when
+     - domain is fully observable
+     - domain is known
+     - domain is discrete
+     - domain is deterministic
+     - domain is static
+** 2.14 A note on implementation
+   - frontier: priority queue + set(hash table/tree; to test if arbitrary node
+     is part of frontier)
+   - explored set: set
+* 3 Probability in AI
+** 3.1 Introduction
+** 3.2 Probability coin flip
+   - P(0.5)
+** 3.3 Coin flip
+   - Repeated flips
+   - Binomial distribution
+** 3.4 Probability summary
+   - Complementary event
+   - Independence
+** 3.5 Dependence
+   - Choosing second coin flip depending on outcome of first coin flip
+** 3.6 What we learned
+   - total probability (probability of one variable over total outcomes of
+     another variable)
+** 3.7 Weather
+   - sunny, rainy days
+** 3.8 Cancer
+** 3.9 Bayes rule
+   - P(A|B) = P(B|A) P(A) / P(B)
+   - prior: P(A)
+   - posterior: P(A|B)
+   - likelihood/conditional probability/supoprt B provides for A: P(B|A) / P(B)
+   - P(B) can be calculated using total probability
+** 3.10 Bayes network
+** 3.11 Computing Bayes rule
+   - Compute P'(A|B) = P(B|A) P(A)
+   - Compute P'(A'|B) = P(B|A') P(A')
+   - Compute P(A|B) = P'(A|B) / (P'(A|B) + P'(A'|B))
+** 3.12 Two test cancer
+** 3.13 Conditional independence
+   - T1 and T2 are independent, given C
+** 3.14 Absolute and conditional
+   - Conditional independence does not imply absolute independence,
+     nor vice versa
+** 3.15 Confounding cause
+** 3.16 Independence
+** 3.17 Explaining away
+   - If we see a certain effect that could be caused by multiple causes
+     seeing one of those causes can explain away ay other potential cause
+** 3.18 Conditional dependence
+** 3.19 General Bayes net
+** 3.20 Value of a network
+** 3.21 D separation
+** 3.22 Congratulations!
+* 4 Probabilistic inference
+** 4.1 Overview and example
+   - Bayes Net
+     - Evidence variables
+     - Hidden variables
+     - Query variables
+   - Consider
+     - B -> A; E -> A; A -> J; A -> M
+   - Questions
+     - P(Q1,Q2|E1=e1,E2=e2)
+     - argmax P(Q1=q1,Q2=q2,...|E1=e1,...)
+** 4.2 Enumeration
+   - P(B|J,M) = P(B,J,M) / P(J,M) = \Sigma_{a} \Sigma_{e} P(B,J,M, e, a)
+     = \Sigma{a} \Sigma{e} P(+b) P(e) P(a|+b,e) P(+j|a) P(+m|a)
+   - Pull out terms independent of variables bound to the summation
+** 4.3 Speeding up enumeration
+** 4.4 Causal direction
+   - Easiest when doing inference by causal direction
+** 4.5 Variable elimination
+   - Consider
+     - R -> T -> L
+   - We can eliminate R, by evaluating the total probability of each of T
+** 4.6 Approximate inference
+   - We can use sampling if exact inference is complex
+** 4.7 Sampling example
+** 4.8 Rejection sampling
+   - To compute conditional probabilities, we reject samples that do not
+     match our conditioned value
+** 4.9 Likelihood weighting
+   - Instead of rejecting samples that do not match our conditioned values,
+     we weight all samples by the likelihood of the conditioned values.
+   - Problem is, constraining downstream evidence cannot does constrain upstream
+     sampling
+** 4.10 Gibbs sampling
+   - Takes all evidence into account
+   - Markov Chain Monte Carlo (MCMC)
+   - We select just one variable and resample, leaving values of other variables
+     constant.
+** 4.11 Monty hall problem
+** 4.12 Monty hall letter
+* 5 Machine learning
+** 5.1 Introduction
+** 5.2 What is machine learning
+   - e.g. finding a Bayes networks structure
+** 5.3 Stanley DARPA grand challenge
+   - self-driving robot
+** 5.4 Taxonomy
+   - What is being learned?
+     - parameters (for a structure), structure, (discover) hidden concepts
+   - What from?
+     - supervised, unsupervised, reinforcement (feedback from env.)
+   - What for?
+     - prediction, diagnosis, summarization, ...
+   - How?
+     - passive (static corpus), active (online)
+   - Output
+     - classification, regression
+   - Details?
+     - generative (model data (e.g. including noise))
+     - discriminative (distinguish data)
+** 5.5 Supervised learning
+   - Predict target labels
+** 5.6 Occam's razor
+   - Lower degree polynomials please!
+** 5.7 Spam detection
+   - Label some emails as spam.
+   - Bag of words
+** 5.8 Question
+** 5.9 Maximum likelihood
+   - Estimate parameter/that maximizes probability of data appearing
+** 5.10 Relationship to Bayes' networks
+   - SPAM -> w1, w2, w3...
+   - Where w1 is the presence of the word w1
+** 5.11 Laplace smoothing
+   - ML: p(x) = count(x) /N
+   - LS(k): p(x) = (count(x) + k) / (N + k|x|)
+** 5.12 Summary of Naive Bayes'
+** 5.13 Advanced spam filtering
+   - IP
+   - ... other features ...
+** 5.14 Digit recognition
+   - Input vector of pixels
+** 5.15 Overfitting prevention
+   - Cross validation
+   - 80% train, 10% CV, 10% Test
+** 5.16 Classification vs regression
+
+** 5.17 Linear regression
+   - Minimise loss
+   - loss - \Sigma (y_j - w, x_j - w_0)^2
+
+** 5.18 Quadratic loss
+
+   - Linear least squares
+
+** 5.19 Problems with linear regression
+
+   - Outliers
+   - Additional dimension
+   - Strong vertical spread
+   - logistic regression
+** 5.20 Linear regression and complexity control
+   - Regularization
+     - Loss = Loss(data) + Loss(parameters)
+     - (penalize higher magnitude coefficients
+** 5.21 Minimizing complicated loss functions
+   - Gradient descent
+** 5.22 Gradient descent implementation
+   - TODO
+** 5.23 Perceptron
+   - TODO
+** 5.24 Support Vector Machines
+   - Maximum margin algorithms
+   - SVM
+   - Boosting
+   - Kernel trick
+** 5.25 Linear method summary
+   - Regression vs classification
+   - Exact solutions vs iterative solutions
+   - smoothing
+   - non-linear problems
+** 5.26 K-nearest neighbors
+** 5.27 KNN definition
+** 5.28 K as smoothing parameter
+   - Larger K regularizes boundaries
+** 5.29 Problems with KNN
+   - difficult in very large data sets (use kDD trees)
+   - very large feature spaces
+     - large dimensions have all points very far away and pairwise distances
+       provide less information.
+* 6 Unsupervised learning
+** Unsupervised learning
+** Dimensions question
+** Terminlogy
+   - iid
+   - density estimation
+     - clustering
+     - dimensionality reduction
+     - blind signal separation
+** Google street view and clustering
+   - K Means: expectation maximization
+** K Means clustering example
+** K Means algorithm
+   - Problems with K Means
+     - Need to know K
+     - local minima
+     - suffers from high dimensionality
+     - lack of mathematical basis
+** Expectation maximization
+** Gaussian learning
+** Maximum likelihood
+   - Gaussian distribution: maximum likelihood parameters
+** Gaussian summary
+** EM as generalization of K Means
+** EM Algorithm
+** Choosing K
+   - Guess clusters while running
+   - mimimize: negative log likelihood + cost * k
+** Clustering summary
+** Dimensionality reduction
+** Linear dimensionality
+   - Fit gaussian
+   - Calculate eigenvalues and eigenvectors
+   - Pick eigenvectors with maximum eigenvalues
+   - Project data on chosen eivenvectors
+** Face example
+** Scan example
+** Piecewise linear projection
+   - Local linear embedding
+   - Isomap
+** Spectral clustering
+   - Cluster by affinity
+** Spectral clustering algorithm
+   - Affinity matrix: distance between two points in space
+   - PCA on affinity matrix
+** Eigenvalues question
+** Supervised vs unsupervised learning
+* 7 Representation with logic
+** Introduction
+** Propositional logic
+** Truth tables
+** Propositional logic
+** Terminology
+** Propositional logic limitations
+   - cannot handle uncertainty
+   - cannot talk about objects that have properties, or relationships
+     between oblects
+   - no quantifiers
+** First order logic
+   - atomic: state is atomic: search, problem solving
+   - factored representation:
+     - representation of the world is factored into multiple variables
+   - structured
+     - state includes state between objects e.g. databases, programming langs
+** Models
+   - constants
+   - functions on objects
+   - relations between objects
+** Syntax
+   - sentences
+     - vowel(A), etc.
+   - terms
+   - operators (boolean)
+   - quantifiers
+** Vacuum world
+* 8 Planning
+** Introduction
+** Problem solving vs planning
+   - We can't just plan, then execute without feedback
+   - Interleaving necessary
+** Planning vs execution
+   - Stochastic, multiagent, partial observability
+   - unknown model of world, hierarchical plans (plan required for step for
+     another plan)
+   - Plan in space of belief states instead
+** Vacuum cleaner example
+   - conform-it plans: plans that allow us to reach goal without observation
+** Sensorless vacumm cleaner
+** Partially observable vacuum cleaner
+   - sensing can reduce the belief space
+** Stochastic environment problem
+   - actions increase uncertainty if unreliable
+** Infinite sequences
+** Finding a successful plan
+** Problem solving via mathematical notation
+** Tracking the predict update cycle
+** Classical planning
+   - State space: 2^k states of k variables
+   - World state: complete assignment to k variables
+   - Belief state: partial assignment to k variables
+     or arbitrary boolean formula (constraint)
+   - Action schema: e.g. Action( Fly(p, x, y), Precond: plane(p) and
+     airport(x) and airport(y) and at(p, x), Effect: not(at(p,x)) and at(p,y)
+
+** Progression search
+   - search through the state space
+** Regression search
+   - goal state is a family of states
+   - but we can 'undo' actions and search backwards
+** Regression vs progression
+   - regression makes sense when we can do a lot of things, but only a
+     small subset of actions lead to the goal
+** Plan search space
+   - Search through space of plans: start with empty plan, adding on
+     actions
+   - No longer in vogue
+** Sliding puzzle example
+   - Come out with heuristics: consider relaxed problems
+** Situation calculus
+   - FOL with conventions
+   - actions: objects (functions) in FOL, Fly(p,x,y)
+   - situations: objects (percept history); s0 exists; s' = Result(s, a)
+   - poss(a, s): somePrecond(s) implies poss(a, s)
+   - fluents: predicates that can chang over time e.g. at(p,x,s); we put
+     the situation s in the end
+   - easier to write possible actions that can be taken for a situation;
+     and a new predicate is made on the Result(s, a) state.
+   - compare classical planning, writing action schema
+   - assert predicates on initial state; assert predicates on goal state
+   - more flexible than problem solving or classical planning
+   - weakness: cannot distinguish between probable and improbable
+* 9 Planning under uncertainty
+* 10 Reinforcement learning
+* 11 Hidden Markov models and filters
+* 12 Markov decision provess review
+* 13 Games
+* 14 Game theory
+* 15 Advanced planning
+* 16 Computer vision I
+* 17 Computer vision II
+* 18 Computer vision III
+* 19 Robotics
+* 20 Robotics II
+* 21 Natural language processing I
+* 22 Natural language processing II

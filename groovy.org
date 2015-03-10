@@ -1,0 +1,109 @@
+* Comments
+** Single line comment
+   - //
+** Multiline comment
+   - /* */
+** GroovyDoc comment
+   - /** */
+** Shebang line
+   - #!/usr/bin/env groovy
+* Keywords
+* Identifiers
+** Normal identifiers
+** Quoted identifiers
+   - appear after dot property operator; use when property is not valid
+     identifier name
+* Strings
+** Single quoted string
+   - 'asd' // plain java.lang.String
+** String concatenation
+   - +
+** Triple single quoted string
+   - '''asdf'''
+     - java.lang.String
+     - multiline; use String#stripIndent(), String#stripMargin() to
+       trim whitespace from indented multiline; use \ to escape newline
+*** Escaping special characters
+    - \', \\
+*** Unicode escape sequence
+** Double quoted string
+   - "Asf"
+     - java.lang.String or groovy.lang.GString (if interpolation present)
+*** String interpolation
+    - "${name}".toString()
+*** Special case of interpolating closure expressions
+    - "1 + 3 = ${w -> w << 3}"
+    - "value == ${ -> number }"
+      - closure expression (lazy evaluation; imagine as containing an anonymous
+        function)
+*** Interoperability with Java
+    - toString() is transparently called in GString.
+
+*** GString and String hashCodes
+    - different hash codes even if syntacally identical; GString not immutable
+
+*** Triple double quoted string
+    - """multiline double quoted strings"""
+
+*** Slashy string
+    - \/asdfasdf/
+      - multiline
+*** Dollar slashy string
+    - \$/awfawef/$
+      - dollar escape character
+
+** 4.9 Characters
+   - char c1 = 'A' // explicit var type
+   - def c2 = ('B' as char) // type coercion
+
+* Numbers
+** Integral literals
+   - byte, char, short, int, long, BigInteger
+     - use def to adapt to integral type that can fit literal
+
+*** Alternative non-base -1 representations
+    - binary
+    - octal
+    - hex
+** Decimal literals
+   - float, double, BigDecimal
+     - require explicit type declaration
+
+** Underscore in literals
+
+** Number type suffixes
+
+** Math operations
+
+*** The case of the division operator
+    - / produces a double result if either operand is float or double
+    - TODO
+
+*** The case of the power operator
+    - Use **
+    - TODO
+
+* Booleans
+  - true or false
+    - Groovy truth c.f. Python coercion to boolean
+* Lists
+  - [1,2,3].size() // ArrayList
+  - [1,2,3] as LinkedList
+  - l\[1] // subscript for access
+  - l << 'e' // append to end
+  - l\[-1] // access from end
+  - l\[1, 3] // access custom ordering of elements in list
+  - l\[2..4] // subarray, inclusive
+  - can be heterogeneous
+  - can contain other lists
+
+* Arrays
+
+String[] as = ['A', 'B', 'C'] // explicit variable type
+
+* Maps
+  - colors = [red: 'vasdf']
+  - colors['red']
+  - colors.red
+  - colors = [(red): 'aeraw']
+    - enforce that we are passing variable rather than string key

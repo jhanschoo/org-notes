@@ -1,0 +1,136 @@
+* General
+** General information
+*** File structure
+    - jdk1.8.0
+      Copyright, license, README, src.zip
+      - bin
+        - java*
+        - javac*
+        - javap*
+        - javah*
+        - javadoc*
+      - lib
+        Files used by development tools
+        - tools.jar
+        - dt.jar
+      - jre
+        - bin
+          executable files for tools and libraries used by Java platform
+          - java*
+        - lib
+          libraries, settings, resources used by JRE
+          - applet
+            jars for support classes for applets
+          - ext
+            Java platform extensions
+            - jfxrt.jar
+            - localdata.jar
+          - fonts
+          - security
+            java.policy, java.security files
+          - sparc
+            so files for solaris
+            - server
+            - client
+          - rt.jar
+          - charsets.jar
+      - db
+        Java DB
+      - include
+        C-language header files for native-code programming; c.f. JPDA
+      - man
+        man pages
+* Standard JDK tools and utilities
+** basic tools
+   - appletviewer
+     - run and debug applets
+   - extcheck
+     - detect jar conflicts
+   - jar
+     - JAR utility
+   - java
+     - java app launcher
+   - javac
+     - java compiler
+   - javadoc
+     - javadoc tool
+   - javah
+     - C header and stub generator; used to write native methods
+   - javap
+     - class file disassembler
+   - jdb
+     - java debugger
+   - jdeps
+     - class dependency analyzer
+** security tools
+   - keytool
+     - manage keystores and certificates
+   - jarsigner
+     - generate and verify JAR signatures
+   - policytool
+     - GUI tools for managing policy files
+   - Kerberos tools
+     - kinit
+       - TODO
+     - klist
+       - TODO
+     - ktab
+       - TODO
+** internationalization tools
+   - native2ascii
+     - convert text to Unicode Latin-1
+** Remote method invocation (RMI) tools
+   Tools to create applications that interact ocer the Web
+   - rmic
+   - rmiregistry
+   - rmid
+   - serialver
+** Java IDL and RMI-IIOP tools
+   Tools for applications that use ONG-standard IDL and CORBA/IIOP
+   - tnameserc
+   - idlj
+   - orbd
+   - servertool
+** Java deployment tools
+   Toold for deployment of java applications and applets on the web
+   - javapackager
+     - packaging, signing Java and JavaFX applications
+   - pack200
+     - compress a JAR file
+   - unpack200
+     - decompress a JAR file
+** Java web start tools
+   Use with Java Web Start
+   - javaws
+** Java troubleshooting, profiling, monitoring and management tools
+   - jcmd
+     - send diagnostic commands to a JVM
+   - jconsole
+     - JMX-compliant graphical tool for monitoring a JVM (local or remote)
+   - jmc
+     - Java Mission Control
+   - jvisualvm
+     - graphical tool for JVM
+** Java web services tools
+   - schemagen
+     - generate schema for Java Architecture for XML binding
+   - wsgen
+     - generate JAX-WS portable artifacts
+   - wsimport
+     - generate JAX-WS protable artifacts
+   - xjc
+     - binding compiler for Java Architecture for XML binding
+* Experimental JDK tools and utilities
+** Monitoring tools
+   - jps
+   - jstat
+   - jstatd
+** Troubleshooting tools
+   -jinfo
+   - jhat
+   - jmap
+   - jsadebugd
+   - jstack
+** Scripting toos
+   - jjs
+   - jrunscript

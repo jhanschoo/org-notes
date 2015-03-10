@@ -1,0 +1,192 @@
+** Preface
+   - complex systems research
+   - Santa Fe Institute
+* Part I Introduction
+** 1 Introduction
+   - adaptive social systems :: interactive, thoughtful agents
+   - complex adaptive social system :: understanding local action within the
+        social system may not lead to understanding another part of/entire system
+   - science of complexity :: our goal (perhaps in the sense of Aristotle's
+   categories?)
+
+   stuff
+   - history
+     - the wealth of nations: Smith's "invisible hand"
+     - Arrow/Dereu's formalisms of the invisible hand
+     - over the years, original theoretical notions driving investication are
+       crowded out by an increasing focus on tool adeptness; we have smart but
+       not wise science (complicated, little predictive power)
+   - present social science
+     - static, homogeneous situations comprising of very few smart or
+       very many dumb agents, that do not change much over time
+   - complex systems research has given rise to new computational techniques
+     that enable more models to be explored
+   - tools and ideas complement existing approaches
+** 2 Complexity in social worlds
+*** 2.1 The standing ovation problem
+*** 2.2 What's the best
+**** 2.2.1 Stay cool
+**** 2.2.2 Attack of the killer bees
+**** 2.2.3 Averaging out average behavior
+*** 2.3 A tale of two cities
+**** 2.3.1 Adding complexity
+*** 2.4 New directions
+*** 2.5 Complex social worlds redux
+**** 2.5.1 Questioning complexity
+* Part II Preliminaries
+** 3 Modeling
+*** 3.1 Models as maps
+*** 3.2 A more formal approach to modeling
+*** 3.3 Modeling complex systems
+*** 3.4 Modeling modeling
+** 4 On emergence
+*** 4.1 A theory of emergence
+*** 4.2 Beyond disorganized complexity
+**** 4.2.1 Feedback and organized complexity
+* Part III Computational modeling
+** 5 Computation as theory
+*** 5.1 Theory versus tools
+**** 5.1.1 Physics envy: a pseudo-Freudian analysis
+*** 5.2 Computation and theory
+**** 5.2.1 Computation in theory
+**** 5.2.2 Computation as theory
+*** 5.3 Objections to computation as theory
+**** 5.3.1 Computations build in their results
+**** 5.3.2 Computations lack discipline
+**** 5.3.3 Computational models are only approximations to specific circumstances
+**** 5.3.4 Computational models are brittle
+**** 5.3.5 Computational models are hard to test
+**** 5.3.6 Computational models are hard to understand
+*** 5.4 New directions
+** 6 Why agent-based objects?
+*** 6.1 Flexibility versus precision
+*** 6.2 Process oriented
+*** 6.3 Adaptive agents
+*** 6.4 Inherently dynamic
+*** 6.5 Heterogeneous agents and asymmetry
+*** 6.6 Scalability
+*** 6.7 Repeatable and recoverable
+*** 6.8 Constructive
+*** 6.9 Low cost
+*** 6.10 Economic E.coli (E.coni?)
+* Part IV Models of complex adaptive social systems
+** 7 A basic framework
+*** 7.1 The eightfold way
+**** 7.1.1 Right view
+**** 7.1.2 Right intention
+**** 7.1.3 Right speech
+**** 7.1.4 Right action
+**** 7.1.5 Right livelihood
+**** 7.1.6 Right effort
+**** 7.1.7 Right mindfulness
+**** 7.1.8 Right concentration
+*** 7.2 Smoke and mirrors: the forest fire model
+**** 7.2.1 A simple model of forest fires
+**** 7.2.2 Fixed, homogeneous rules
+**** 7.2.3 Homogeneous adaption
+**** 7.2.4 Heterogeneous adaptation
+**** 7.2.5 Adding more intelligence: internal models
+**** 7.2.6 Omniscient closure
+**** 7.2.7 Banks
+*** 7.3 Eight folding into one
+*** 7.4 Conclusion
+** 8 Complex adaptive social systems in one dimension
+** 9 Social dynamics
+** 10 Evolving automata
+** 11 Some fundamentals of organizational decision making
+* Part V Conclusions
+** 12 Social science in between
+*** 12.1 Some contributions
+*** 12.2 The interest in between
+**** 12.2.1 In between simple and strategic behavior
+**** 12.2.2 In between pairs and infinities of agents
+**** 12.2.3 In between equilibrium and chaos
+**** 12.2.4 In between richness and rigor
+**** 12.2.5 In between anarchy and control
+*** 12.3 Here be dragons
+** Epilogue
+* Appendixes
+** A An open agenda for complex adaptive social systems
+*** A.1 Whither complexity
+*** A.2 What does it take for a system to exhibit complex behavior?
+*** A.3 Is there an objective basis for recognizing emergence and complexity?
+    (Pre-reading thoughts of Johannes: patterns are the modulation of
+    physical dimensions; these patterns themselves can be quantized/mapped
+    as dimensions themselves; different modulations can be performed on the
+    same physical dimension to give rise to separate patterns and separate
+    pattern-dimensions; each of which
+    are dimensions of themselves; agents naturally exist on/are defined by
+    a substrate of multiple dimensions; some of which matter much to the
+    internal function of the agent, some of which are not.
+    Emergence is when the ordering of agents themselves form a pattern.
+*** A.4 Is there a mathematics of complex adaptive social systems?
+
+*** A.5 What mechanisms exist for tuning the performance of complex systems?
+
+*** A.6 Do productive complex systems have unusual properties?
+
+*** A.7 Do social systems become more complex over time?
+
+*** A.8 What makes a system robust?
+
+*** A.10 When does coevolution work?
+
+*** A.11 When does updating matter?
+
+*** A.12 When does heterogenity matter?
+
+*** A.13 How sophisticated must agents be before they are interesting?
+
+*** A.14 What are the equivalence classes of adaptive behavior?
+
+*** A.15 When does adaption lead to optimization and equilibrium
+
+*** A.16 How important is communication to complex adaptive social systems?
+
+*** A.17 How do decentralized markets equlibrate?
+
+*** A.18 When do organizations arise?
+
+*** A.19 What are the origins of social life?
+
+** B Practices for computational modeling
+
+*** B.1 Keep the model simple
+
+*** B.2 Focus on the science, not the computer
+
+*** B.3 The old computer test
+
+*** B.4 Avoid black boxes
+
+*** B.5 Nest your model
+
+*** B.6 Have turnable dials
+
+*** B.7 Construct flexible frameworks
+
+*** B.8 Create multiple implementation
+
+*** B.9 Check the parameters
+
+*** B.10 Document the code
+
+*** B.11 Know the source of random numbers
+
+*** B.12 Beware of debugging bias
+
+*** B.13 Write good code
+
+*** B.14 Avoid false precision
+
+*** B.15 Distribute your code
+
+*** B.16 Keep a lab notebook
+
+*** B.17 Prove your results
+
+*** B.18 Reward the right things
+
+** Bibliography
+
+** Index

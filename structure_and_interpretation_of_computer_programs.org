@@ -1,0 +1,227 @@
+* 1 Building abstractions with procedures
+** 1.1 The elements of programming
+*** 1.1.1 Expressions
+    - number
+    - (+ z1 ...)
+    - (- z1 z2 ...+)
+    - (* z1 ...)
+    - (/ z1 z2 ...+)
+    - (define <variable> <expression>)
+*** 1.1.2 Naming and the environment
+    - size -> 2
+    - pi -> 3.14159
+    - radius -> 10
+    - circumference -> 62.8318
+*** 1.1.3 Evaluating combinations
+*** 1.1.4 Compound procedures
+    - (square x)
+    - (define (<name> <formal parameters>) <body>)
+    - (sum-of-squares x y)
+    - (f a)
+*** 1.1.5 The substitution model for procedure application
+*** 1.1.6 Conditional expressions and predicates
+    - (abs x)
+    - (cond (<p1> <e1>) (<p2> <e2>) ... (<pn> <en>)) ; else
+    - (if <predicate> <consequent> <alternative>)
+    - (and <e1> ... <en>)
+    - (or <e1> ... <en>)
+    - (not <e>)
+    - (= z1 z2 z3 ...)
+    - (< x1 x2 x3 ...)
+    - (> x1 x2 x3 ...)
+    - (<= x1 x2 x3 ...)
+    - (>= x1 x2 x3 ...)
+
+**** Ex 1.1
+**** Ex 1.2
+**** Ex 1.3
+**** Ex 1.4
+**** Ex 1.5
+*** 1.1.7 Example: square roots by Newton's method
+    - (sqrt x)
+    - (sqrt-iter guess x)
+    - (improve guess x)
+    - (average x y)
+    - (good-enough? guess x)
+**** Ex 1.6
+**** Ex 1.7
+**** Ex 1.8
+*** 1.1.8 Procedures as black-box abstractions
+** 1.2 Procedures and the processes they generate
+*** 1.2.1 Linear recursion and iteration
+    - (factorial n)
+    - (fact-iter product counter max-count)
+**** TODO
+*** 1.2.2 Tree recursion
+    - (fib n)
+    - (fib-iter a b count)
+    - (count-change amount)
+    - (cc amount kinds-of-colors)
+    - (first-denomination kinds of coins)
+**** TODO
+*** 1.2.3 Orders of growth
+**** TODO
+*** 1.2.4 Exponentiation
+    - (expt b n)
+    - (expt-iter b counter product)
+    - (fast-expt b n)
+    - (even? n)
+**** TODO
+*** 1.2.5 Greatest common divisors
+    - (gcd a b)
+*** 1.2.6 Example: testing for primality
+    - (smallest-divisor n)
+    - (find-divisor n test-divisor)
+    - (divides? a b)
+    - (prime? n)
+** 1.3 Formulating abstractions with higher-order procedures
+   - (cube x)
+*** 1.3.1 Procedures as arguments
+    - (sum-integers a b)
+    - (sum-cubes a b)
+    - (pi-sum a b)
+    - (sum term a next b)
+    - (inc n)
+    - (sum-cubes a b) ; defined in terms of sum
+    - (identity x)
+    - (sum-integers) ; defined in terms of sum
+    - (pi-sum a b) ; defined in terms of sum
+    - (integral f a b dx)
+      - (add-dx x)
+**** TODO Ex 1.29
+**** TODO Ex 1.30
+**** TODO Ex 1.31
+**** TODO Ex 1.32
+**** TODO Ex 1.33
+*** 1.3.2 Constructing procedures using lambda
+    - (lambda (<formal-parameters>) <body>)
+    - (pi-sum a b) ; in terms of lambda
+    - (plus4 x)
+    - (let ((<var1> <exp1>) (<var2> <exp2>) ... (<varn> <expn>) <body>) ; alias for ((lambda (<var1> ... <varn>) <body>) <exp1> ... <expn>)
+**** Ex 1.34
+*** 1.3.3 Procedures as general methods
+    - (search f neg-point pos-point) ; search for 0s on f using half-interval method
+    - (half-interval-method f a b)
+    - tolerance
+    - (fixed-point f first-guess)
+      - (close-enough? v1 v2)
+      - (try guess)
+    - (sqrt x) ; in terms of fixed-point
+**** Ex 1.35
+**** Ex 1.36
+**** Ex 1.37
+**** Ex 1.38
+**** Ex 1.39
+*** 1.3.4 Procedures as returned values
+    - (average-damp f)
+    - (sqrt x) ; sqrt in terms of average-damp
+    - (cube-root x)
+    - (deriv g)
+    - dx
+    - (cube x)
+    - (newton-transform g)
+    - (newtons-method g guess)
+    - (fixed-point-of-transform g transform guess)
+
+**** Ex 1.40
+**** TODO
+* 2 Building abstractions with data
+  - (linear-combination a b x y)
+** 2.1 Introduction to data abstraction
+*** 2.1.1 Example: arithmetic operations for rational numbers
+*** 2.1.2 Abstraction barriers
+*** 2.1.3 What is meant by data?
+*** 2.1.4 Extended exercise: interval arithmetic
+** 2.2 Hierarchical data and the closure property
+*** 2.2.1 Representing sequences
+*** 2.2.2 Hierarchical structures
+*** 2.2.3 Sequences as conventional interfaces
+*** 2.2.4 Example: a picture language
+** 2.3 Symbolic data
+*** 2.3.1 Quotation
+*** 2.3.2 Example: symbolic differentiation
+*** 2.3.3 Example: representing sets
+*** 2.3.4 Example: Huffman encoding trees
+** 2.4 Multiple representations for abstract data
+*** 2.4.1 Representations for complex numbers
+*** 2.4.2 Tagged data
+*** 2.4.3 Data-directed programming and additivity
+** 2.5 Systems with generic operations
+*** 2.5.1 Generic arithmetic operations
+*** 2.5.2 Combining data of different types
+*** 2.5.3 Example: symbolic algebra
+* 3 Modularity, objects, and state
+** 3.1 Assignment and local state
+*** 3.1.1 Local state variables
+*** 3.1.2 The benefits of introducing assignment
+*** 3.1.2 The costs of introducing assignment
+** 3.2 The environment model of evaluation
+*** 3.2.1 The rules for evaluation
+*** 3.2.2 Applying simple procedures
+*** 3.2.3 Frames as the repository of local state
+*** 3.2.4 Internal definitions
+** 3.3 Modeling with mutable data
+*** 3.3.1 Mutable list structure
+*** 3.3.2 Representing queues
+*** 3.3.3 Representing tables
+*** 3.3.4 A simulator for digital circuits
+*** 3.3.5 Propagagtion of constraints
+** 3.4 Concurrency: time is of the essence
+*** 3.4.1 The nature of time in concurrent systems
+*** 3.4.2 Mechanisms for controlling concurrency
+** 3.5 Streams
+*** 3.5.1 Streams are delayed lists
+*** 3.5.2 Infinite streams
+*** 3.5.3 Exploiting the stream paradigm
+*** 3.5.4 Streams and delayed evaluation
+*** 3.5.5 Modularity of functional programs and modularity of objects
+* 4 Metalinguistic abstraction
+** 4.1 The metacircular evaluator
+*** 4.1.1 The core of the evaluator
+*** 4.1.2 Representing expressions
+*** 4.1.3 Evaluator data structures
+*** 4.1.4 Running the evaluator as a program
+*** 4.1.5 Data as programs
+*** 4.1.5 Internal definitions
+*** 4.1.6 Separating syntactic analysis from execution
+** 4.2 Variations on a scheme -- lazy evaluation
+*** 4.2.1 Normal order and applicative order
+*** 4.2.2 An interpreter with lazy evaluation
+*** 4.2.5 Streams as lazy lists
+** 4.3 Variations on a scheme -- nondeterministic computing
+*** 4.3.1 Amb ans search
+*** 4.3.2 Examples of nondeterministing programs
+*** 4.3.3 Implementing the Amb evaluator
+** 4.4 Logic programming
+*** 4.4.1 Deductive information retrieval
+*** 4.4.2 How the query system works
+*** 4.4.3 Is logic programming mathematical logic?
+*** 4.4.4 Implementing the query system
+* 5 Computing with register machines
+** 5.1 Designing register machines
+*** 5.1.1 A language for describing register machines
+*** 5.1.2 Abstraction in machine design
+*** 5.1.3 Subroutines
+*** 5.1.4 Using a stack to implement recursion
+*** 5.1.5 Instruction summary
+** 5.2 A register-machine simulator
+*** 5.2.1 The machine model
+*** 5.2.2 The assembler
+*** 5.2.3 Generating execution procedures for instructions
+*** 5.2.4 Monitoring machine performance
+** 5.3 Storage allocation and garbage collection
+*** 5.3.1 Memory as vectors
+*** 5.3.2 Maintaining the illusion of infinite memory
+** 5.4 The explicit-control evaluator
+*** 5.4.1 The core of the explicit-control evaluator
+*** 5.4.2 Sequence evaluation and tail recursion
+*** 5.4.3 Conditionals, assignments, and definitions
+*** 5.4.4 Running the evaluator
+** 5.5 Compilation
+*** 5.5.1 Structure of the compiler
+*** 5.5.2 Compiling expressions
+*** 5.5.2 Compiling combinations
+*** 5.5.4 Combining instruction sequences
+*** 5.5.5 An example of compiled code
+*** 5.5.6 Lexical addressing
+*** 5.5.7 Interfacing compiled code to the evaluator

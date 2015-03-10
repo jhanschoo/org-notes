@@ -1,0 +1,1627 @@
+* Preface
+* I Foundations
+** Introduction
+** 1 The role of algorithms in computing
+*** TODO 1.1 Algorithms
+    - algorithm
+    - input
+    - output
+    - computational problem
+    - sorting problem
+    - instance of a problem
+    - correct
+*** 1.2 Algorithms as a technology
+** 2 Getting started
+*** 2.1 Insertion sort
+    - sorting problem
+    - pseudocode
+    - insertion sort
+
+    #+BEGIN_SRC
+    // A is an array
+    Insertion-Sort(A)
+      for j = 2 to A.length
+      ...
+      i = j - 1
+      while i > 0 and A[i] > key
+        ...
+      ...
+
+    // j increasing maintains the index of the first element beyond the sorted subarray
+    // i traverses down the subarray of elmenets greater than key
+    #+END_SRC
+
+    - loop invariants
+      - initialization
+      - maintenance
+      - termination
+    - pseudocode conventions
+*** 2.2 Analyzing algorithms
+    - analysis
+    - random-access machine
+    - analysis of insertion sort
+    - input size
+    - running time
+    - worst-case running time
+    - probabilistic analysis of average case
+    - randomized algorithm
+    - order of growth
+*** 2.3 Designing algorithms
+    - incremental approach (linear-like, as in insertion sort)
+**** 2.3.1 The divide-and-conquer approach
+     - divide
+     - conquer
+     - combine
+     - merge sort
+
+     #+BEGIN_SRC
+     // A is an array
+     // p, q, r satisfy p <= q < r
+     // We merge sorted subarrays A[p..q] and A[q+1..r]
+     // into a sorted subarray A[p..r]
+     // We copy subarrays into new arrays terminated by sentinel values
+     // next, we merge the copied values back
+     Merge(A, p, q, r)
+     ...
+     let L[1..n1+1] and R[1..n2+1] be new arrays
+     for i = 1 to n1
+       ...
+     for j = 1 to n2
+       ...
+     for k = p to r
+     #+END_SRC
+
+
+     #+BEGIN_SRC
+     // Begin with Merge-sort(A, 1, A.length)
+     Merge-Sort(A, p, r)
+     #+END_SRC
+
+**** 2.3.2 Analyzing divide-and-conquer algorithms
+
+     - recurrence relation
+     - TODO
+     - Analysis of merge sort
+** 3 Growth of functions
+*** 3.1 Asymototic notation
+
+    - Asymptotic notation, functions, and running times
+    - TODO \Theta-notation
+    - TODO O-notation
+    - TODO \Omega-notation
+      - Asymptotic lower bound
+    - Asymototic notation in equations and inequalities
+    - o-notation
+    - \omega-notation
+
+*** 3.2 Standard notations and common functions
+
+    - Motonically increasing
+    - Monotonically decreasing
+    - Strictly increasing
+    - Strictly decreasing
+    - floor
+    - ceiling
+    - x - 1 < fl(x) <= ceil(X) < x + 1
+    - ceil(n/2) + floor(n/2) = n
+    - ceil(ceil(x/a)/b) = ceil(x/ab)
+    - fl(fl(x/a)/b) = fl(x/ab)
+    - ceil(a/b) <= ((a+(b-1))/b
+    - fl(a/b) >= (a-(b-1))/b
+    - TODO concrete math floor/ceil manipulation
+    - modular arithmetic
+    - remainder
+    - polynomials
+      - polynomially bounded: f(n) = O(n^k)
+    - exponentials
+    - logarithms
+    - polylogarithmically bound: f(n) = O(lg^k n)
+    - factorials
+    - Stirling's approximation
+      - n! = sqrt(2*pi*n)*(n/e)^n*(1+Theta(1/n))
+      - TODO
+    - functional iteration
+    - iterated logarithm
+    - Fibonacci numbers
+    - F_0 = 0
+      - TODO
+
+** 4 Divide-and-Conquer
+   - Divide
+   - Conquer
+   - Combine
+   - recursive case
+   - base case
+   - recurrence
+   - substitution method
+     - mathematical induction on a guessed bound
+   - recursion-tree method
+     - Bound summations on the recursion tree
+   - master method
+     - Master method provides bounds
+   - Technicalities in recurrences
+     - floors and ceilings often do not matter, but sometimes they do
+*** 4.1 The maximum-subarray problem
+
+    - find greatest subarray [a, b] such that f(b) - f(a) is at maximum
+    - brute force solution:
+      - find all pairs of a, b ( Theta(n^2) )
+    - a transformation:
+      - consider daily changes in price instead: find greatest subarray sum
+    - recursively divide into subarrays, then merge back together, maintaining
+      invariants
+
+    #+BEGIN_SRC
+    Find-Max-Crossing-Subarray(A, low, mid, high)
+    #+END_SRC
+
+    #+BEGIN_SRC
+    Find-Maximum-Subarray(A, low, high)
+    #+END_SRC
+
+    - Analyzing the divide-and-conquer algorithm
+
+*** 4.2 Strassen's algorithm for matrix multiplicaitons
+
+    #+BEGIN_SRC
+    Square-Matrix0Multiply(A, B)
+    #+END_SRC
+
+    - A simple divide-and-conquer algorithm
+
+    #+BEGIN_SRC
+    Square-Matrix-Multiply-Recursive(A, B)
+    #+END_SRC
+
+*** 4.3 The substitution method for solving recurrences
+
+    - substitution method
+      1. guess the form of the solution
+      2. Use mathematical induction to find the constants and show that the
+         solution works (prove bounds on T(n))
+         - induction might not be possible for small values of n; nevertheless
+           we get to choose n_0 for the base case after which the induction must
+           hold.
+    - Making a good guess
+      - no general method to guess correct solutions to recurrences
+      - intuition, lol
+      - prove upper and lower bounds, then gradually tighten bounds
+    - subtleties
+      - We can get rid of lower order constants by subtracting
+        them in the bound (e.g. use (c(n/2)-d) rather than (c(n/2))
+        (c.f. tower of Hanoi in concrete mathematics)
+    - avoiding pitfalls
+      - We must prove the exact form of the bound in the recursion;
+        and not just hand-wave it as beloning to e.g. O(n)
+    - changing variables
+      - T(n) = 2T(fl(sqrt(n))) + lg n
+      - Let m = lg n, S(m) = T(2^m)
+      - S(m) = 2S(m/2) + m
+
+*** 4.4 The recursion-tree method for solving recurrences
+
+
+
+*** 4.5 The master method for solving recurrences
+
+    - Theorem 4.1 (Master theorem)
+    - Consider T(n) = aT(n/b) + f(n), where a >= 1 and b > 1; and n is defined
+      on nonnegative integerss
+    - Master theorem
+      - f(n) = O(n^{log_b a-\epsilon}) for some \epsilon > 0
+        - T(n) = \Theta(n^{log_b a})
+      - f(n) = \Theta(n^(log_b a))
+        - T(n) = \Theta(n^{log_b a} lg n)
+      - f(n) = \Omega(n^{log_b a + \epsilon}) for some
+        \epsilon > 0, a f(n/b) <= c f(n)
+        for some constant c < 1, n sufficiently large
+        - T(n) = \Theta(f(n))
+        - the regularity condition is there to ensure that the problem
+          does not grow
+    - using the master method
+
+*** 4.6 Proof of the master theorem
+    We begin by proving the master theorem for exact powers:
+    - { b^i : = 0, 1, 2, \ldots }
+**** 4.6.1 The proof for exact powers
+
+     We analyze
+     - T(n) = aT(n/b) + f(n), where n is an exact power of b > 1
+
+     - Lemma 4.2
+       We define T(n) with
+       - T(1) = \Theta(1)
+       - T(n) = aT(n/b) + f(n) for n = b^i
+
+       Then
+       - T(n) = \Theta(n^{log_b a} + \sum_{j=0^log_b n-1} a^j f(n/b^j)
+
+       c.f. recursion tree
+
+     - Lemma 4.3
+       We have g defined as
+       - g(n) = \sum_{j=0}^{log_b n-1} a^j f(n/b^j) for a >=1 and b > 1
+
+       g has the following bounds:
+       1. TODO g(n) = O(n^{log_b a)
+       2. TODO g(n) = \Theta(n^{log_b a} lg n)
+       3. TODO g(n) = \Theta(f(n))
+
+     - Lemma 4.4
+
+**** 4.6.2 Floors and ceilings
+
+
+
+
+** 5 Probabilistic analysis and randomized algorithms
+*** 5.1 The hiring problem
+
+    #+BEGIN_SRC
+    Hire-Assistant(n)
+    #+END_SRC
+    - Maximum algorithm
+
+    Iterating through the array, we want to count the number of times
+    the maximum gets updated
+
+    - Worst-case analysis
+      - O(n)
+    - Probabilistic analysis
+    - Average-case running time
+    - Uniform random permutation
+    - Randomized algorithms
+
+    #+BEGIN_SRC
+    Random(a, b) // returns an integer in [a, b]
+    #+END_SRC
+
+    - pseudorandom-number generator
+    - expected running time
+
+*** 5.2 Indicator random variables
+
+    - Indicator random variable
+      - I{A} = [A occurs]
+
+    - Lemma 5.1
+      Given a sample space S and an event A in the sample space S, let
+      X_A = I{A}. Then E[X_A] = Pr{A}
+
+    - Analysis of the hiring problem using indicator random variables
+
+    Candidate i is hired when candidate i is better than (i-1) candidates.
+    Hence Candidate i has 1/i chance of being the best candidate, and being
+    hired.
+
+
+    - E[X] = \sum_{i=1..n} 1/i = ln n
+
+*** 5.3 Randomized algorithms
+    - imposing a distribution in the algorithm
+    - permuting input elements
+    - in randomized algorithms, no particular input elicits its worst-case
+      behavior
+
+    #+BEGIN_SRC
+    Randomized-Hire-Assistant(n)
+    #+END_SRC
+
+    - Lemma 5.3
+      The expected hiring cost of the procedure Randomized-Hire-assistant is
+      O(c_h ln n)
+
+    - Randomly permuting arrays
+
+    #+BEGIN_SRC
+    Permute-By-Sorting(A)
+    ...
+    for i = 1 to n
+      P[i] = Random(1, n^3)
+    #+END_SRC
+
+    - Lemma 5.4
+      Procedure Permute-By-Sorting produces a uniform random permutation of the
+      input, assuming that all priorities are distinct.
+
+    #+BEGIN_SRC
+    Randomize-In-Place(A)
+    n = A.length
+    for i = 1 to n
+      swap A[i] with A[Random(i, n)]
+    #+END_SRC
+
+    - Lemma 5.5
+      Procedure Randomize-In-Place computes a uniform random permutation
+
+
+*** TODO 5.4 Probabilistic analysis and further uses of indicator random variables
+
+**** 5.4.1 The birthday paradox
+
+     - An analysis using indicator random variables
+
+**** 5.4.2 Balls and bins
+
+**** 5.4.3 Streaks
+
+**** 5.4.4 The on-line hiring problem
+
+* II sorting and order statistics
+** Introduction
+   - sorting problem
+   - structure of the data
+     - record
+       - key: value to be sorted
+       - satellite data: carried around with key/pointed to by key
+   - why sorting?
+   - sorting algorithms
+     - insertion sort
+     - merge sort
+     - heapsort
+     - quicksort
+     - counting sort
+     - radix sort
+     - bucket sort
+** 6 Heapsort
+   - O(n lg n)
+   - in-place
+*** 6.1 Heaps
+    - A.length; A[1..A.heapsize] is the heap, where 0 <= A.heap-size <= A.length
+
+    #+BEGIN_SRC
+    Parent(i)
+      return fl(i/2)
+    #+END_SRC
+    #+BEGIN_SRC
+    Left(i)
+      return 2i
+    #+END_SRC
+    #+BEGIN_SRC
+    Right(i)
+      return 2i+1
+    #+END_SRC
+
+    - max-heap property:
+      - A[Parent(i)] >= A[i]
+    - min-heap property
+      - A[Parent(i)] <= A[i]
+*** 6.2 Maintaining the heap property
+
+    #+BEGIN_SRC
+    // Value at A[i] violates the max-heap property
+    // Floats the value at A[i] down until it does not violate the property
+    Max-Heapify(A, i)
+    #+END_SRC
+
+*** 6.3 Building a heap
+
+    #+BEGIN_SRC
+    Build-Max-Heap(A)
+    A.heap-size = A.length
+    for i = fl(A.length/2) downto 1
+      Max-heapify(A, i)
+    #+END_SRC
+
+*** 6.4 The heapsort algorithm
+
+    #+BEGIN_SRC
+    Build-Max-Heap(A)
+    for i = A.length downto 2
+      ...
+    #+END_SRC
+
+*** 6.5 Priority queues
+    - priority queue
+    - max-priority queue
+      - Insert(S, x)
+      - Maximum(S)
+      - Extract-Max(S)
+      - Increase-Key(S, x, k)
+
+
+    #+BEGIN_SRC
+    Heap-Maximum(A)
+      return A[1]
+    #+END_SRC
+
+    #+BEGIN_SRC
+    Heap-Extract-Max(A)
+    #+END_SRC
+
+    #+BEGIN_SRC
+    Heap-Increase-Key(A, i, key)
+    #+END_SRC
+
+    #NAME: Max-Heap-Insert
+    #+BEGIN_SRC
+    Max-Heap-Insert(A, key)
+    #+END_SRC
+
+** 7 Quicksort
+    - Worst-case running time \Theta(n^2)
+    - Expected running time \Theta(n lg n)
+    - In-place
+    - Low constants
+*** 7.1 Description of quicksort
+    - Partition A[p..r] into A[p..q-1], A[q], A[q+1..r]
+
+    #+BEGIN_SRC
+    Quicksort(A, p, r)
+    #+END_SRC
+
+    - Partitioning the array
+
+    #+BEGIN_SRC
+    {artition(A, p, r)
+    #+END_SRC
+
+*** 7.2 Performance of quicksort
+
+    - Worst-case partitioning
+      - T(n) = T(n-1) + T(0) + \Theta(n) - \Theta(n^2)
+    - Best-case partitioning
+      - T(n) = 2T(n/2) + \Theta(n) = \Theta(n lg n)
+    - Balanced partitioning
+      - Splits of constant proportionality yield \Theta(n lg n)
+    - Intuition for the average case
+      - Even if good and bas splits alternate, running time is O(n lg n)
+
+
+*** 7.3 A randomized version of quicksort
+
+    #+BEGIN_SRC
+    Randomized-Partition(A, p, r)
+    #+END_SRC
+    #+BEGIN_SRC
+    Randomized-Quicksort(A, p, r)
+    #+END_SRC
+
+*** 7.4 Analysis of quicksort
+
+**** 7.4.1 Worst-case analysis
+     - Analysis of worst case using substitution
+
+**** 7.4.2 Expected running time
+
+     - Lemma 7.1
+       Let X be the number of comparisons performed in line 4 of Partition over
+       the entire execution of Quicksort on an n-element array. Then the running
+       time of Quicksort is O(n+X)
+
+     - Let the array contain elements z_0 to z_n, with z_i being the ith
+       smallest element
+     - Let Z_{ij} be the set of elements from z_i to z_j
+     - Let X_{ij} = I{z_i is compared to z_j}
+
+     Then
+     - X = \sum_{i=1..n-1} \sum_{j=i+1..n} X_{ij}
+     - E[X] = \sum \sum Pr{z_i is compared to z_j}
+     - Pr{z_i is compared to z_j} = Pr{z_i is first pivot chosed from Z_{ij}} + Pr{z_j is first pivot chosen from Z_{ij}}
+     - = 2 / (j-i+1)
+** 8 Sorting in linear time
+   - comparison sorts
+*** 8.1 Lower bounds for sorting
+    - decision tree model for sorting
+      - Execution of sorting corresponds to tracing a simple path from the root
+        to a leaf
+    - a lower bound for the worst case
+    - Theorem 8.1
+      Any comparison sort algorithm requires \Omega(n lg n) comparisons in the worst case
+
+      - n! permutations need to be represented in the leaves
+      - h encodes for 2^h leaves; hence e have
+      - n! <= l <= 2^h
+      - h >= lg(n!) = \Omega(n lg n)
+    - Corollary 8.2
+      - Heapsort and merge sort are asymptotically optimal comparison sorts
+*** 8.2 Counting sort
+    #+BEGIN_SRC
+    Counting-Sort(A, B, k)
+    let C[0..k be a new array]
+    We count the number of times i appears in A at C[i]
+    TODO
+    #+END_SRC
+*** 8.3 Radix sort
+    - Divide numbers into radices
+
+    #+BEGIN_SRC
+    for i = 1 to d
+      use a stable sort to sort array A on digit i
+    #+END_SRC
+
+    - Lemma 8.3
+      Given n d-digit numbers in which each digit can take on up to k possible
+      values, Radix-Sort correctly sorts these numbers in \Theta(d(n+k)) time if
+      the stable sort it uses takes \Theta(n + k) time.
+
+    When d is constant, and k = O(n), we can make radix sort run in linear time.
+
+    - Lemma 8.4
+      Given n b-bit numbers and any positive integer r <= b, Radix-Sort
+      correctly sorts these numbers in \Theta((b/r)(n+2^r)) time if the stable
+      sort it uses takes \Theta(n+k) time for inputs in the range 0 to k.
+
+      We view each key as having d = ceil(b/r) digits of r bits each.
+
+    If b = O(lg n) and r ~ lg n, then radix sort's running time is \Theta(n)
+
+*** 8.4 Bucket sort
+
+    - Assumes that input is uniformly distributed over [0, 1)
+
+    - Create a new array of buckets. Insert each element in A to corresponding
+      bucket.
+    - Internally sort buckets.
+    - Concatenate buckets together
+
+    \Theta(n) for uniform distribution.
+
+** 9 Medians and order statistics
+
+   - ith order statistic of set of n elements: ith smaller element
+   - minimum: first order statistic
+   - maximum: nth order statistic
+   - lower median: fl((n+1)/2)
+   - upper median: ce((n+1)/2)
+   - median: lower median
+   - selection problem
+     - Input: A set A of n (distinct) numbers and an integer i, with 1 <= i <= n
+     - Output: the ith order statistic in A
+*** 9.1 Minimum and maximum
+
+    #+BEGIN_SRC
+    Minimum(A)
+    #+END_SRC
+
+    - Simultaneous minimum and maximum
+      - Rather than comparing elements against both current max and min;
+        compare pairs against each other, then compare smaller with min and
+        greater with max
+
+*** 9.2 Selection in expected linear time
+
+    #+BEGIN_SRC
+    Randomized-Select(A,p,r,i)
+    #+END_SRC
+    - We partition the subarray on a random pivot q
+      - We find the order statistic of q
+        - We recurse on the left or right of q, depending on the
+          order statistic of q
+
+    Worst case running time \Theta(n^2)
+
+    - Given A[p .. r] the probability that A[p..q] has k elements has
+      expectation 1/A.length
+
+    - We can obtain an upper bound by assuming that given a partition,
+      the element is always on the larger partition.
+    TODO analysis
+
+*** 9.3 Selection in worst-case linear time
+
+    Select algorithm
+    1. Divide n elements into fl(n/5) groups of 5 elements and one group of
+       n mod 5
+    2. Find median of each by insertion-sorting, then picking median
+    3. Use Select recursively to find the median x of medians
+    4. Partition input array around x. Let k be one more than the number of
+       elements on the low side of the partition, so that x is the kth
+       smallest element and there are n - k elements on the high side of the
+       partition.
+    5. If i = k, return x. Otherwise, use Select recursively to find the ith
+       smallest element on the low side/high side.
+
+* III Data structures
+** 10 Elementary data structures
+*** 10.1 Stacks and queues
+*** 10.2 Linked lists
+*** 10.3 Implementing pointers and objects
+*** 10.4 Representing rooted trees
+** 11 Hash tables
+*** 11.1 Direct-address tables
+*** 11.2 Hash tables
+*** 11.3 Hash functions
+*** 11.4 Open addressing
+*** 11.5 Perfect hashing
+** 12 Binary search trees
+*** 12.1 What is a binary search tree?
+*** 12.2 Querying a binary search tree
+*** 12.3 Insertion and deletion
+*** 12.4 Randomly built binary search tree
+** 13 Red-black trees
+*** 13.1 Properties of red-black trees
+*** 13.2 Rotations
+*** 13.3 Insertion
+*** 13.4 Deletion
+** 14 Augmenting data structures
+*** 14.1 Dynamic order statistics
+*** 14.2 How to augment a data structure
+*** 14.3 Interval trees
+* IV Advanced design and analysis techniques
+** Introduction
+** 15 Dynamic programming
+   - for when subproblems overlap (share subsubproblems)
+   - optimization problems
+
+   1. Characterize the structure of an optimal solution.
+   2. Recursively define the value of an optimal solution
+   3. Compute the value of an optimal solution, typically in bottom-up
+   4. Construct an optimal solution from computed information.
+
+*** 15.1 Rod cutting
+
+    - rod-cutting problem
+      - A rod of i inches sells for p_i
+      - Determine max revenue r_n from cutting up rod of length n and selling
+        pieces.
+
+      - r_n = max(p_n, r_1 + r_{n-1}, ..., r_{fl(n/2)} + r_{ce(n/2)}
+    - optimal substructure: optimal solutions to a problem incorporate optimal
+      solutions to related subproblems, which can be independently solved
+    - recursive top-down implementation
+      - naive implementation considers all 2^{n-1} ways of cutting up a rod
+    - Using dynamic programming for optimal rod cutting
+      - dynamic programming: time-memory trade-off
+      - top-down with memoization
+        - the recursive process has been memoized
+          - (may not have to recurse to all possible subproblems)
+        - Memoized-Cut-Rod(p, n)
+        - Memoized-Cut-Rod-Aux(p, n, r)
+      - bottom-up method
+        - better constant factors; less procedure call overhead
+        - Bottom-Up-Cut-Rod(p, n)
+    - Subproblem graphs
+      - (dependencies)
+
+    - Reconstructing a solution
+      - TODO
+
+*** 15.2 Matrix-chain multiplication
+
+    - fully parenthesized: all multiplication pairs are parenthesized to denote
+      order of operations.
+    - compatible matrices: but want to minimize dimensions in multiplication
+    - matrix-chain multiplication problem: given a chain of n matrices,
+      fully parenthesize A_1...A_n in a way that minimizes the number of scalar
+      multiplications.
+    - Counting the number of parenthesizations
+      - TODO
+    - Applying dynamic programming
+      - TODO
+    - Step 1: The structure of an optimal parenthesization
+      - TODO
+    - Step 2: A recursive solution
+      - TODO
+    - Step 3: Computing the optimal costs
+      - TODO
+    - Step 4: Constructing an optimal solution
+      - TODO
+
+*** 15.3 Elements of dynamic programming
+
+    - Optimal substructure
+      - TODO
+    - Subtleties
+      - TODO
+    - Overlapping subproblems
+    - Reconstructing an optimal solution
+    - Memoization
+*** 15.4 Longest common subsequence
+    - TODO
+    - Step 1: Characterizing a longest common subsequence
+      - TODO
+    - Theorem 15.1 (Optimal substructure of an LCS)
+      - TODO
+    - Step 2: A recursive solution
+      - TODO
+    - Step 3: Computing the length of an LCS
+      - TODO
+    - Improving the code
+*** 15.5 Optimal binary search trees
+    - TODO
+    - Step 1: The structure of an optimal binary search tree
+      - TODO
+    - Step 2: A recursive solution
+      - TODO
+    - Step 3: Computing the expected search cost of an optimal binary search tree
+      - TODO
+** 16 Greedy algorithms
+   - Greedy algorithm alwats makes locally optimal solution.
+*** 16.1 An activity-selection problem
+*** 16.2 Elements of the greedy strategy
+*** 16.3 Huffman codes
+*** 16.4 Matroids and greedy methods
+*** 16.5 A task-scheduling problem as a matroid
+** 17 Amortized analysis
+   - amortized analysis
+     - average time required to perform a sequence of data-structure
+       operations over all the operations performed.
+     - average performance of each operation in the worst case
+*** 17.1 Aggregate analysis
+    - aggregate analysis
+    - n operations take worst-case T(n), hence amortized cost T(n)/n
+    - stack operations
+      - Push(S, x)
+      - Pop(S)
+      - Multipop(S, k)
+    - Worst case of a sequence of Push, Pop, Multipop is O(n^2)
+      - But we require O(n) Push for a Multipop(S, n).
+      - We have: n Push, Pop, Multipop is O(n), with averge cost O(n)/n = O(1)
+    - Incrementing a binary counter
+
+    #+BEGIN_SRC
+    Increment(A)
+    #+END_SRC
+
+    Increment takes \Theta(k) in the worst case.
+    But a sequence of n Increment operations on an initially zero counter takes
+    O(nk) in the worst case; but for n Increment calls, the kth bit is flipped
+    1/2^{k-1} times. There are a total of only 2n flips. Hence n Increment
+    calls take O(n), and the amortized cost is O(n)/n = O(1)
+
+*** 17.2 The accounting method
+    - accounting method
+      - different charges to different operations
+      - amortized cost
+      - We assign difference to specific objects in the data structure as credit
+    - stack operations
+    - incrementing a binary countser
+      - we credit 2 operations to set the bit to 1 (which requires 1 operation)
+      - that leaves us 1 operation credit to set that bit back to 0
+*** 17.3 The potential method
+    - potential method
+      - represent prepaid work as "potential energy" that can be released to
+        pay for future operations
+    - potential function
+      - maps each data structure D_i to a real number that is the potential
+        associated with data structure D_i. Amortized cost hat(c_i) is
+        defined by hat(c_i) = c_i + \Phi(D_i) - \Phi(D_{i-1})
+*** 17.4 Dynamic tables
+
+    - Dynamic table
+      - Table-Insert
+      - Table-Delete
+    - slot (in dynamic table)
+    - load factor \alpha (T)
+
+**** 17.4.1 Table expansion
+
+     - heuristic: double
+       - load factor at least half
+       - elementary insertion
+       - expansion
+     - accounting method
+       - inserting accounts for inserting itself,
+         for moving itself once when the table expands,
+         for moving another item that has already been move when the
+         table expands (let an insertion i be an insertion after n
+         expansions. After 2^n insertions inclusive of i, 2^(n+1)
+         items have to be moved. The 2^n newly inserted elements account
+         for their insertion, for moving themselves, and for moving
+         an element present before the nth expansion.
+     - potential method
+       - \Phi(T) = 2 * T.num - T.size (potential is 0 after expansion)
+
+
+**** TODO 17.4.2 Table expansion and deletion
+
+     - contraction
+     - contract if load factor < 1/4
+     - The potential increases for every deletion made when the load factor
+       drops below 1/2
+     - TODO: statement of potential function, analysis
+
+* V Advanced data structures
+** 18 B-Trees
+*** 18.1 Definition of B-trees
+*** 18.2 Basic operations on B-trees
+*** 18.3 Deleting a key from a B-tree
+** 19 Fibonacci heaps
+*** 19.1 Structure of Fibonacci heaps
+*** 19.2 Mergeable-heap operations
+*** 19.3 Decreasing a key and deleting a node
+*** 19.4 Bounding the maximum degree
+** 20 van Emde Boas trees
+*** 20.1 Preliminary approaches
+*** 20.2 A recursive structure
+*** 20.3 The van Emde Boas tree
+** 21 Data structures for disjoint sets
+*** 21.1 Disjoint-set operations
+*** 21.2 Linked-list representation of disjoint sets
+*** 21.3 Disjoint-set forests
+*** 21.4 Analysis of union by rank with path compression
+* VI Graph algorithms
+** Introduction
+** 22 Elementary graph algorithms
+*** 22.1 Representations of graphs
+*** 22.2 Breadth-first search
+*** 22.3 Depth-first search
+*** 22.4 Topological sort
+*** 22.5 Strongly connected components
+** 23 Minimum spanning trees
+*** 23.1 Growing a minimum spanning tree
+*** 23.2 The algorithms of Kruskal and Prim
+** 24 Single-source shortest paths
+*** 24.1 The Bellman-Ford algorithm
+*** 24.2 Single-source shortest paths in directed acyclic graphs
+*** 24.3 Dijkstra's algorithm
+*** 24.4 Difference constraints and shortest paths
+*** 24.5 Proofs of shortest paths properties
+** 25 All-pairs shortest paths
+*** 25.1 Shortest paths and matrix multiplication
+*** 25.2 The Floyd-Warshall algorithm
+*** 25.3 Johnson's algorithm for sparse graphs
+** 26 Maximum flow
+*** 26.1 Flow networks
+*** 26.2 The Ford-Fulkerson method
+*** 26.3 Maximum bipartite matching
+*** 26.4 Push-relabel algorithms
+*** 26.5 The relabel-to-front algorithm
+* VII Selected topics
+** 27 Multithreaded algorithms
+** 28 Matrix operations
+** 29 Linear programming
+** 30 Polynomials and the FFt
+** 31 Number-theoretic algorithms
+** 32 String matching
+** 33 Computational geometry
+** 34 NP-completeness
+
+   - polynomial-time algorithms
+     - worst case O(n^k) for constant k
+   - NP-complete problems
+     - Shortest vs. longest simple paths
+     - Euler tour vs. hamiltonian cycle
+     - 2-CNF satisfiability vs. 3-CNF satisfiability
+   - P, NP, NPC
+   - P (problems solvable in polynomial time)
+   - NP (problems verifiable in polynomial time
+     - given a certificate, we can verify that the certificate is correct
+       in time polynomial to the input size
+   - P problems are also NP problems
+   - NPC
+   - Overview of showing problems to be NP-complete
+     - Show that no efficient algorithm is likely to exist
+   - Decision problems vs. optimization problems
+     - Decision problems: boolean output
+   - Easy optimization problems have easy decision problems
+   - Hard decision problems have hard optimization problems
+   - Reductions
+     - Consider decision problem in question A.
+     - instance of A: particular input to A
+     - Consider decision problem B which we know how to solve
+     - Reduction algorithm: a transformation of inputs of A to inputs of B
+       - That takes polynomial time
+       - Such that the output of B is identical to the output of A for all
+         instances
+*** 34.1 Polynomial time
+    - Regard P as tractable
+      - Few practical problems require high-degree polynomial;
+        often more efficient algorithms are found
+      - Solvable in polynomial time in one model of computation often solvable
+        in polynomial time in another (serial random-access vs. abstract Turing)
+      - Polynomial-time solvable class has nice closure properties.
+        - (closed under +, *, .)
+    - Abstract problems
+      - Abstract problem Q
+        - Q(I, S)
+        - set of problem instances I
+        - set of problem solutions S
+      - Many problems are optimization problems, that can be recast as a
+        decision problem
+    - Encodings
+      - encoding of S maps e \in S to binary strings
+      - concrete problem: a problem whose instance set is set of binary strings
+      - solves a concrete problem in time O(T(n)): given problem instance i
+        of length n = |i|, can produce solution in O(T(n))
+      - Q is polynomial-time solvable if solvable in O(n^k)
+      - complexity class P: set of concrete decision problems Q that are
+        polynomial-time solvable
+        - unary encoding integer input necessitates O(n); binary encoding
+          integer input necessitates O(lg n).
+      - f : {0, 1}* -> {0, 1}* is polynomial-time computable if exists
+        polynomial-time algorithm A in P that given x produces f(x).
+      - For I, e1 and e2 are polynomially related if exists two polynomial-time
+        computable functions such that f12(e1(i)) = e2(i) and f21(e2(i)) = e1(i)
+        - That is, we can compute e2(i) from e1(i) in polynomial time and
+          vice versa
+    - Lemma 34.1
+      Let Q be an abstract decision problem on an instance set I, and let e1
+      and e2 be polynomially related encodings on I. Then e1(Q) in P iff e2(Q)
+      in P
+    - A formal-language framework
+      - alphabet \Sigma
+      - language L over \Sigma: strings made up of symbols from \Sigma
+      - empty string: \epsilon
+      - empty language: \null
+      - union
+      - intersection
+      - complementation
+      - concatenation
+        - L_{1}L_{2} = {x_1 x_2 : x_1 \in L_1 and x_2 \in L_2 }
+      - closure of L: L* = \Cup_{k=0}^{\nifty} L^{k}
+        - L^0 = {\epsilon}
+        - L^k = LL...L (k times)
+      - I = {0, 1}*
+      - We can characterize Q by the set of strings that elicit a yes answer
+      - L = { x \in \Sigma * : Q(x) = 1 }
+      - algorithm A accepts a string x if A(x) = 1
+      - language accepted by A
+      - A rejects a string x if A(x) = 0
+      - instead of accepting or rejecting, A may not terminate
+      - L is decided by A if every binary string in L is accepted by A
+        and L' is rejected by A
+      - L is accepted in polynomial time by A
+      - L is decided in polynomial time by A
+        - Given a length n-string x, A decides if x \in L in polynomial time
+      - complexity class
+        - set of languages
+      - complexity measure
+        - determines membership in a complexity class (e.g. running time)
+      - P = { L \subset {0, 1}* : exists A that decides L in polynomial time }
+
+      - Theorem 34.2
+        P = { L : L is accepted by a polynomial-time algorithm }
+
+        Proof sketch: since languages decided is subset of languages
+        accepted, we only need show that accepted in poly implies decided
+        in poly. Let L be accepted by poly A. We construct poly A' that
+        decides L. A accepts L in at most cn^k steps. A' simulates
+        cn^k steps of A, then inspects the behavior of A. If A has accepted
+        x, A' accepts x. Else, A' rejects x. (A might have rejected/not
+        terminated)
+
+*** 34.2 Polynomial-time verification
+    - Hamiltonian cycles
+    - hamiltonian graph, else nonhamiltonian
+    - Verification algorithms
+      - one input string x
+      - one certificate y
+      - A verifies x if exists y such that A(x, y) = 1
+      - language verified by A
+        - L = { x bitstring : there exists y bitstring such that A(x,y) = 1}
+        - (Note the dependence of A(x,y) on A regardless of L)
+    - complexity class NP
+      - L = {x bitstring : there exists a certificate y with |y| = O(|x|^c)
+        such that A(x, y) = 1}
+      - NP: exists A that verifies language L in polynomial time
+      - L \in P => L \in NP:
+        - Let A be the algorithm that decides L.
+        - Then A(x, {}) = 1
+      - co-NP: L such that L' \in NP (is NP closed under complement?)
+      - Is there some language L in NP\cap co-NP - P?
+*** 34.3 NP-completeness and reducibility
+
+    - L_1 is polynomial-time reducible to L_2: L1 <=_p L_2 if exists
+      polynomial-time computable f such that x \in L_1 iff f(x) \in L_2
+    - reduction function: f
+    - reduction algorithm: F that computes f
+
+    - Lemma 34.3
+      If L_1, L_2 \subst binstring are languages such that L_1 <=_p L_2
+      then L_2 \in P implies L_1 \in P
+
+    - NP-completeness
+
+    L is NP-complete if
+
+    1. L \in NP
+    2. L' <=_p L for every L' \in NP
+
+    - Theorem 34.4
+
+       If any NP-complete problem is polynomial-time solvable, then P = NP;
+       if any NP-complete problem is not polynomial-time solvable, then no
+       NP-complete problem is polynomial-time solvable.
+
+    - Circuit satisfiability
+      - boolean combinational element
+        - circuit element with constant number of boolean inputs and outputs
+          and performs a well-defined function.
+        - logic gates: NOT; AND; OR
+      - boolean combinational circuit
+        - boolean combinational elements connected by wires
+      - fan-out of wire: number of element inputs fed by the wire
+      - circuit input
+      - circuit output
+      - circuits are acyclic
+      - truth assignment
+      - circuit is satisfiable if it has a satisfying assignment
+      - satisfying assignment: truth assignment that causes circuit output to
+        be 1
+      - circuit-satisfiability problem: given a circuit, is it satisfiable?
+      - Checking each permutation is suoerpolynomial
+
+    - CIRCUIT-SAT = { <C> : C is a satisfiable coolean combinational circuit }
+    - Lemma 34.5
+      The circuit-satisfiability problem belongs to the class NP
+
+      (We receive a set of circuit inputs; circuit output should be 1)
+
+    - program counter
+    - configuration: the entire state of the computation
+    - execution of an instruction: mapping of one configuration to another
+
+    - Lemma 34.6
+      The circuit-satisfiability problem is NP-hard
+    - L be any language in NP. Describe polynomial algo F reducing every
+      binary string x to a circuit C = f(x) such that x \in L iff C
+      \in CIRCUIT-SAT
+    - We have an algorithm A that verifies L in poly time. We construct F that
+      uses two-input A to compute reduction function f.
+    - A grows polynomially by the input size, (cert + circuit). Hence O(n^k)
+    - We can represent A as a sequence of configurations.
+    - Combinational circuit M, implementing the computer hardware, maps
+      each config c+i to c_{i+1} starting from c_0. A writes output, then halts.
+    - If the algorithm runs for at most T(n), the output appears as a bit in
+      configuration c_{T(n)}.
+    - F constructs a circuit that computes all configurations produced by a
+      given initial config.
+    - F, when input x, computes n = |x| and constructs a combination circuit
+      C' containing T(n) copies of M. Input is initial configuration,
+      output is c_{T(n)}.
+    - F modifies C' slightly to construct C; input to C' corresponds to A;
+      ignore all output except for that one bit.
+    - We show that F is a correct reduction function.
+    - The reduction algorithm F can construct C from x in polynomial time.
+
+*** 34.4 NP-completeness proofs
+    - Lemma 34.8
+      If L is a language such that L' <=_p L for some L' \in NPC, then L is
+      NP-hard. In addition, if L \in NP then L \in NPC
+    - To prove L is NP-complete:
+      1. Prove L \in NP
+      2. Select known NP-complete language L'
+      3. Describe an algorithm that computes f mapping L' to L
+      4. Prove that f satisfies x \in L' iff f(x) \in L.
+      5. Prove f runs in polynomial time.
+    - Formula satisfiability
+      - we formulate (formula) satisfiability in terms of SAT: SAT is a boolean
+        formula \phi composed of
+        - n boolean variables
+        - m boolean connectives: and/or/not/implication/iff
+        - parentheses
+      - we can easily encode a boolean formula in a length polynomial in n + m
+      - truth assignment for \phi is a set of values for the variables of \phi
+      - satisfying assignment evaluates to 1
+      - satisfiable formula: formula with satisfying assignment
+    - Theorem 34.9
+      Satisfiable of boolean formulas is NP-complete
+
+      1. Prove that SAT \in NP
+      2. Show that CIRCUIT-SAT <=_p SAT
+         - Use induction to express any C as \phi (Problem: non-poly)
+
+         - But we can instead express how each gate operates as a small
+           formula involving the variables of its incident wires.
+    - 3-CNF satisfiability (3-CNF-SAT)
+      - literal (variable/negation of variable)
+      - conjunctive normal form (CNF)
+        - and of clauses; each clause is or of literals
+      - 3-CNF if each clause has 3 distinct literals
+    - Theorem 34.10
+      - Satisfiability of boolean formulas in 3-conjunctive normal form is
+        NP-complete
+      - (We transform \phi into 3-CNF)
+        1. Construct a binary parse tree for \phi with the root as output
+        2. We introduce a varpiable for the output of every internal node
+           in the parse tree.
+        3. We express the tree as a conjunction of clauses; each clause
+           represents a node.
+        4. For each clause, we construct a truth table, then express
+           that truth table as a disjunctive normal form (DNF) of the 0s in thei
+           truth table.
+           We then negate this formula and convert it into a CNF.
+        5. Where a clause has only 2 literals, we include a dummy p; and replace
+           (a or b) with (a or b or p) and (a or b or not p)
+*** 34.5 NP-complete problems
+**** 34.5.1 The clique problem
+     - CLIQUE {<G, k> : G is a graph containing a clique of size k}
+     - clique problem: find a clique of a maximum size in a graph
+     - naive algorithm: list all k-subsets of V; check each: \Omega(k^2 (|V|;k))
+     - Theorem 34.11
+       The clique problem is NP-complete
+
+       1. Prove that CLIQUE \in NP: We can check in polynomial time if each
+          edge in the certificate belongs to E.
+
+       2. Reduce 3-CNF-DAT <=_p CLIQUE:
+          - Consider each clause C_k of a 3-CNF-SAT formula \phi
+
+          - Each clause has 3 literals l_i^r
+
+          - We construct G that satisfies \phi iff G has a clique of size k.
+
+          - We place a triple of vertices into V; we put an edge between
+            v_i^r and v_j^s if
+            - r /= s
+
+            - l_i^r is not the negation of l_j^s
+
+          - This transformation of \phi into G is a reduction. Suppose that
+            \phi has a satisfying assignment. Then each clause C_r contains
+            at least one literal that is assigned 1, corresponding to a vertex.
+            Picking one such literal from each clause yields V'. Then V' is a
+            clique, since for any two vertices both corresponding literals map
+            to one, and hence cannot be complements.
+            On the other hand, if G has a clique V' of size k (number of
+            clauses), V' contains exactly one vertex per triple. We can assign 1
+            to each literal such that v \in V without fear of assigning 1
+            to both that literal and its complement. Hence G with a k-clique
+            satisfies \phi.
+
+          - Now, if we had a polynomial time algorithm that satisfies CLIQUE
+            on general graphs, it would satisfy this restricted graph.
+
+**** 34.5.2 The vertex-cover problem
+
+     - vertex cover: V' \subst V such that if (u, v) \in E, then u \in V' or
+       v \in V'; that is, there is no edge that does not contain at least one
+       vertex in V'
+     - vertex cover problem: find the minimum number of vertices required.
+     - restating as decision problem: does a graph have a vertex cover of size
+       k?
+     - VERTEX-COVER = {<G, k> : graph G has a vertex cove of size k }
+     - Theorem 34.12
+       The vertex-cover problem is NP-complete.
+       - VERTEX-COVER \in NP. Given graph G and integer k; we choose a
+         certificate consisting of k vertices that form the vertex cover V'.
+         The verification algorithm checks for each edge that either end is
+         in V'
+       - VERTEX-COVER \in NP-hard. CLIQUE <=_p VERTEX-COVER.
+         - complement of G = (V,E): G' = (V,E') where E' = {(u,v) : u,v \in V
+           u /= v (u,v) \in E.
+         - reduction algorithm <G, k> of the clique problem. Computes G',
+           outputs to the vertex-cover problem <G', |V| - k>. G has a clique
+           of size k iff G' has a vertex cover of size |V| - k. If G has a
+           clique V', then V - V' is a vertex cover in G'.
+
+**** 34.5.3 The hamiltonian-cycle problem
+
+     - Theorem 34.13
+       The hamiltonian cycle problem is NP-complete
+
+       - HAM-CYCLE \in NP. We obtain as input G and a sequence of length |V|.
+         We can construct a verification algorithm that runs in polynomial time.
+
+       - VERTEX-COVER <=_p HAM-CYCLE. From input to vertex cover <V, E>,
+         construct undirected graph G' = (V', E') that has hamiltonian cycle iff
+         G has a vertex cover of size k.
+         - We use a widget which is a piece of a graph enforcing certain
+           properties. c.f. CLRS:1092, Fig 34.16 for the shape of the widget.
+         - For each edge in E, G' will contain 1 copy of the widget W_{uv}.
+           We connect each widget to other widgets through [u,v,1], [v,u,1],
+           [u,v,6], [v,u,6]. A hamiltonian cycle will have to traverse through
+           a widget in one of three configurations.
+         - we have k selector vertices, whose edges select the k vertices
+           of the cover in G.
+           - For each vertex u \in V, for each edge (u, u^(i)), we add the edge
+             ([u, u^(i), 6], [u, u^(i+1), 1]).Then if we choose a vertex u \in
+             V, in the vertex cover of G, we can construct a path from
+             [u, u^(1), 1] to [u, u^(degree(u)), 6] in G'. If one part of
+             the edge is in the vertex cover, the there is one path in the
+             widget corresponding to the edge that covers all 12 vertices;
+             if instead both parts of the edge is in the vertex cover,
+             there are 2 paths in the widget corresponding th the edge, each
+             path covering 6 vertices.
+
+         - Then we join [u, u^(i), 1] and [u, u^(degree(u))] of each of these
+           paths to each of the selector vertices. Then the size of G' is
+           polynomial in the size of G.
+
+         - Then the transformation from G to G' is a reduction; G has a vertex
+           cover of size k iff G' has a hamiltonian cycle.
+
+         - TODO exposit on vertex cover iff hamiltonian
+
+**** 34.5.4 The travelling-salesman problem
+
+     - salesman must visit n cities. Salesman wishes to make the tour whose
+       total cost is minimum.
+     - Convert to finding tour with cost less than k.
+     - TSP = {<G, c, k> : ... }
+     - Theorem 34.14
+       The traveling-salesman problem is NP-complete
+
+       TSP \in NP. Given an input and a certificate of n vertices; compute
+       total cost.
+
+       HAM-CYCLE <=_p TSP. c(i, j) = 0 if (i, j) \in E, else 1. We solve
+       TSP for <G', c, 0>.
+
+       G has hamiltonian iff G' has tour of cost at most 0.
+
+**** 34.5.5 The subset-sum problem
+
+     - subset-sum problem: given finite set S of positive integers, and integer
+       target t > 0, does there exist a subset S' whose elements sum to t.
+     - SUBSET-SUM = {<S,t> : exists subset S' \subst S such that t = \sum_{s \in S'} s}
+     - Theorem 34.15
+       The subset-sum problem is NP-complete
+
+       SUBSET-SUM \in NP; given certificate S', we sum all elements s \in S'.
+
+       3-CNF-SAT <=_p SUBSET-SUM. Given \phi over n variables x_i and k clauses
+       C_i,
+       reduction algorithm constructs <S, t> such that \phi is satisfiable iff
+       exists subset of S whose sum is exactly i.
+
+       We assume that no clause contains both a variable and its negation; since
+       such a clause is automatically satisfied. Each variable also appears
+       in at least one clause. (We can reduce a general circuit to this
+       restricted circuit in polynomial time).
+
+       The reduction creates 2 numbers in set S for each variable x_i and 2
+       numbers in S for each clause C_j; we create numbers in base 10, each
+       containing n+k digits; each digit corresponds to either 1 variable or
+       1 clause. Least sig digits by clauses, most sig digits by vars.
+
+       Target t has 1 in each digit labeled by a var, 4 in each digit labeled by
+       a clause. For each var, of v_i and v_i' has 1 in digit labeled by their
+       var and 0 in the others. If appears in C_j, then digit labeled by C_j in
+       v_i is 1; if appears as negation in C_j, then digit labeled by C_j in
+       v_i' is 1. All other digits 0.
+
+       For each clause C_j, s_j contains 1 in digit labeled by C_j and s_j'
+       contains 2 in digit labeled by C_j. These are slack variables;
+       (to allow for any number of variables in their clauses to be in the
+       subset)
+
+       We now show that 3-CNF \phi is satisfiable iff exists subset S'.
+
+** 35 Approximation algorithms
+* TODO VIII Appendix: mathematical background
+** Introduction
+** A Summations
+*** A.1 Summation formulas and properties
+    - sigma notation
+    - divergence
+    - convergence
+    - absolutely convergent
+    - linearity
+    - arithmetic series
+
+    - Sum(k=1..n) k = n(n+1) / 2
+    - Sum(k=0..n) k^2 = n(n+1)(2n+1) / 6
+    - Sum(k=0..n) k^3 = n^2(n+1)^2 / 4
+    - Sum(k=0..n) x^k = (x^(n+1) - 1) / (x - 1)
+    - H_n = Sum(k=1..n) 1/k = ln n + O(1)
+
+    - We can integrate / differentiate these identities to get more identities
+    - telescopes (if we can get rid of the summation by algebraic manipulation)
+
+    - lg( Prod(k=1..n) a_k ) = Sum(k=1..n) lg(a_k)
+*** A.2 Bounding summations
+    We might want to bound summations that describe the running times of
+    algorithms
+
+    - Mathematical induction
+
+    - Bounding terms of summation
+
+      we can often bound on the largest term.
+      But we might be able to get a tighter bound with a geometric series, if
+      the terms satisfy: a_n / a_{n-1} <= r < 1
+
+    - Splitting summations
+
+      We can often rewrite an initial constant number of terms as Theta(1)
+
+    - Approximation by integrals (we can take lower and upper bounds of a
+      monotonically increasing/decreasing function)
+
+
+** B Sets, etc.
+*** B.1 Sets
+
+    - empty set
+    - integers
+    - reals
+    - naturals
+    - subset
+    - proper subset
+    - intersection
+    - union
+    - difference
+
+    - universe
+    - complement
+    - disjoint
+    - partition
+    - pairwise disjoint
+    - cardinality
+    - finite
+    - countably infinite
+    - uncountable
+    - n-set (set of n elements)
+    - singleton
+    - k-subset (a subset of k elements)
+    - power set
+    - ordered pair
+    - Cartesian product
+
+*** B.2 Relations
+
+    - binary relation
+    - reflexive
+    - symmetric
+    - transitive
+    - equivalence relation
+    - equivalence class
+    - Theorem B.1 (An equivalence relation is the same as a partition
+    - antisymmetric: a R b and b R a imply a = b
+    - partial order (reflexive, antisymmetric, transitive)
+    - maximal, minimal elements in a partial order
+    - total relation (partial order with totality property (a, b in S implies a
+      R b or b R a)
+    - total preorder (total order, transitive but not necessarily reflexive
+      and antisymmetric)
+
+*** B.3 Functions
+
+    - function
+    - domain
+    - codomain
+    - argument of f
+    - value of f at x
+    - equal
+    - finite sequence (function that maps several integers)
+    - infinite sequence
+    - image of a under f
+    - range of f
+    - surjection
+    - injection
+    - bijection
+    - permutation (bijection that maps a to itself)
+    - inverse of bijection
+
+*** B.4 Graphs
+
+    - directed graph: G = (V, E)
+    - vertex set: V
+    - edge set: set of ordered pairs of vertices E
+    - undirected graph
+    - edge set: unordered pairs of vertices (and so self-loops forbidden)
+    - edge is incident from / leaves vertex
+    - edge is incident to / enters vertex
+    - edge is incident on
+    - v is adjacent to u: exists edge incident on u (u, v)
+    - degree of vertex: edges incident on
+    - in-degree
+    - out-degree
+    - isolated vertex
+    - path: sequence of adjacent vertices
+    - path contains vertices and edges
+    - u' is reachable from u via p
+    - simple path: distinct vertices
+    - subpath: contiguous subsequence
+    - cycle: v0 = vk
+    - simple cycle
+    - acyclic graph
+    - connected undirected graph
+    - connected components: (equivalence classes of is reachable from)
+    - strongly connected directed graph: every 2 vertices are reachable
+      from each other
+    - strongly connected components
+    - isomorphic graphs: defined in terms of a bijection f: V -> V'
+    - subgraph G' = (V', E')
+    - subgraph of G induced by V' is G' = (V', E') (where E' is largest subset
+      of E where all vertices are in V')
+    - directed version of an undirected graph (replace with two directed edges)
+    - undirected version of G (eliminate self-loops, replace each edge with
+      undirected)
+    - neighbor of u ( u adjacent to v or vice versa, and u /= v)
+    - complete graph: undirected graph, every vertices pairwise adjacent
+    - bipartite graph
+    - forest: acyclic, undirected
+    - tree: connected forest
+    - dag
+    - multigraph: undirected graph with possibility of multiple edges and
+      self-loops
+    - hypergraph: undirected graph, but hyperedge instead of edge; hyperedge
+      connects arbitrary subset of vertices
+    - contraction by edge (u, v): "join" u and v together into a new vertex x
+
+*** B.5 Trees
+
+**** B.5.1 Free trees
+
+     - free tree: connected acyclic, undirected
+     - forest
+     - Theorem B.2 (properties of free trees)
+       The following statements are equivalent
+       1. G is a free tree
+       2. Any 2 vertices in G are connected by a unique simple path
+       3. G is connected, but removing any 1 edge will disconnect G
+       4. G is connected, and |E| = |V| - 1
+       5. G is acyclic, and |E| = |V| - 1
+       6. G is acyclic, but the addition of edge will form a cycle in the graph
+
+**** B.5.2 Rooted and ordered trees
+
+     - rooted tree
+     - root (distinguished node)
+     - ancestor
+     - descendant
+     - proper ancestor
+     - proper descendant
+     - subtree rooted at x (tree of descendants of x, with new root at x)
+     - parent
+     - child
+     - siblings
+     - leaf / external node
+     - internal node
+     - degree of node (number of children of node in rooted tree,
+       contrast degree of vertex of graph/free tree)
+     - depth (length of simple path r -> x)
+     - level
+     - height (depth of longest path to a descendant leaf)
+     - ordered tree (exists order in children of each node)
+
+**** B.5.3 Binary and positional trees
+
+     - binary tree
+       - (no nodes) (empty tree) or
+       - root node, with left subtree, and right subtree
+     - full binary tree: all nodes have degree 0 or 2
+     - positional tree: children labeled with integers
+     - ith child absent: no child labeled with integer i
+     - k-ary tree: no child in tree labeled with integers > k
+     - complete k-ary tree: all leaves have same depth, all internal nodes have
+       degree k
+     - leaves of k-ary tree of depth h: k^h
+     - height of complete k-ary tree with n leaves: log_k n
+     - internal nodes of complete k-ary tree of height h: (k^h - 1) / (k - 1)
+
+** C Counting and probability
+
+*** C.1 Counting
+
+    - rule of sum: | A u B | = |A| + |B|
+    - rule of product: |A . B | = |A| . |B|
+
+    - string over finite S: sequence of elements of S
+    - k-string
+    - substring: contiguous subsequence
+    - k-substring
+
+    - permutation: string containing all elements of S
+    - S has |S|! permutations
+    - k-permutation: k-string containing unique elements of S
+    - S has |S|!/(|S|-k)! k-permutations
+      - |S| ways to choose the first element, |S|-1 ways to choose an element
+       from S \ [first element]
+
+    - combination
+    - k-combination: k-subset of S.
+      - each k-combination admits k! k-permutations; the set of k-permutations
+        admitted from each k-combination partition the set of k-permutations of
+        the n-set. Hence S has |S|! / k! (|S|-k)! k-combinations
+
+    - binomial coefficients: (n; k)
+    - (n; k) = (n; n-k)
+    - 2^n = Sum(k=0..n) (n; k)
+      - counting the 2^n binary n-strings by the number of 1s they contain;
+        (n; k)
+        represents the combination of positions in the n-bitstring the k 1s can
+        occupy
+
+    - binomial bounds
+    - (n; k) = (n/k)((n-1)/(k-1) ... (n-k+1/1) >= (n/k)^k, for 1 <= k <= n
+    - (n; k) <= n^k / k! <= (en / k)^k (Stirling's approximation) for 0 <= k <= n
+    - (n; k) <= n^n / k^k (n - k)^n-k for 0 <= k <= n
+    - (n; lam*n) <= n^n / (lam*n)^(lam*n)((1-lam)n)^((1-lam)n) = 2^n(H(lam))
+      for 0 <= lam <= 1
+      where H(lam) = - lam lg lam - (1-lam) lg(1-lam)
+      is the (binary) entropy function
+
+*** C.2 Probability
+
+    - sample space
+    - elementary events
+    - event
+    - certain event
+    - null event
+    - mutually exclusive event
+    - all elementary events are mutually exclusive
+
+    - probability distribution Pr{} on a sample space maps events of S to real
+      numbers
+    - probability axioms
+    - complement event
+    - discrete probability distribution (sample space is countable)
+    - uniform probability distribution
+      - Pr{s} = 1 / |S|
+    - continuous uniform probability distribution
+      - Pr{[c, d]} = (d-c) / (b-a)
+
+    - Pr{A|B} = Pr{A n B}/Pr{B}
+
+    - independent
+    - pairwise independent
+    - mutually independent
+
+    - Bayes's theorem
+    - Pr{A | B} = Pr{A} Pr{B | A} / Pr{B};
+      - Pr{B} = Pr{A}Pr{B | A} + Pr{A'}Pr{B | A'}
+*** C.3 Discrete random variables
+    - Discrete random variables
+      - X: S -> R
+    - probability density function
+    - joint probability density function
+    - independent RVs
+      - all x, y; X = x and Y = y are independent
+    - expectation
+    - Jensen's inequality
+      - f is convex: E[f(X)] > f(E[X])
+    - variance: Var[X] = E[X^2] - E^2[X]
+    - Var[aX] = a^2 Var[X]
+    - Var[X + Y] = Var[X] + Var[Y] for independent X and Y.
+*** C.4 The geometric and binomial distributions
+    - Geometric distribution
+      - Pr{X=k} = q^(k-1)p; k >= 1
+    - Binomial distribution
+      - b(k; n, p) = (n; k) p^k (1-p)^(n-k)
+      - Pr{X = k} = (n; k) p^k (1-p)^(n-k)
+      - b(k; n, p) <= (np/k)^k (nq/(n-k))^(n-k)
+*** TODO C.5 The tails of the binomial distribution
+** TODO D Matrices
+*** TODO D.1 Matrices and matrix operations
+    - matrix: A = (a_{ij})
+    - transpose
+    - vector
+    - n-vector
+    - column vector
+    - row vector
+    - unit vector
+    - zero matrix
+    - square matrix
+    - diagonal matrix
+    - identity matrix
+    - tridiagonal matrix
+    - upper-triangular matrix
+    - unit upper-triangular matrix
+    - lower-triangular
+    - unit lower-triangular
+    - permutation
+    - symmetric matrix
+    - matrix addition
+    - matrix subtraction
+    - scalar multiple
+    - negative
+    - matrix multiplication
+    - compatible matrices
+    - inner product
+    - outer product
+    - euclidean norm
+
+*** D.2 Basic matrix properties
+
+    - inverse
+    - noninvertible/singular
+    - invertible/nonsingular
+    - linearly dependent vectors
+    - linearly independent vectors
+    - column rank: size of largest set of linearly independent columns of A
+    - row rank
+    - equvalence of column rank and row rank: rank
+    - full rank
+    - m * n matrix has full column rank if rank is n
+    - Theorem D.1
+      - square matrix has full rank iff nonsingular
+    - null vector for matrix A: Ax = 0, but x /= 0
+    - Theorem D.2: A has full column rank iff no column vector
+    - Corollary D.3: square matrix A is singular iff it has a null vector
+    - ijth minor of a n*n matrix A is A_[ij]
+    - determinant of n*n matrix, recursively defined
+    - (-1)^(i+j) / det(A_[ij]) is the cofactor of the element a_{ij}
+    - Theorem D.4
+      determinant of a square matrix has
+      - TODO
+    - Theorem D.5
+      - n*n matrix A is singular iff det(A) = 0
+    - Positive-definite matrices
+      - x'Ax > 0 for all nonnull n-vectors x
+    - Theorem D.6
+      - For A with full column rank, A'A is positive definite

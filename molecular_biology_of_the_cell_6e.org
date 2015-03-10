@@ -1,0 +1,55 @@
+* TODO Part I Introduction to the cell
+** TODO Chapter 1 Cells and Genomes
+
+   - cell biology :: study of the structure, function and behavior of cells
+
+   Two themes in biology
+   - Diversity in individual particulars, regularity in fundamental mechanisms
+
+*** TODO The universal features of cells on earth
+
+    All cells have the following properties
+    - hereditary info contained in DNA
+      - Polymers of ACTG.
+    - perform DNA replication to replicate hereditary info
+      - polymerization :: creating a new polymer (in this case DNA, RNA)
+      - nucleotide :: the monomer of DNA
+    - transcribe genes in DNA into RNA
+      - gene expression :: transcribing the gene into rna
+      - RNA :: has U in place of T, are disposable
+        - mRNA :: molecules that guide the synthesis of proteins; encodes codons
+        - might have distinctive chemical structure
+    - use proteins as catalysts
+      - amino acids :: monomers of proteins
+      - polypeptide :: polymers of amino acids
+      - enzyme :: protein acting in the capacity of a catalyst
+    - RNA translation is the same in all life
+      - codon :: sequence of 3 nucleotides that encode an amino acid
+      - tRNA :: anticodons, that are base-paired with mRNA
+      - ribosome :: the machine that translates RNA to protein
+    - Genes encode DNA
+      - gene :: DNA segments that are eventually expressed into proteins
+      - regulatory DNA :: DNA segments onto which proteins are bound,
+                          thereby controlling transcription
+      - genome :: an organism's inventory of genes
+    - require free energy
+    - are biochemical factories dealing with the same basic molecular building
+      blocks
+    - enclose in a plasma membrane
+      - consists of amphiphilic phospholipid molecules
+      - membrane transport proteins :: proteins embedded in the membrane that
+           allow partial transport of chemicals
+    - exist cells living with fewer than 500 genes
+      - Mycoplasma genitalium
+
+*** TODO The diversity of genomes and the tree of life
+    - organotrophic :: feed on other living things
+    - phototrophic :: feed on sunlight
+    - lithotrophic :: feed on energy-rich inorganic chemicals
+*** TODO Genetic information in eukaryotes
+** TODO Chapter 2 Cell Chemistry and Bioenergetics
+** TODO Chapter 3 Proteins
+* TODO Part II Basic genetic mechanisms
+* TODO Part III Ways of working with cells
+* TODO Part IV Internal organization of the cell
+* TODO Part V Cells in their social context
