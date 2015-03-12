@@ -1,0 +1,109 @@
+* Foreword
+* Preface
+* Acknowledgments
+* 1 Introduction
+* 2 Creating and destroying objects
+** 1 Consider static factory methods instead of constructors
+   - TODO when?
+** 2 Consider a builder when faced with many constructor parameters
+   - TODO what is a builder pattern?
+** 3 Enforce the singleton property with a private constructor or an enum type
+   - TODO how to implement as an enum type?
+** 4 Enforce noninstantiability with a private constructor
+   - What is noninstantiability; when do I use it?
+** 5 Avoid creating unnecessary objects
+   - TODO how do I accidentally create unnecessary objects?
+** 6 Eliminate obsolete object references
+   - TODO when do object references become obsolete?
+** 7 Avoid finalizers
+   - When do I use finalizers?
+* 3 Methods common to all objects
+** 8 Obey the general contract when overriding equals
+** 9 Always override hashCode when you override equals
+** 10 Always override toString
+** 11 Override clone judiciously
+** 12 Consider implementing Comparable
+* 4 Classes and interfaces
+** 13 Minimize the accessibility of classes and members
+   - TODO does this refer to making classes private?
+** 14 In public classes, use accessor methods, not public fields
+** 15 Minimize mutability
+** 16 Favor composition over inheritance
+** 17 Design and document for inheritance or else prohibit it
+   - TODO How do I prohibit it?
+** 18 Prefer interfaces to abstract classes
+** 19 Use interfaces only to define types
+** 20 Prefer class hierarchies to tagged classes
+** 21 Use function objects to represent strategies
+** 22 Favor static member classes over nonstatic
+* 5 Generics
+** 23 Don't use raw types in new code
+** 24 Eliminate unchecked warnings
+** 25 Prefer lists to arrays
+** 26 Favor generic types
+** 27 Favor generic methods
+** 28 Use bounded wildcards to increase API flexibility
+   - TODO How do I enforce that subclass's semantics reflext superclass semantics
+** 29 Consider typesafe heterogeneous containers
+* 6 Enums and annotations
+** 30 Use enums instead of int constants
+** 31 Use instance fields instead of ordinals
+   - TODO What are instance fields?
+** 32 Use EnumSet instead of bit fields
+   - TODO What is EnumSet?
+** 33 Use EnumMap instead of ordinal indexing
+   - TODO What is EnumMap?
+** 34 Emulate extensible enums with interfaces
+** 35 Prefer annotations to naming patterns
+** 37 Consistently use the Override annotation
+** 37 Use marker interfaces to define types
+* 7 Methods
+** 38 Check parameters for validity
+** 39 Make defensive copies when needed
+** 40 Design method signatures carefully
+** 41 Use overloading judiciously
+** 42 Use varargs judiciously
+   - TODO What are cases where I would use varargs when I should use something else?
+** 43 Return empty arrays or collections, not nulls
+** 44 Write doc comments for all exposed API elements
+* 8 General programming
+** 45 Minimize the scope of local variables
+** 46 Prefer for-each loops to traditional for loops
+** 47 Know and use the libraries
+** 48 Avoid float and double if exact answers are required
+** 49 Prefer primitive types to boxed primitives
+** 50 Avoid strings where other types are more appropriate
+** 51 Beware the performance of string concatenation
+** 52 Refer to objects by their interfaces
+** 53 Prefer interfaces to reflection
+** 54 Use native methods judiciously
+** 55 Optimize judiciously
+** 56 Adhere to generally accepted naming conventions
+* 9 Exceptions
+** 57 Use exceptions only for exceptional conditions
+** 58 Use checked exceptions for recoverable conditions and runtime exceptions for programming errors
+** 59 Avoid unnecessary use of checked exceptions
+** 60 Favor the use of standard exceptions
+** 61 Throw exceptions appropriate to the abstraction
+** 62 Document all exceptions thrown by each method
+** 63 Include failure-capture information in detail messages
+** 64 Strive for failure atomicity
+** 65 Don't ignore exceptions
+* 10 Concurrency
+** 66 Synchronize access to shared mutable
+** 67 Avoid excessive synchronization
+** 68 Prefer executors and tasks to threads
+** 69 Prefer concurrenct utilities to wait and notify
+** 70 Document thread safety
+** 71 Use lazy initialization judiciously
+** 72 Don't depend on the thread scheduler
+** 73 Avoid thread groups
+* 11 Serialization
+** 74 Implement Serializable judiciously
+** 75 Consider using a custom serialized form
+** 76 Write readObject methods defensively
+** 77 For instance control, prefer enum types to readResolve
+** 78 Consider serialization proxies instead of serialized instances
+* Appendix: items corresponding to first edition
+* References
+* Index

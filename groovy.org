@@ -1,109 +1,345 @@
-* Comments
-** Single line comment
-   - //
-** Multiline comment
-   - /* */
-** GroovyDoc comment
-   - /** */
-** Shebang line
-   - #!/usr/bin/env groovy
-* Keywords
-* Identifiers
-** Normal identifiers
-** Quoted identifiers
-   - appear after dot property operator; use when property is not valid
-     identifier name
-* Strings
-** Single quoted string
-   - 'asd' // plain java.lang.String
-** String concatenation
-   - +
-** Triple single quoted string
-   - '''asdf'''
-     - java.lang.String
-     - multiline; use String#stripIndent(), String#stripMargin() to
-       trim whitespace from indented multiline; use \ to escape newline
-*** Escaping special characters
-    - \', \\
-*** Unicode escape sequence
-** Double quoted string
-   - "Asf"
-     - java.lang.String or groovy.lang.GString (if interpolation present)
-*** String interpolation
-    - "${name}".toString()
-*** Special case of interpolating closure expressions
-    - "1 + 3 = ${w -> w << 3}"
-    - "value == ${ -> number }"
-      - closure expression (lazy evaluation; imagine as containing an anonymous
-        function)
-*** Interoperability with Java
-    - toString() is transparently called in GString.
+* Syntax
+** Comments
+*** Single line comment
+    - //
+*** Multiline comment
+    - /* */
+*** GroovyDoc comment
+    - /** */
+*** Shebang line
+    - #!/usr/bin/env groovy
+** Keywords
+** Identifiers
+*** Normal identifiers
+*** Quoted identifiers
+    - appear after dot property operator; use when property is not valid
+      identifier name
+** Strings
+*** Single quoted string
+    - 'asd' // plain java.lang.String
+*** String concatenation
+    - +
+*** Triple single quoted string
+    - '''asdf'''
+      - java.lang.String
+      - multiline; use String#stripIndent(), String#stripMargin() to
+        trim whitespace from indented multiline; use \ to escape newline
+**** Escaping special characters
+     - \', \\
+**** Unicode escape sequence
+*** Double quoted string
+    - "Asf"
+      - java.lang.String or groovy.lang.GString (if interpolation present)
+**** String interpolation
+     - "${name}".toString()
+**** Special case of interpolating closure expressions
+     - "1 + 3 = ${w -> w << 3}"
+     - "value == ${ -> number }"
+       - closure expression (lazy evaluation; imagine as containing an anonymous
+         function)
+**** Interoperability with Java
+     - toString() is transparently called in GString.
 
-*** GString and String hashCodes
-    - different hash codes even if syntacally identical; GString not immutable
+**** GString and String hashCodes
+     - different hash codes even if syntacally identical; GString not immutable
 
-*** Triple double quoted string
-    - """multiline double quoted strings"""
+**** Triple double quoted string
+     - """multiline double quoted strings"""
 
-*** Slashy string
-    - \/asdfasdf/
-      - multiline
-*** Dollar slashy string
-    - \$/awfawef/$
-      - dollar escape character
+**** Slashy string
+     - \/asdfasdf/
+       - multiline
+**** Dollar slashy string
+     - \$/awfawef/$
+       - dollar escape character
 
-** 4.9 Characters
-   - char c1 = 'A' // explicit var type
-   - def c2 = ('B' as char) // type coercion
+*** 4.9 Characters
+    - char c1 = 'A' // explicit var type
+    - def c2 = ('B' as char) // type coercion
 
-* Numbers
-** Integral literals
-   - byte, char, short, int, long, BigInteger
-     - use def to adapt to integral type that can fit literal
+** Numbers
+*** Integral literals
+    - byte, char, short, int, long, BigInteger
+      - use def to adapt to integral type that can fit literal
 
-*** Alternative non-base -1 representations
-    - binary
-    - octal
-    - hex
-** Decimal literals
-   - float, double, BigDecimal
-     - require explicit type declaration
+**** Alternative non-base -1 representations
+     - binary
+     - octal
+     - hex
+*** Decimal literals
+    - float, double, BigDecimal
+      - require explicit type declaration
 
-** Underscore in literals
+*** Underscore in literals
 
-** Number type suffixes
+*** Number type suffixes
 
-** Math operations
+*** Math operations
 
-*** The case of the division operator
-    - / produces a double result if either operand is float or double
-    - TODO
+**** The case of the division operator
+     - / produces a double result if either operand is float or double
+     - TODO
 
-*** The case of the power operator
-    - Use **
-    - TODO
+**** The case of the power operator
+     - Use **
+     - TODO
 
-* Booleans
-  - true or false
-    - Groovy truth c.f. Python coercion to boolean
-* Lists
-  - [1,2,3].size() // ArrayList
-  - [1,2,3] as LinkedList
-  - l\[1] // subscript for access
-  - l << 'e' // append to end
-  - l\[-1] // access from end
-  - l\[1, 3] // access custom ordering of elements in list
-  - l\[2..4] // subarray, inclusive
-  - can be heterogeneous
-  - can contain other lists
+** Booleans
+   - true or false
+     - Groovy truth c.f. Python coercion to boolean
+** Lists
+   - [1,2,3].size() // ArrayList
+   - [1,2,3] as LinkedList
+   - l\[1] // subscript for access
+   - l << 'e' // append to end
+   - l\[-1] // access from end
+   - l\[1, 3] // access custom ordering of elements in list
+   - l\[2..4] // subarray, inclusive
+   - can be heterogeneous
+   - can contain other lists
 
-* Arrays
+** Arrays
 
 String[] as = ['A', 'B', 'C'] // explicit variable type
 
-* Maps
-  - colors = [red: 'vasdf']
-  - colors['red']
-  - colors.red
-  - colors = [(red): 'aeraw']
-    - enforce that we are passing variable rather than string key
+** Maps
+   - colors = [red: 'vasdf']
+   - colors['red']
+   - colors.red
+   - colors = [(red): 'aeraw']
+     - enforce that we are passing variable rather than string key
+* Operators
+** Arithmetic operators
+*** Normal arithmetic operators
+    - + - * / % **
+      - use intdiv() for integer division
+*** Unary operators
+    - + -
+    - ++ --
+*** Assignment arithmetic operators
+    - += -= *= /= %=
+** Relational operators
+   - == != < <= > >=
+** Logical operators
+   - && || !
+*** Precedence
+    - ! > && > ||
+*** Short-circuiting
+    - || and && short-circuit
+** Bitwise operators
+   - & | ^ ~
+   - perform on byte or int
+** Conditional operators
+*** Not operator
+    - !
+      - Groovy truth
+*** Ternary operator
+    - a ? b : c
+*** Elvis operator
+    - a ?! b
+      - use to return sensible defaults
+** Object operators
+*** Safe navigation operator
+    - object?.member
+      - returns null if object is null instead of throwing NullPointerException
+*** Direct field access operator
+    - object.@field
+      - force referring to the field instead of its getter
+*** Method pointer operator
+    - a = object.&m
+      - store reference to m in Closure a; we can call a() later
+      - all overloadings of the method is passed
+** Regular expression operators
+*** Pattern operator
+    - ~
+      - ~/foo/, ~"${bar}" // Pattern
+*** Find operator
+    - =~
+      - m = text =~ \/match/ // m instanceof Matcher
+      - if (!m) { ... } // eqiv. to if (!m.find())
+*** Match operator
+    - m = text ==~ \/match/ // boolean, whether text strictly matches match
+** Other operators
+*** Spread operator
+    - cars*.make // [ c.make for c in cars ]
+    - can be used on any Iterable
+**** Spreading method arguments
+     - f(*list) // splat a list into arguments for f
+     - f(*list, 5, 6)
+**** Spread list elements
+     - [1,2,3,*alist,4] // splat Iterable into list
+**** Spread map elements
+     - [a:1, b:2, *:m1 d:8] // splat Map m1 into list, but redefine d:8 after spreading
+*** Range operator
+    - (0..5)  // IntRange, inclusive
+    - (0..<5) // IntRange, exclusive
+    - Range implements List
+    - (0..5).collect() // List
+*** Spaceship operator
+    - a <=> b compareTo
+*** Subscript operator
+    - l\[2] // equiv to methods getAt, putAt
+*** Membership
+    - 'literal' in container //equiv. to calling contains()
+*** Identity operator
+    - reference equality: use obj1.is(obj2)
+    - == is .equals(o)
+*** Coercion operator
+    - a as Type
+      - coercion should be implementd as in the following:
+      - custom conversion rule defined in User.asType(Class target)
+      - coercion generally returns a new object
+*** Diamond operator
+    - syntactic sugar
+*** Call operator
+    - () calls a .call method
+** Operator precedence
+** Operator overloading
+   - a.plus(b)
+   - a.minus(b)
+   - a.multiply(b)
+   - a.div(b)
+   - a.mod(b)
+   - a.power(b)
+   - a.or(b)
+   - a.and(b)
+   - a.xor(b)
+   - a.getAt(b)
+   - a.putAt(b,c)
+   - a.leftShift(b)
+   - a.rightShift(b)
+   - a.next()
+   - a.previous()
+   - a.positive()
+   - a.negative()
+   - a.bitwiseNegative()
+* Program structure
+** Package names
+   - package bar.foo
+** Imports
+    - import bar.foo.Baz
+*** Default imports
+    - default libraries imported
+*** Simple import
+    - import foo.bar.Baz
+*** Star import
+    - import all classes in a package
+      - import bar.foo.*
+*** Static import
+    - import static Class.CONST
+*** Static import aliasing
+    - import static Calendar.getInstance as now
+    - import static Classes and their constants
+    - imported class takes precedence
+*** Static star import
+    - import all static methods
+*** Import aliasing
+    - use as keyword to rename imported class
+      to solve easy problem.
+** Script versus classes
+   - TODO
+** Initializers
+   - TODO
+*** Static initializers
+    - TODO
+*** Instance initializers
+    - TODO
+* Object orientation
+** Types
+*** Primitive types
+*** Class
+    - public fields turned into properties automatically
+    - omitted public/private turned into properties
+    - properties: fields with associated getter and setter
+    - defaults to public
+    - classes do not need to have same name of file
+    - if one or more classes, then script
+**** Normal class
+     - top level, concrete
+**** Inner class
+***** Anonymous inner class
+      - f(new Runnable() { void run() { println "${privateStr}." } })
+**** Abstract class
+     - abstract keyword
+*** Interface
+*** Annotation
+**** Closure annotation parameters
+**** Meta-annotations
+**** Annotation placement
+*** Constructors
+**** Named argument constructor
+*** Methods
+**** Method definition
+**** Named arguments
+**** Default arguments
+**** Varargs
+**** Method selection algorithm
+**** Exception declaration
+*** Fields and properties
+**** Fields
+**** Properties
+*** Inheritance
+*** Generics
+** Traits
+*** Methods
+**** Public methods
+     -trait FlyingAbility { String fly() { "I'm Flying" } }
+**** Abstract methods
+     - abstract methods in trait
+     - abstract ...
+**** Private methods
+*** The meaning of this
+    - this represents the implementing instance
+*** Interafaces
+    - traits can implement interfaces
+*** Properties
+*** Fields
+**** Private fields
+     - private
+**** Public fields
+     - don't use
+*** Composition of behaviors
+    - class implementing traits
+*** Overriding default methods
+    - possivle
+*** Extending traits
+**** Simple inheritance
+    - traits can extend traits
+      - extend keyword
+**** Multiple inheritance
+     - use implements keyword
+*** Duck typing and traits
+**** Dynamic code
+    - traits can call methods that are supposed to exist in implementing classes
+**** Dynamic methods in a trait
+     - methodMissing
+     - propertyMissing
+*** Multiple inheritance conflicts
+**** Default conflict resolution
+     - last declared trait wins
+**** User conflict resolution
+     - A.super.exec() // exec version from trait A
+*** Runtime implementation of traits
+**** Implementing a trait at runtime
+    - new Something() as Extra // Something is a class, Extra is a trait
+**** Implementing multiple traits at once
+     - d = c.withTraits A, B // c is an instance of a class
+*** Chaining behavior
+    - subclassing methods can call super method with SuperName.super.methodname(...)
+**** Semantics of super inside a trait
+     - super first searches for traits, then for superclass
+*** Advanced features
+    - Greeter greeter = { 'Alice;' } // if there exists only 1 abstract method in Greeter
+**** SAM type correction
+**** Differences with Java 8 default methods
+     - trait implements as interface and several helper classes
+*** Differences with mixins
+*** Static methods, properties, and fields
+    - don't define static methods
+*** Inheritance of state gotchas
+*** Self types
+**** Type contraints on traits
+**** The @SelfType annotation
+*** Limitations
+**** Compatibility with AST transformations
+**** Prefix and postfix operations
