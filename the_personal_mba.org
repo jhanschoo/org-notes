@@ -130,3 +130,162 @@
 ** Balance sheet
 ** Financial ratios
 ** Cost-benefit analysis
+** Four methods to increase revenue
+** Pricing power
+** Lifetime value
+** Allowable acquisition cost (AAC)
+** Overhead
+** Costs: fixed and variable
+** Incremental degradation
+** Breakeven
+** Amortization
+** Purchasing power
+** Cash flow cycle
+** Opportunity cost
+** Time value of money
+** Compounding
+** Leverage
+** Hierarchy of funding
+** Bootstraping
+** Return on investment (ROI)
+** Sunk cost
+** Internal controls
+* The human mind
+** Caveman syndrome
+** Performance requirements
+** The onion brain
+** Perceptual control
+** Reference level
+** Conservation of energy
+** Guiding structure
+** Reorganization
+** Conflict
+** Pattern matching
+** Mental stimulation
+** Interpretation and reinterpretation
+** Motivation
+** Inhibition
+** Willpower depletion
+** Loss aversion
+** Threat lockdown
+** Cognitive scope limitation
+** Association
+** Absence blindness
+** Contrast
+** Scarcity
+** Novelty
+* 7 Working with yourself
+** Akrasia
+** Monoidealism
+** Cognitive switching penalty
+** Four methods of completion
+** Most important tasks
+** Goals
+** States of being
+** Habits
+** Priming
+** Decision
+** Five-fold why
+** Five-fold how
+** Next action
+** Externalization
+** Self-elicitation
+** Counterfactual simulation
+** Parkinson's law
+** Doomsday scenario
+** Excessive self-regard tendency
+** Confirmation bias
+** Hindsight bias
+** Performance load
+** Energy cycles
+** Stress and recovery
+** Testing
+** Mystique
+** Hedinic treadmill
+** Comparison fallacy
+** Attachment
+** Personal research and development (R&D)
+** Limiting belief
+* 8 Working with others
+** Power
+** Comparative advantage
+** Communication overhead
+** Importance
+** Safety
+** Golden trifecta
+** Reason why
+** Commander's intent
+** Bystander apathy
+** Planning fallacy
+** Referrals
+** Clanning
+** Convergence and divergence
+** Social signals
+** Social proof
+** Authority
+** Commitment and consistency
+** Incentive-caused bias
+** Modal bias
+** Pygmalion effect
+** Attribution error
+** Option orientation
+** Management
+** Performance-based hiring
+* 9 Understanding systems
+** Gall's law
+** Flow
+** Stock
+** Slack
+** Constraint
+** Feedback loop
+** Autocatalysis
+** Environment
+** Selection test
+** Uncertainty
+** Change
+** Interdependence
+** Counterparty risk
+** Second-order effects
+** Normal accidents
+* 10 Analyzing systems
+** Deconstruction
+** Measurement
+** Key performance indicator
+** Garbage in, garbage out
+** Tolerance
+** Analytical honesty
+** Context
+** Sampling
+** Margin of error
+** Ratio
+** Typicality
+** Correlation and causation
+** Norms
+** Proxy
+** Segmentation
+** Humanization
+* 11 Improving systems
+** Intervention bias
+** Optimization
+** Refactoring
+** The critical few
+** Diminishing returns
+** Friction
+** Automation
+** The paradox of automation
+** The irony of automation
+** Standard operating procedure
+** Checklist
+** Cessation
+** Resilience
+** Fail-safe
+** Stress testing
+** Scenario planning
+** Sustainable growth cycle
+** The middle earth
+** The experimental mind-set
+** Not "the end"
+* ...
+** Acknowledgements
+** Appendix A: how to continue your business studies
+** Appendix B: Forty-nine questions to improve your results
