@@ -329,10 +329,41 @@
 ** Novelty
 * 7 Working with yourself
 ** Akrasia
+   - Knowing that doing something is in our best interest but we don't do it.
+   - Often felt when changing habits we no longer want
+   - Know and combat akrasia: 4 general parts; a task, a desire/want,
+     a "should", and an expectation of resistance. Resistance can come from
+     - Not being able to define the want
+     - Believing the task will bring you closer to something you don't want
+     - Not being able to figure out how to go from where I am right now
+       to where I want to be
+     - End result is so idealized that mind estimates a low probability of
+       achievement
+     - The "should" was external, prompting persuation resistance
+     - Compelling action in current environment promises immediate
+       gratification (hyperbolic discounting)
+     - Benefits of action are abstract and distant (construal level theory)
 ** Monoidealism
+   - Focusing only on one thing: achieving flow; just doing it
+   - Aided by guiding structure
+   - Eliminating inner conflicts
+   - Don't ignore resistance but explore it using mental simulation and
+     reinterpretation to uncover hidden conflicts
 ** Cognitive switching penalty
+   - Friction cost
+   - Try to batch things up
+   - If interrupted in major task, it will slip.
+   - Keeping limit in mind makes it easier to keep stress and recovery in balance
 ** Four methods of completion
+   - Completion
+   - Deletion
+   - Delegation
+   - Deferment
 ** Most important tasks
+   - Critical task that will create most important results: create 2-3 MITs
+     at the beginning of each day
+   - Self-elicitation question
+   - Parkinson's law: artificial deadline
 ** Goals
 ** States of being
 ** Habits
