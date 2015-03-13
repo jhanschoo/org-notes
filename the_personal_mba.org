@@ -123,43 +123,196 @@
 ** Systemization
 * 5 Finance
 ** Profit
+   - In addition to compensating owners, profit provides a cushion to handle
+     uncertainty and change.
 ** Profit margin
+   - Percentage of revenue the ends up as profit
+   - c.f. markup: percentage of cost that you add onto cost for the price
 ** Value capture
+   - Capturing some percentage of value provided in every transaction (as
+     profit or otherwise)
+   - Value capture maximization: capture as much of value as possible
+     - High short term gain, little value to customer
+   - Value capture minimization: capture as little value as possible as long
+     as business is sufficient
+     - Small short term gains, high value to customer, hopefully translates to
+       high loyalty
+** Sufficiency
+   - Point where the business is bringing enough profit that the business
+     owners find it worth sustaining
+** Valuation
+   - Estimate of total worth of a company
+   - Capital raised depends on valuation
+   - Perceived value affects valuation
 ** Cash flow statement
+   - Bank account over time
+   - Three primary areas of cash movement
+     - Operations
+     - Investing
+     - Financing
+   - Cash contributes to the Resiliency of the business
 ** Income statement
+   - Cash is not profit
+   - Cash flow analysis can be misleading if business manages inventory or
+     extends credit to customers
+   - Accrual accounting: revenue recognized when sale is made and expenses
+     associated incurred at same time period
+   - Income statement / Profit and loss statement / operating statement
+     earnings statement
+     - Revenue - Cost of goods sold - expenses - taxes = Net profit
+     - Includes many estimates and assumptions
 ** Balance sheet
+   - Assets - liabilities = Owner's equity
 ** Financial ratios
+   - Financial ratios
+     - Comparison between two important elements of the business
+   - Profitability ratios
+     - Ability to generate profit
+     - profit margin
+       - (revenue - cost) / cost
+     - return on assets
+       - net profit / total assets
+   - Leverage ratios
+     - debt to equity
+       - total liabilities / shareholders' equity
+   - Liquidity ratios
+     - ability of a business to pay its bills
+     - current ratio
+       - current assets / current liabilities
+     - quick ratio
+       - (current assets - inventory) / current liabilities
+     - efficiency ratios
+       - how well a business is managing assets and liabilities
+       - inventory management
+         - too little / too much is bad
+     - lotsa different ratios, which to focus on depends on industry
 ** Cost-benefit analysis
+   - examining potential changes to business to see if benefits outweigh costs
+     - evaluate true cost of an action
+   - important to include nonfinancial costs as well, e.g. enjoyment
+   - Small costs and small benefits accumulate
 ** Four methods to increase revenue
+   1. Increase your customers
+   2. Increase average size of each Transaction
+   3. Increase frequency of transactions per customer
+   4. Raise prices
+   - Qualification: not every customer is a good customer
 ** Pricing power
+   - Ability to raise prices over time (less value captured, greater pricing
+     power)
+     - Related to "price elasticity"
+   - e.g. luxury goods have good pricing power since their prices are
+     expensive social signals
+   - Unless you have accurate norms, you don't know how much pricing power
+     you have
+   - Prices rarely have permanent effects if you aren't very public
+   - Experiment to find what works
+   - Important to overcome inflation and increased costs, resulting in need
+     for more currency to increase business's Sufficiency needs (hopefully
+     your customers have increased purchasing power too)
 ** Lifetime value
+   - Value of a customer over their entire relationship with your company
+   - Subscriptions maximize lifetime value
 ** Allowable acquisition cost (AAC)
+   - Marketing component of lifetime value
+   - Subscription means that it's ok to lose money on first sale
+   - AAC: ((Lifetime value - value stream - overhead) / customer base) * (1 - profit margin)
 ** Overhead
+   - Minimum ongoing resources required for operation
+   - Critical component if capital is fixed (determines burn rate)
 ** Costs: fixed and variable
+   - Fixed costs
+     - Reductions in fixed costs accumulate
+   - Variable costs
+     - Amplified by volume
 ** Incremental degradation
+   - Cost savings accumulate in their degraded quality. Cutting costs that
+     are wasteful is good, but soon runs into diminishing returns
 ** Breakeven
+   - Systems need to be created during ramp-up
 ** Amortization
+   - Amortization: spreading cost of resources over estimated useful life
 ** Purchasing power
+   - Sum total of all liquid assets
 ** Cash flow cycle
+   - How cash flows through a business
+   - Receivables: promises of payment
+   - Debt: promise to pay
+   - Increase purchasing power by taking on debt
+   - More purchasing power means more resilient
 ** Opportunity cost
+   - Value given up by making a decision
+   - Absence blindness
+   - Analyzing opportunity costs too much can lead to diminishing returns
 ** Time value of money
+   - Compounding
+   - Informs decisions in the face of opportunity costs
 ** Compounding
+   - Accumulation of games over time: positive feedback loop
 ** Leverage
+   - Using borrowed money to magnify potential gains
+   - Financial amplification
 ** Hierarchy of funding
+   - Funding: tocket fuel; good when business is pointed in right direction,
+     but if structural issues exist, it's not good
+   - Capital providers look for value and control in return
+   - Hierarchy of funding
+     - Personal cash
+     - Personal credit
+     - Personal loans
+     - Unsecured loans
+     - Secured loans
+     - Bonds
+     - Receivables financing
+     - Angel capital
+     - Venture capital
+     - Public stock offering
 ** Bootstraping
+   - Building a business without funding
+   - Accept funding only to do things you can't do any other way
 ** Return on investment (ROI)
+   - Value created from an investment
+   - Concept can be applied to other universal currencies:
+     - Return on invested time
 ** Sunk cost
+   - Investments that cannot be recovered
 ** Internal controls
+   - Standard operating procedures to collect accurate data, smooth ops
+   - Budgets very important in controlling profit margins, cash flow cycle,
+     leverage
+   - Supervision important if business rely on employees
+   - Compliance necessary when regulated
+   - Theft and fraud prevention: agains trisk of financial loss
 * The human mind
 ** Caveman syndrome
+   - Human psychology not optimized for modern world
 ** Performance requirements
+   - Human body has requirements
+   - Eat high-quality food
+   - Exercise regularly
+   - Get 7-8 hrs sleep; helps pattern matching and mental simulation,
+     reverses willpower depletion
+   - Get sufficient sun
+   - Eat proper raw materials
+   - Supplements with high bioavailability;
+     experiment and use guiding structure to change lifestyle
 ** The onion brain
+   - TODO
 ** Perceptual control
+   - Humans perform social homeostasis
+   - Explains why same incentive results in different responses
 ** Reference level
+   - TODO
 ** Conservation of energy
+   - TODO
 ** Guiding structure
+   - Change environment to save on unreliable willpower
+   - Add friction to options you want to eliminate
 ** Reorganization
 ** Conflict
+   - When two control systems try to change the same perception
+   - We cannot directly change another person's reference levels
+   - TODO interpersonal conflict
 ** Pattern matching
 ** Mental stimulation
 ** Interpretation and reinterpretation
