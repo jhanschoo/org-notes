@@ -1,0 +1,132 @@
+** Key terms
+** A note to the reader
+* Introduction: why read this book?
+** You don't need to know it all
+** No experience necessary
+** Questions, not answers
+** Mental models, not methods
+** My "Personal" MBA
+** A self-directed crash course in business
+** The wheat and the chaff
+** The personal MBA goes global
+** Munger's mental models
+** Connecting the dots
+** For the skeptics
+** Should you go to business school?
+** Three bog problems with business schools
+** Delusions of grandeur
+** Your money AND your life
+** Breaking out the benjamins
+** What an MBA will actually get you
+** Where business schools came from
+** In search of distribution
+** Playing with fire
+** No reason to change
+** The single benefit of business schools
+** I owe, I owe -- it's off to work I go
+** A better way
+** What you'll learn in this book
+** How to use this book
+* 1 Value creation
+** The five parts of every business
+** Economically viable skills
+** The iron law of the market
+** Core human drives
+** Status seeking
+** Ten ways to evaluate a market
+** The hidden benefits of competition
+** The mercenary rule
+** The crusader rule
+** Twelve standard forms of value
+** Form of value #1: product
+** Form of value #2: service
+** Form of value #3: shared resource
+** Form of value #4: subscription
+** Form of value #5: resale
+** Form of value #6: lease
+** Form of value #7: agency
+** Form of value #8: audience aggregation
+** Form of value #9: loan
+** Form of value #10: option
+** Form of value #11: insurance
+** Form of value #12: capital
+** Hassle premium
+** Perceived value
+** Modularity
+** Bundling and unbundling
+** Prototype
+** The iteration cycle
+** Iteration velocity
+** Feedback
+** Alternatives
+** Tradeoffs
+** Economic values
+** Relative importance testing
+** Critical assumptions
+** Shadow testing
+** Minimum viable offer
+** Incremental augmentation
+** Field testing
+* 2 Marketing
+** Attention
+** Receptivity
+** Remarkability
+** Probable purchaser
+** Preoccupation
+** End result
+** Qualification
+** Point of market entry
+** Addressability
+** Desire
+** Visualization
+** Framing
+** Free
+** Permission
+** Hook
+** Call-to-action
+** Narrative
+** Controversy
+** Reputation
+* 3 Sales
+** Transaction
+** Trust
+** Common ground
+** Pricing uncertainty principle
+** Four pricing methods
+** Price transition shock
+** Value-based selling
+** Education-based selling
+** Next best alternative
+** Exclusivity
+** Three universal currencies
+** Three dimensions of negotiation
+** Buffer
+** Persuation resistance
+** Reciprocation
+** Damaging admission
+** Barriers to purchase
+** Risk reversal
+** Reactivation
+* 4 Value delivery
+** Value stream
+** Distribution channel
+** The expectation effect
+** Predictability
+** Throughput
+** Duplication
+** Multiplication
+** Scale
+** Accumulation
+** Amplification
+** Barrier to competition
+** Force multiplier
+** Systemization
+* 5 Finance
+** Profit
+** Profit margin
+** Value capture
+** Cash flow statement
+** Income statement
+** Balance sheet
+** Financial ratios
+** Cost-benefit analysis

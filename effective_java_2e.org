@@ -4,42 +4,296 @@
 * 1 Introduction
 * 2 Creating and destroying objects
 ** 1 Consider static factory methods instead of constructors
-   - TODO when?
+   - Advantages
+     - static factory methods have names
+     - more flexible; need not return new instance
+     - can return subtype instead
+     - reduce verbosity; get rid of duplicate long method signatures
+   - Disadvantages
+     - cannot subclass
+     - don't stand out among other methods
 ** 2 Consider a builder when faced with many constructor parameters
-   - TODO what is a builder pattern?
+   - Don't use telescoping constructor pattern (i.e. constructor with
+     new definition for various combinations of parameters) verbose,
+     hard to write, hard to read, big room for inconsistencies
+   - Don't use JavaBeans pattern, where you init, then set parameters;
+     inconsistent state possible, cannot make class immutable
+   - Builder pattern:
+     - public static class Builder { ... }
+     - Builder implements build()
+       - new NutritionFacts.Builder(240, 8).calories(100).sodium(35)
+         .carbohydrate(27).build()
+       - Simulates optional parameters through method chaining
+   - TODO some other stuff I skipped reading
 ** 3 Enforce the singleton property with a private constructor or an enum type
-   - TODO how to implement as an enum type?
+   - Difficult to test singletons // tough to mock
+   - Traditional approaches
+     - private constructor, exposed as a public static final field
+     - private constructor, private static final field, getInstance() method
+     - But cannot guarantee uniqueness under Serializable; need to declare
+       instance fields transient and provide an readResolve nethod
+   - Enum method
+     - public enum Elvis { INSTANCE; public void method1() { ... } }
 ** 4 Enforce noninstantiability with a private constructor
-   - What is noninstantiability; when do I use it?
+   - Valid uses for class-only/utility classes c.f. java.lang.Math
+   - Abstract classes can be subclassed
+   - But private constructor suppresses
+   - private ClassConstructor() { throw new AssertionError(); } ...
 ** 5 Avoid creating unnecessary objects
-   - TODO how do I accidentally create unnecessary objects?
+   - e.g. new Boolean(String) always creates a new object
+   - Boolean.valueOf(String) does not (returns the constant)
+   - Use a static initializer to initialize class-wide constants rather
+     than initialize them in the constructor
+   - class Person { ... static { init here } }
+   - Prefer primitives to boxed primitives
+   - Don't maintain own object pool unless extremely heavyweight
+     (e.g. db or repo connection)
+   - Exception
+     - Defensive copying
 ** 6 Eliminate obsolete object references
-   - TODO when do object references become obsolete?
+   - classic example: a stack that never goes beyond n elements implemented
+     as an array of > n elements, and the nth element onward maintain references
+     to obsolete objects (they have been "deleted" by decrementing the pointer,
+     e.g. return stack[--size]
+   - Correct: Object o = stack[--size]; stack[size] = null; return o;
+   - Nevertheless, don't null out object references by default
+   - Be alert for leaks if class manages own memory
+   - Remember to remove object references from cache objects
+     - c.f. WeakHaskMap
+   - Listeners and callbacks (when clients register callbacks but don't deregister
+     them)
 ** 7 Avoid finalizers
-   - When do I use finalizers?
+   - No guarantee finalizer will be executed, among other nasty things
+   - Provide an explicit termination method instead, require clients to invoke them
+     - c.f. InputStream.close()
+   - Possible legitimate uses for finalizers
+     - safety net
+     - always log that finalizer was executed (bug in code)
+   - if object has native peers
+     - Java's garbage collector can't reclaim
+     - Nevertheless no guarantee, hence don't use on critical resources; use
+       termination method instead
+   - TODO reread this if I ever want to use finalizers
 * 3 Methods common to all objects
 ** 8 Obey the general contract when overriding equals
+   - Don't override if
+     - Each instance is inherently unique (active entities rather than values)
+     - You don't care if the class provides "logical equality"
+       - Implementing equals can constrain future development
+     - Superclass's overriden equals is appropriate behavior
+     - Class is private or package-private, and you know equals isn't used
+       - Or rather, implement so that it throws AssertionError()
+   - Override if
+     - is a value class and has a notion of logical equality
+   - Must implement
+     - equivalence relation
+     - Must be able to compare against null
+       - if (!(o instanceof MyType)) // checks for class
+   - Do implement
+     - Use == to optimize performance
+     - Use instanceof to check for type // same class (not superclass; if so,
+       implement in superclass instead), maybe instance
+     - Cast argument to correct type
+     - Check each significant field; handle appropriately if null is legal
+       - field == null ? o.field == null : field.equals(o.field)
+       - field == o.field || (field != null && field.equals(o.field))
+     - Start from fields most likely to differ and least expensive to compare
+     - Don't compare e.g. Lock state, redundant fields
+     - override hashCode
+     - don't aggressively search for equivalence
+     - Use equals(Object o) in the signature; don't overload it
+   - Common mistakes
+     - myClass.equals(nativeClass) but ! nativeClass.equals(myClass)
+     - where myClass knows about nativeClass but not vice versa
+     - Where subclass adds a value component that needs to be identical under
+       equals; lose transitivity with parentClass
+     - c.f. Liskov substitution principle
+     - hence use composition instead of subclassing when introducing such
+       subclasses with a value component
+     - Don't write equals that depends on unreliable resources
+   - Note
+     - java.sql.Timestamp extends java.util.Date but equals not transitive
+     - Nevertheless, legal if subclassing from avstract class
 ** 9 Always override hashCode when you override equals
+   - equal objects must have equal hash codes
+   - otherwise, may not be able to search for values inserted into a map
+   - computing hash code
+     - init with a random constant int
+       - for each significant field f,
+       - if boolean: f ? 1 : 0
+       - integral: f
+       - long: (int) (f ^ (f >>> 32))
+       - float: Float.floatToIntBits(f)
+       - double: Double.doubleToLongBits(f)
+       - object: invoke object's hashcode
+       - array: compute for each significant element
+       - result = 31 * result + c
+         - for each field
+   - exclude fields not used in equals
 ** 10 Always override toString
+   - return all interesting information; return summary
+   - clearly document semantic meaning and intention of toString
+   - provide programmatic access to all information contained in toString
+     - don't force users to parse the toString value
 ** 11 Override clone judiciously
+   - Cloneable is a shitty way to advertise; the contract is weak
+   - TODO read
+   - Alternatives
+     - copy constructor
+       - public Food(Food food)
+         - can be overloaded (huge win!)
+     - static factory for copying
+       - public static Food newInstance(Food food)
+         - can be overloaded (huge win!)
 ** 12 Consider implementing Comparable
+   - Do document if x.compareTo(y) == 0 is not the same as x.equals(y)
+     - Note: this class has a natural ordering that is inconsistent with equals
+   - Start with most significant field as major
+   - You might use integer difference trick, but that might overflow
+     you might want to just return -1, 0, 1 instead
 * 4 Classes and interfaces
 ** 13 Minimize the accessibility of classes and members
-   - TODO does this refer to making classes private?
+   - Make each class or member as inaccessible as possible
+   - private
+   - package-private
+     - default access level
+   - protected
+     - package-private, and accessible from subclasses
+   - try to make all non-API methods private
+   - for testing, ok to make private member of public class package-private
+   - instance fields never public
+   - classes with public mutable fields are not thread-safe
+   - wrong to have public static final field be a mutable instance
+   - expose private arrays as immutable lists
+   - expose private arrays as copies
+     - returm PRIVATE_VALUES.clone()
 ** 14 In public classes, use accessor methods, not public fields
+   - classes with no initial purpose other than to group fields
+     should nevertheless implement getters and setters, for when you
+     need to change the implementation
+   - less strict if package-private
+   - exposing immutable fields still questionable
 ** 15 Minimize mutability
+   - immutable
+     - no methods that modify object's state
+     - prevent subclassing
+       - make class final
+       - make constructors private and expose static factory method
+     - make all fields final
+     - make all fields private
+     - make defensive copies to fields that refer to mutable objects
+     - functional approach (create and return new instance)
+   - advantages
+     - simple
+     - thread-safe
+     - freely shareable (no need to make copies)
+       - provide public static final constants (e.g. Complex ZERO, ONE, I)
+     - internals are shareable too! (useful in implementations)
+     - good composability
+   - disadvantage
+     - separate object for distinct value/state; costly if large
 ** 16 Favor composition over inheritance
+   - implementation inheritance SUCKS! (subclassing)
+   - interface inheritance is OK (interface, abstract)
+   - inheritance violates encapsulation
+     - subclass depends on superclass implementation details, leading to fragile
+       code
+   - use composition
+     - use forwarding methods
+     - use a forwarding class, and subclass from it
+     - have a wrapper constructor
+   - disadvantage of wrapper classes
+     - not suited for callback frameworks, since wrapped object doesn't know
+       of its wrapper (SELF problem)
+   - inheritance "is-a" violations
+     - Stack should not extend Vector
+     - Properties (property list) should not extend Hashtable
+   - Johannes: inherit when subclasses do not lend themselves to unique new
+     properties that can be exploited. e.g. CylindricalWaterBottle subclasses
+     WaterBottle
 ** 17 Design and document for inheritance or else prohibit it
-   - TODO How do I prohibit it?
+   - Documentation must document ALL overriden methods, in what sequence
+     - This implementation ... (not taken to mean behavior will be consistent
+       in future versions)
+   - Designing for inheritance: judiciously choose protected methods
+     - Need to test design for inheritance by writing subclasses
+     - Test before release
+   - Constructors must not invoke overridable methods
+     - Risk invoking an overriden method that has weird behavior
+   - If Cloneable or Serializable
+     - neither clone nor readObject may invoke an overridable method
+   - just disfavor inheritance and go with classes marked final
+     - else document heavily classes that are meant to be overridden
 ** 18 Prefer interfaces to abstract classes
+   - existing clases can be easily retrofitted to implement a new interface
+     - cannot mutiply inherit from abstracts
+   - interfaces ideal for mixins
+   - allow for construction of nonhierarchical type frameworks
+     - e.g. SingerSongwriter interface
+   - Combine virtues of interfaces and abstract classes by providing
+     abstract skeletal implementation alongside each nontrivial interface
+     - naming convention: AbstractCollection
+     - skeletal implementation are designed for inheritance
+     - simple implementation: minimal working entry c.f. AbstractMap.SimpleEntry
+     - far easier to evolve abstract classes than interface (add new method
+       and implement new interface)
+     - once an interface is released and widely implemented, almose impossible
+       to change
 ** 19 Use interfaces only to define types
+   - constant interfaces consist only of static final fields
+     - poor use of interfaces
+   - Alternatives
+     - add to class or interface the constants are strongly associated with
+     - export with an enum type
+     - export with a utility class
 ** 20 Prefer class hierarchies to tagged classes
+   - Tagged classes: have fields that are relevant only if class is in a certain state
+     - e.g. Figure contains length, width (for rectangle) and radius (for circle) fields
+   - prefer making Figure an abstract class
 ** 21 Use function objects to represent strategies
+   - Function objects: objects whose methods perform operations on other
+     objects
+     - StringLengthComparator, implementing Comparator<String>,
+       is a concrete strategy for string comparison
+       - stateless
+   - Strategy interface
+     - public interface Comparator<T> { public int compare(T t1, T t2); }
+   - Often anonymous classes
+     - new Comparator<String>() { .. }
+       - creates new instance each time called; consider making it a private field
 ** 22 Favor static member classes over nonstatic
+   - static member class
+     - static class Foo { ... }
+     - associated with outer class
+   - nonstatic member class
+     - associated with instance of outer class
+     - exposed to instance info; (BAD! We want information hiding)
+     - used in Adapter implementations
+       - collection views returned by Map's keySet, entrySet, etc
+       - iterator
+   - anonymous class
+     - function objects on the fly
+       - e.g. Comparator
+     - process objects
+       - Thread
+     - factory methods
+   - local class
+     - declared in a method
+     - associated with instance and method
 * 5 Generics
 ** 23 Don't use raw types in new code
+   - Use unbounded wildcard type if you don't care about the type
+   - Exceptions
+     - List.class is legal but not List<String>.class
+     - o instanceof Set // but (Set<?> o)
 ** 24 Eliminate unchecked warnings
+   - Eliminate every unchecked warning possible
+     - else use @SuppresWarnings("unchecked")
+       - always comment why it's safe to suppress warnings
 ** 25 Prefer lists to arrays
+   - covarialt
+   - invariant
+     - TODO
 ** 26 Favor generic types
 ** 27 Favor generic methods
 ** 28 Use bounded wildcards to increase API flexibility

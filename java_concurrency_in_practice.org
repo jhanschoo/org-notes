@@ -1,0 +1,105 @@
+** Introduction
+*** A (very) brief history of concurrency
+*** Benefits of threads
+*** Risks of threads
+*** Threads are everywhere
+* I Fundamentals
+** 2 Thread safety
+*** 2.1 What is thread safety?
+*** 2.2 Atomicity
+*** 2.3 Locking
+*** 2.4 Guarding state with locks
+*** 2.5 Liveness and performance
+** 3 Sharing objects
+*** 3.1 Visibility
+*** 3.2 Publication and escape
+*** 3.3 Thread confinement
+*** 3.4 Immutability
+*** 3.5 Safe publication
+** 4 Composing objects
+*** 4.1 Designing a thread-safe class
+*** 4.2 Instance confinement
+*** 4.3 Delegating thread safety
+*** 4.4 Adding functionality to existing thread-safe classes
+*** 4.5 Documenting synchronization policies
+** 5 Building blocks
+*** 5.1 Synchronized collections
+*** 5.2 Concurrent collections
+*** 5.3 Blocking queues and the producer-consumer pattern
+*** 5.4 Blocking and interruptible methods
+*** 5.5 Synchronizers
+*** 5.6 Building an efficient, scalable result cache
+* II Structuring concurrent applications
+** 6 Task execution
+*** 6.1 Executing tasks in threads
+*** 6.2 The Executor framework
+*** 6.3 Finding exploitable parallelism
+** 7 Calcellation and shutdown
+*** 7.1 Task cancellation
+*** 7.2 Stopping a thread-based service
+*** 7.3 Handling abnormal thread termination
+*** 7.4 JVM shutdown
+** 8 Applying thread pools
+*** 8.1 Implicit couplings between tasks and execution policies
+*** 8.2 Sizing thread pools
+*** 83 Configuring ThreadPoolExecutor
+*** 84 Extending ThreadPoolExecutor
+*** 8.5 Parallelizing recursive algorithms
+** 9 GUI applications
+*** 9.1 Why are GUIs single-threaded?
+*** 9.2 Short-running GUI tasks
+*** 9.3 Long-running GUI tasks
+*** 9.4 Shared data models
+*** 9.5 Other forms of single-threaded subsystems
+* III Liveness, performance, and testing
+** 10 Avoiding liveness hazards
+*** 10.1 Deadlock
+*** 10.2 Avoiding and diagnosing deadlocks
+*** 10.3 Other liveness hazards
+** 11 Performance and scalability
+*** 11.1 Thinking about performance
+*** 11.2 Amdhal's law
+*** 11.3 Costs introduced by threads
+*** 11.4 Reducing lock contention
+*** 11.5 Example: comparing Map performance
+*** 11.6 Reducing context switch overhead
+** 12 Testing concurrent programs
+*** 12.1 Testing for correctness
+*** 12.2 Testing for performance
+*** 12.3 Avoiding performance testing pitfalls
+*** 12.4 Complementary testing approaches
+* IV Advanced topics
+** 13 Explicit locks
+*** 13.1 Lock and ReentrantLock
+*** 13.2 Performance considerations
+*** 13.3 Fairness
+*** 13.4 Choosing between synchronized and ReentrantLock
+*** 13.5 Read-write locks
+** 14 Building custom synchronizers
+*** 14.1 Managing state dependence
+*** 14.2 Using condition queues
+*** 14.3 Explicit condition objects
+*** 14.4 Anatomy of a synchronizer
+*** 14.5 AbstractQueuedSynchronizer
+*** 14.6 AQS in java.util.concurrent cynchronizer classes
+** 15 Atomic variables and nonblocking synchronization
+*** 15.1 Disadvantages of locking
+*** 15.2 Hardware support for concurrency
+*** 15.3 Atonic variable classes
+*** 15.4 Nonblocking algorithms
+** 16 The Java memory model
+*** 16.1 What is a memory model, and why would I want one?
+*** 16.2 Publication
+*** 16.3 Initialization safety
+** A Annotations for concurrency
+*** A.1 Class annotations
+    - @Immutable
+    - @ThreadSafe
+    - (no annotation, NotThreadSafe presumed)
+    - @NotThreadSafe
+*** A.2 Field and method annotations
+    - @GuardedBy("this")
+    - @GuardedBy("fieldName")
+    - @GuardedBy("ClassName.fieldName")
+    - @GuardedBy("methodName()")
+    - @GuardedBy("ClassName.class")

@@ -1,0 +1,25 @@
+* Introduction
+** About this user guide
+* Overview
+** Features
+** Why Groovy?
+* Tutorials
+** Getting Started
+* Installing guide
+** Prerequisites
+** Download
+** Unpacking
+** Environment variables
+** Running and testing your installation
+** JVM options
+* Troubleshooting
+** Working through problems
+** Getting help
+* Build script basics
+** Projects and tasks
+** Hello world
+** A shortcut task definition
+** Build scripts are code
+** Task dependencies
+** Dynamic tasks
+** Manipulating existing tasks
