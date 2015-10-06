@@ -1,2 +1,4 @@
 * org-notes
   Org files containing notes to various books, documentation, etc.
+
+  Presently migrating my org notes to Evernote.
